@@ -11,7 +11,7 @@ SchoolId = NewType('SchoolId', int | str)
 @dataclass
 class Admission:
     applications: Mapping[StudentId,Tuple[SchoolId]]
-    results: Mapping[SchoolId, Tuple[StudentId]]
+    exams: Mapping[SchoolId, Tuple[StudentId]]
     seats: Mapping[SchoolId, int]
     school_names: Optional[Mapping[SchoolId, str]]
     student_names: Optional[Mapping[StudentId, str]]

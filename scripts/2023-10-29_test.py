@@ -95,6 +95,20 @@ for x in 'abcd':
 [x for x in 'abcd']
 {x: x for x in 'abcd'}
 
+foo = {1, 2, 3}
+foo.add(4)
+foo
+foo.remove(3)
+foo
+foo.add(2)
+foo
+1 in foo
+5 in foo
+
+foo = {1: {1, 2, 3}, 2: {3, 4}}
+foo
+
+set(foo.values())
 
 
 
