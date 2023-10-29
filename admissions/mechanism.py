@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from types import Admission, Allocation
+from .types import Admission, Allocation
 
 
 class Mechanism(ABC):
@@ -39,16 +39,16 @@ class DeferredAcceptance(Mechanism):
         super().__init__(data)
         self.schools = set(self.seats.keys())
         self.students = set(self.applications.keys())
-        self.rejected = {}  # set of fully rejected students
-        self.accepted = {s: {} for s in self.schools}  # conditional acceptance
+        self.rejected = set()  # set of fully rejected students
+        self.accepted = {s: set() for s in self.schools}  # conditional acceptance
         self.curr_positions = {s: 0 for s in self.students}
         self.vacant_seats = {k: v for k, v in self.seats.items()}
 
     def step(self):
         to_compare = {k: v for k, v in self.accepted.items()}
         # select students applying to a given school in this step
-        for st, app in self.applications:
-            curr_position = self.app_positions[st]
+        for st, app in self.applications.items():
+            curr_position = self.curr_positions[st]
             if curr_position < len(app):  # any school left on application
                 to_compare[app[curr_position]].add(st)
         # and now...
@@ -57,26 +57,26 @@ class DeferredAcceptance(Mechanism):
             curr_students = to_compare[sch]
             curr_result = [st for st in res if st in curr_students]
             self.accepted[sch] = set(curr_result[:num_seats])
-            for st in curr_result[num_seats:]
+            for st in curr_result[num_seats:]:
                 # move the curr_position for not-acepted students
                 self.curr_positions[st] += 1
     
     def has_finished(self):
         # either all students accepted or no school left on not accepted 
         # student's applications
-        all_accepted = {st for x in self.accepted.values for st in x} 
+        all_accepted = {st for x in self.accepted.values() for st in x} 
         not_accepted = self.students - all_accepted
         has_finished = True
         for st in not_accepted:
-            has_finished = (has_finished and 
-                            self.curr_positions >= len(self.applications[st]))
+            has_finished = (has_finished and self.curr_positions[st]
+                            >= len(self.applications[st]))
         return has_finished
 
     def evaluate(self):
-        while not has_finished():
-            step()
+        while not self.has_finished():
+            self.step()
         # create final allocation and return
-        all_accepted = {st for x in self.accepted.values for st in x} 
+        all_accepted = {st for x in self.accepted.values() for st in x} 
         rejected = self.students - all_accepted
         return Allocation(matched=self.accepted, unmatched=rejected)
         

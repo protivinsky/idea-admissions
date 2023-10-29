@@ -1,4 +1,4 @@
-from types import Admission
+from .types import Admission
 
 
 example_1 = Admission(

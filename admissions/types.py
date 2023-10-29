@@ -13,8 +13,8 @@ class Admission:
     applications: Mapping[StudentId,Tuple[SchoolId]]
     exams: Mapping[SchoolId, Tuple[StudentId]]
     seats: Mapping[SchoolId, int]
-    school_names: Optional[Mapping[SchoolId, str]]
-    student_names: Optional[Mapping[StudentId, str]]
+    school_names: Optional[Mapping[SchoolId, str]] = None
+    student_names: Optional[Mapping[StudentId, str]] = None
 
 
 @dataclass
