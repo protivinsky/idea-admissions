@@ -4,7 +4,7 @@ from .types import Admission, Allocation, SchoolId, StudentId
 
 
 class Mechanism(ABC):
-    def __init__(self, data: Admission) -> Allocation:
+    def __init__(self, data: Admission, verbose: bool = False) -> Allocation:
         self.applications = data.applications
         self.exams = data.exams
         self.seats = data.seats
@@ -12,6 +12,7 @@ class Mechanism(ABC):
         self.student_names = data.student_names
         self.schools = set(self.seats.keys())
         self.students = set(self.applications.keys())
+        self.verbose = verbose
 
     @abstractmethod
     def evaluate(self) -> Allocation:
@@ -22,6 +23,21 @@ class Mechanism(ABC):
         Do some basic sanity checks on input data.
         """
         ...
+
+    def log_start(self):
+        if self.verbose:
+            print(f'===  {self.__class__.__name__}  ===')
+            print(f'Students\' applications: {self.applications}')
+            print(f'School capacities: {self.seats}')
+            print(f'School results: {self.exams}')
+            print()
+
+    def log_end(self):
+        if self.verbose:
+            print(f'===  RESULTS  ===')
+            print(f'Accepted: {self.allocation.matched}')
+            print(f'Rejected: {self.allocation.unmatched}')
+            print()
 
 
 class DeferredAcceptance(Mechanism):
@@ -100,14 +116,23 @@ class CermatMechanism(Mechanism):
         5. Opakuje se od bodu 2, dokud zbývají nepřijatí žáci a je možné
            pokračovat.
     """
-    def __init__(self, data: Admission):
-        super().__init__(data)
+    def __init__(self, data: Admission, verbose: bool = False):
+        super().__init__(data, verbose=verbose)
         self.applicants = {k: list(v) for k, v in self.exams.items()}
         self.cutoffs = {k: v for k, v in self.seats.items()}
         self.accepted = {s: set() for s in self.schools}
         self.max_school_rank = max(
                 [len(app) for app in self.applications.values()])
+        # the below is mainly for logging
         self.num_steps = 0
+        self.last_best_match = set()
+        self.last_best_rank = -1
+        self.allocation = None
+
+    def rejected(self):
+        all_accepted = {st for x in self.accepted.values() for st in x} 
+        rejected = self.students - all_accepted
+        return rejected
 
     def find_best_match(self) -> Tuple[int, Set[Tuple[StudentId, SchoolId]]]:
         # returns the best rank and set of best-match students
@@ -129,20 +154,24 @@ class CermatMechanism(Mechanism):
         return best_rank, best_match
 
     def log(self):
-        print(f'Applicants: {self.applicants}')
-        print(f'Accepted: {self.accepted}')
+        if self.verbose:
+            print(f'===  STEP = {num_steps}  ===')
+            print(f'Applicants: {self.applicants}')
+            print(f'Accepted: {self.accepted}')
+            print()
 
     def step(self) -> bool:
         # If returns True, some students were allocated and we should continue.
         # search for the best rank
         best_rank, best_match = self.find_best_match()
+        self.last_best_rank = best_rank
+        self.last_best_match = best_match
         # if there are no students with best match, return and end
         if not best_match:
             return False
         self.num_steps += 1
         # -> add matched students to accepted lists
         # -> and remove them from unwanted schools
-        print(f'step {self.num_steps}: best_match = {best_match}')
         for (st, sch) in best_match:
             self.accepted[sch].add(st)
             for other_sch in self.applications[st][best_rank + 1:]:
@@ -155,12 +184,13 @@ class CermatMechanism(Mechanism):
         return True
 
     def evaluate(self):
+        self.log_start()
         while self.step():
             pass
-        # create final allocation and return
-        all_accepted = {st for x in self.accepted.values() for st in x} 
-        rejected = self.students - all_accepted
-        return Allocation(matched=self.accepted, unmatched=rejected)
+        self.allocation = Allocation(matched=self.accepted,
+                                     unmatched=self.rejected())
+        self.log_end()
+        return self.allocation
     
 
 
