@@ -13,6 +13,7 @@ class Mechanism(ABC):
         self.schools = set(self.seats.keys())
         self.students = set(self.applications.keys())
         self.verbose = verbose
+        self.allocation = None
 
     @abstractmethod
     def evaluate(self) -> Allocation:
@@ -54,12 +55,24 @@ class DeferredAcceptance(Mechanism):
            dokud nejsou zcela posouzené přihlášky všech nepřijatých žáků.
         4. Všichni podmíněně přijatí žáci jsou na tyto školy zapsáni.
     """
-    def __init__(self, data: Admission):
-        super().__init__(data)
+    def __init__(self, data: Admission, verbose: bool = False):
+        super().__init__(data, verbose=verbose)
         self.rejected = set()  # set of fully rejected students
         self.accepted = {s: set() for s in self.schools}  # conditional acceptance
         self.curr_positions = {s: 0 for s in self.students}
         self.vacant_seats = {k: v for k, v in self.seats.items()}
+        # logging stuff
+        self.num_steps = 0
+        self.last_to_compare = {}
+        self.last_positions = {}
+
+    def log(self):
+        if self.verbose:
+            print(f'===  STEP = {self.num_steps}  ===')
+            print(f'Position on applications: {self.last_positions}')
+            print(f'Students to compare: {self.last_to_compare}')
+            print(f'Accepted: {self.accepted}')
+            print()
 
     def step(self):
         to_compare = {k: v for k, v in self.accepted.items()}
@@ -90,12 +103,17 @@ class DeferredAcceptance(Mechanism):
         return has_finished
 
     def evaluate(self):
+        self.log_start()
         while not self.has_finished():
             self.step()
+            self.num_steps += 1
+            self.log()
         # create final allocation and return
         all_accepted = {st for x in self.accepted.values() for st in x} 
         rejected = self.students - all_accepted
-        return Allocation(matched=self.accepted, unmatched=rejected)
+        self.allocation = Allocation(matched=self.accepted, unmatched=rejected)
+        self.log_end()
+        return self.allocation
         
 
 class CermatMechanism(Mechanism):
@@ -127,7 +145,6 @@ class CermatMechanism(Mechanism):
         self.num_steps = 0
         self.last_best_match = set()
         self.last_best_rank = -1
-        self.allocation = None
 
     def rejected(self):
         all_accepted = {st for x in self.accepted.values() for st in x} 
@@ -155,7 +172,7 @@ class CermatMechanism(Mechanism):
 
     def log(self):
         if self.verbose:
-            print(f'===  STEP = {num_steps}  ===')
+            print(f'===  STEP = {self.num_steps}  ===')
             print(f'Applicants: {self.applicants}')
             print(f'Accepted: {self.accepted}')
             print()
