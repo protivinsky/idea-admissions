@@ -8,7 +8,12 @@ example_1 = Admission(
         3: ('A', 'C', 'D'),
         4: ('B', 'C', 'D'),
     },
-    exams = {k: (1, 2, 3, 4) for k in 'ABCD'},
+    exams = {
+        'A': (1, 2, 3),
+        'B': (1, 2, 4),
+        'C': (1, 3, 4),
+        'D': (2, 3, 4),
+    }, 
     seats = {k: 1 for k in 'ABCD'},
 )
 
