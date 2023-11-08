@@ -1,4 +1,4 @@
-from .types import Admission
+from .domain import Admission
 
 
 example_1 = Admission(
@@ -27,6 +27,38 @@ example_2 = Admission(
         'A': (2, 1, 3),
         'B': (1, 2, 3),
         'C': (1, 2, 3),
+    },
+    seats = {k: 1 for k in 'ABC'},
+)
+
+# ex 3 - highlights the distinctions b/w DA and CM
+# DA is SOSM = student-optimal stable mechanism
+# CM is essentially school-optimal stable mechanism
+example_3 = Admission(
+    applications = {
+        1: ('A', 'B', 'C'),
+        2: ('B', 'C', 'A'),
+        3: ('C', 'A', 'B'),
+    },
+    exams = {
+        'A': (2, 3, 1),
+        'B': (3, 1, 2),
+        'C': (1, 2, 3),
+    },
+    seats = {k: 1 for k in 'ABC'},
+)
+
+# ex 4 - ETM pareto dominates DA here
+example_4 = Admission(
+    applications= {
+        1: ('B', 'A', 'C'),
+        2: ('A', 'B', 'C'),
+        3: ('A', 'B', 'C'),
+    },
+    exams = {
+        'A': (1, 3, 2),
+        'B': (2, 1, 3),
+        'C': (2, 1, 3),
     },
     seats = {k: 1 for k in 'ABC'},
 )
