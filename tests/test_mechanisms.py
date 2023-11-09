@@ -4,7 +4,7 @@
 # sys.path.append("/home/thomas/code/idea/admissions")
 
 import pytest
-from admissions.mechanism import DeferredAcceptance, CermatMechanism
+from admissions import DeferredAcceptance, CermatMechanism
 from admissions.data import example_1, example_2, example_cermat
 
 

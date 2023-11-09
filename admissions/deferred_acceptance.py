@@ -1,4 +1,5 @@
-from .domain import Admission
+from typing import Set, Tuple
+from .domain import Admission, Allocation, SchoolId, StudentId
 from .mechanism import Mechanism
 
 
