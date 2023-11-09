@@ -1,25 +1,23 @@
 from abc import ABC, abstractmethod
-from typing import Set, Tuple
-from .domain import Admission, Allocation, SchoolId, StudentId
+from typing import Optional
+from .domain import AdmissionData, Allocation, SchoolId, StudentId
+from logger.logger import Logger
 
 
 class Mechanism(ABC):
-    def __init__(self, data: Admission, verbose: bool = False):
-        self.applications = data.applications
-        self.exams = data.exams
-        self.seats = data.seats
-        self.school_names = data.school_names
-        self.student_names = data.student_names
-        self.schools = set(self.seats.keys())
-        self.students = set(self.applications.keys())
-        self.verbose = verbose
-        self.allocation = None
+    def __init__(self, admission_data: AdmissionData, logger: Optional[Logger] = None):
+        self.validate_data(admission_data)
+        self.admission_data = admission_data
+        self.students = set(self.admission_data.applications.keys())
+        self.schools = set(self.admission_data.exams.keys())
+        if logger is not None:
+            logger.name = self.__class__.__name__
 
     @abstractmethod
     def evaluate(self) -> Allocation:
         raise NotImplementedError
 
-    def validate_data(self):
+    def validate_data(self, admission_data: AdmissionData):
         """
         Do some basic sanity checks on input data.
         """

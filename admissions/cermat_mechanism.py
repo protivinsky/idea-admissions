@@ -1,5 +1,5 @@
 from typing import Set, Tuple
-from .domain import Admission, Allocation, SchoolId, StudentId
+from .domain import AdmissionData, Allocation, SchoolId, StudentId
 from .mechanism import Mechanism
 
 
@@ -26,7 +26,7 @@ class CermatMechanism(Mechanism):
     škol, nikoli studentů.
     """
 
-    def __init__(self, data: Admission, verbose: bool = False):
+    def __init__(self, data: AdmissionData, verbose: bool = False):
         super().__init__(data, verbose=verbose)
         self.applicants = {k: list(v) for k, v in self.exams.items()}
         self.cutoffs = {k: v for k, v in self.seats.items()}
@@ -95,6 +95,6 @@ class CermatMechanism(Mechanism):
         self.log_start()
         while self.step():
             pass
-        self.allocation = Allocation(matched=self.accepted, unmatched=self.rejected())
+        self.allocation = Allocation(accepted=self.accepted, rejected=self.rejected())
         self.log_end()
         return self.allocation
