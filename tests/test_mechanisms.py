@@ -29,17 +29,20 @@ cm_expected = [
 ]
 
 
-@pytest.mark.parametrize("data,matched,unmatched", da_expected)
-def test_da_allocation(data, matched, unmatched):
+@pytest.mark.parametrize("data,accepted,rejected", da_expected)
+def test_da_allocation(data, accepted, rejected):
     da_mechanism = DeferredAcceptance(data)
     da_result = da_mechanism.evaluate()
-    assert da_result.matched == matched, "The allocation of matched students differ."
-    assert da_result.unmatched == unmatched, "The rejected students differ."
+    assert (
+        da_result.accepted == accepted
+    ), "The allocation of accepted students differs."
+    assert da_result.rejected == rejected, "The rejected students differ."
 
 
-@pytest.mark.parametrize("data,matched,unmatched", cm_expected)
-def test_cm_allocation(data, matched, unmatched):
+@pytest.mark.parametrize("data,accepted,rejected", cm_expected)
+def test_cm_allocation(data, accepted, rejected):
     cm_mechanism = CermatMechanism(data)
     cm_result = cm_mechanism.evaluate()
-    assert cm_result.matched == matched, "The allocation of matched students differ."
-    assert cm_result.unmatched == unmatched, "The rejected students differ."
+    assert (
+        cm_result.accepted == accepted
+    ), "The allocation of accepted students differs."

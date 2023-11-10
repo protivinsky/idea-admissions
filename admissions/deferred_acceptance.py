@@ -1,6 +1,7 @@
-from typing import Set, Tuple
-from .domain import Admission, Allocation, SchoolId, StudentId
+from typing import Any, Dict
+from .domain import AdmissionData, Allocation
 from .mechanism import Mechanism
+from .logger import Logger
 
 
 class DeferredAcceptance(Mechanism):
@@ -20,34 +21,32 @@ class DeferredAcceptance(Mechanism):
     DA je nazývaný také student-optimal stable mechanism.
     """
 
-    def __init__(self, data: Admission, verbose: bool = False):
-        super().__init__(data, verbose=verbose)
+    def __init__(self, data: AdmissionData, logger: Logger = Logger()):
+        super().__init__(data, logger=logger)
         self.rejected = set()  # set of fully rejected students
         self.accepted = {s: set() for s in self.schools}  # conditional acceptance
         self.curr_positions = {s: 0 for s in self.students}
         self.vacant_seats = {k: v for k, v in self.seats.items()}
-        # logging stuff
-        self.num_steps = 0
-        self.last_to_compare = {}
-        self.last_positions = {}
 
-    def log(self):
-        if self.verbose:
-            print(f"===  STEP = {self.num_steps}  ===")
-            print(f"Position on applications: {self.last_positions}")
-            print(f"Students to compare: {self.last_to_compare}")
-            print(f"Accepted: {self.accepted}")
-            print()
+    def is_done(self):
+        # either all students accepted or no school left on not accepted
+        # student's applications
+        all_accepted = {st for x in self.accepted.values() for st in x}
+        not_accepted = self.students - all_accepted
+        is_done = True
+        for st in not_accepted:
+            is_done = is_done and self.curr_positions[st] >= len(self.applications[st])
+        return is_done
 
-    def step(self):
+    def step(self) -> Dict[str, Any]:
         to_compare = {k: v for k, v in self.accepted.items()}
         # select students applying to a given school in this step
         for st, app in self.applications.items():
             curr_position = self.curr_positions[st]
             if curr_position < len(app):  # any school left on application
                 to_compare[app[curr_position]].add(st)
-        self.last_positions = {k: v for k, v in self.curr_positions.items()}
-        self.last_to_compare = {}
+        last_positions = {k: v for k, v in self.curr_positions.items()}
+        last_to_compare = {}
         # and now...
         for sch, res in self.exams.items():
             num_seats = self.seats[sch]
@@ -57,28 +56,13 @@ class DeferredAcceptance(Mechanism):
             for st in curr_result[num_seats:]:
                 # move the curr_position for not-acepted students
                 self.curr_positions[st] += 1
+        return {
+            "Position on applications": last_positions,
+            "Students to compare": last_to_compare,
+            "Accepted": self.accepted,
+        }
 
-    def has_finished(self):
-        # either all students accepted or no school left on not accepted
-        # student's applications
-        all_accepted = {st for x in self.accepted.values() for st in x}
-        not_accepted = self.students - all_accepted
-        has_finished = True
-        for st in not_accepted:
-            has_finished = has_finished and self.curr_positions[st] >= len(
-                self.applications[st]
-            )
-        return has_finished
-
-    def evaluate(self):
-        self.log_start()
-        while not self.has_finished():
-            self.step()
-            self.num_steps += 1
-            self.log()
-        # create final allocation and return
+    def allocate(self) -> Allocation:
         all_accepted = {st for x in self.accepted.values() for st in x}
         rejected = self.students - all_accepted
-        self.allocation = Allocation(matched=self.accepted, unmatched=rejected)
-        self.log_end()
-        return self.allocation
+        return Allocation(accepted=self.accepted, rejected=rejected)

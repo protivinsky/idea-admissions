@@ -7,7 +7,17 @@ class NaiveMechanism(Mechanism):
     Naivní mechanismus
     ------------------
 
-    TODO: add the quote from the law...
+    §60i Způsob hodnocení výsledků přijímacího řízení
+    ...
+    (2) Pokud splní kritéria přijímacího řízení více uchazečů než kolik lze přijmout,
+    rozhoduje jejich pořadí podle výsledků hodnocení kritérií přijímacího řízení.
+    (3) Umístí-li se uchazeč na místě opravňujícím k přijetí do více oborů středního
+    vzdělání, bude přijat do oboru umístěného z těchto oborů středního vzdělání na
+    přednostnějším pořadí uvedeném v přihlášce podle § 60b; do ostatních oborů středního
+    vzdělání nebude uchazeč přijat.    
+    ...
+
+    Doslovnému znění nejvíce odpovídá právě naivní mechanismus popsaný níže.
 
     Algoritmus:
     1. Ze všech žáků hlásících se na danou školu nabídni přijetí všem nad čarou.
