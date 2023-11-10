@@ -4,7 +4,12 @@
 # sys.path.append("/home/thomas/code/idea/admissions")
 
 import pytest
-from admissions import DeferredAcceptance, CermatMechanism
+from admissions import (
+    DeferredAcceptance,
+    CermatMechanism,
+    NaiveMechanism,
+    SchoolOptimalSM,
+)
 from admissions.data import example_1, example_2, example_cermat
 
 
@@ -40,6 +45,10 @@ cm_expected = [
     ),
 ]
 
+naive_expected = [
+    (example_1(), {"A": {1}, "B": {4}, "C": {3}, "D": {2}}, set()),
+]
+
 
 @pytest.mark.parametrize("data,accepted,rejected", da_expected)
 def test_da_allocation(data, accepted, rejected):
@@ -59,3 +68,23 @@ def test_cm_allocation(data, accepted, rejected):
         cm_result.accepted == accepted
     ), "The allocation of accepted students differs."
     assert cm_result.rejected == rejected, "The rejected students differ."
+
+
+@pytest.mark.parametrize("data,accepted,rejected", naive_expected)
+def test_naive_allocation(data, accepted, rejected):
+    naive_mechanism = NaiveMechanism(data)
+    naive_result = naive_mechanism.evaluate()
+    assert (
+        naive_result.accepted == accepted
+    ), "The allocation of accepted students differs."
+    assert naive_result.rejected == rejected, "The rejected students differ."
+
+
+@pytest.mark.parametrize("data,accepted,rejected", cm_expected)
+def test_school_optimal_sm_allocation(data, accepted, rejected):
+    school_optimal_mechanism = SchoolOptimalSM(data)
+    school_optimal_result = school_optimal_mechanism.evaluate()
+    assert (
+        school_optimal_result.accepted == accepted
+    ), "The allocation of accepted students differs."
+    assert school_optimal_result.rejected == rejected, "The rejected students differ."

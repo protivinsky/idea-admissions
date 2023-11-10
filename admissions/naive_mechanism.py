@@ -1,4 +1,4 @@
-from .domain import Admission, Allocation
+from .domain import AdmissionData, Allocation
 from .mechanism import Mechanism
 
 
@@ -14,7 +14,7 @@ class NaiveMechanism(Mechanism):
     (3) Umístí-li se uchazeč na místě opravňujícím k přijetí do více oborů středního
     vzdělání, bude přijat do oboru umístěného z těchto oborů středního vzdělání na
     přednostnějším pořadí uvedeném v přihlášce podle § 60b; do ostatních oborů středního
-    vzdělání nebude uchazeč přijat.    
+    vzdělání nebude uchazeč přijat.
     ...
 
     Doslovnému znění nejvíce odpovídá právě naivní mechanismus popsaný níže.
@@ -26,50 +26,54 @@ class NaiveMechanism(Mechanism):
        se vše opakuje od kroku 1.
     """
 
-    def __init__(self, data: Admission):
+    def __init__(self, data: AdmissionData):
         super().__init__(data)
         self.accepted = {s: set() for s in self.schools}
         self.remaining_seats = {s: x for s, x in self.seats.items()}
         self.remaining_applicants = {
             sch: [x for x in students] for sch, students in self.exams.items()
         }
-        # logging
-        self.num_steps = 0  # this could live in logger
-        self.offers = {}
 
-    def log():
-        ...
+    def is_done(self) -> bool:
+        should_continue = False
+        for school, applicants in self.remaining_applicants.items():
+            vacant = self.remaining_seats[school]
+            should_continue = should_continue or bool(applicants[:vacant])
+        return not should_continue
 
     def step(self):
         # 1. projdi remaining_applicants a nad carou pridej do offers
-        self.offers = {}
+        offers = {}
         for school, applicants in self.remaining_applicants.items():
-            for st in applicants[:self.remaining_seats[school]]:
-                if st in self.offers:
-                    self.offers[st].append(school)
+            for st in applicants[: self.remaining_seats[school]]:
+                if st in offers:
+                    offers[st].append(school)
                 else:
-                    self.offers[st] = [school]
+                    offers[st] = [school]
         # 2. prijmi na nejlepsi offer a odstran z remaining_applicants
-        for st, offs in self.offers.items():
+        for st, offs in offers.items():
             for sch in self.applications[st]:
                 if sch in offs:
                     self.accepted[sch].add(st)
                     break
         self.remaining_applicants = {
-            for sch, apps
+            sch: [st for st in sts if st not in offers]
+            for sch, sts in self.remaining_applicants.items()
+        }
         # 3. aktualizuj zbyvajici volna mista
-        
+        self.remaining_seats = {
+            sch: self.seats[sch] - len(self.accepted[sch]) for sch in self.schools
+        }
+        # return logs
+        return {
+            "Current offers": offers,
+            "Accepted": self.accepted,
+            "Remaining applicants": self.remaining_applicants,
+            "Remaining seats": self.remaining_seats,
+        }
 
-    def has_finished(self) -> bool:
-        not_finished = False
-        for school, applicants in self.remaining_applicants.items():
-            vacant = self.remaining_seats[school]
-            not_finished = not_finished or bool(applicants[:vacant])
-        return not not_finished
-
-    def evaluate(self) -> Allocation:
-        self.log_start()
-        while not self.has_finished():
-            self.step()
-            self.log()
-        ...
+    def allocate(self) -> Allocation:
+        accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}
+        all_accepted = {st for sts in self.accepted.values() for st in sts}
+        rejected = self.students - all_accepted
+        return Allocation(accepted=accepted, rejected=frozenset(rejected))
