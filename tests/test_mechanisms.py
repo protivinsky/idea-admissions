@@ -9,22 +9,34 @@ from admissions.data import example_1, example_2, example_cermat
 
 
 da_expected = [
-    (example_1, {"A": {1}, "B": {2}, "C": {3}, "D": {4}}, set()),
-    (example_2, {"A": {1}, "B": {2}, "C": {3}}, set()),
+    (example_1(), {"A": {1}, "B": {2}, "C": {3}, "D": {4}}, set()),
+    (example_2(), {"A": {1}, "B": {2}, "C": {3}}, set()),
     (
-        example_cermat,
-        {1: set("BDEL"), 2: set("AHK"), 3: set("CGIJM")},
-        {"F"},
+        example_cermat(),
+        # accepted
+        {
+            "Gymnázium Nymburk": {"Bára", "Dan", "Eda", "Lenka"},
+            "Lyceum Mělník": {"Adam", "Hanka", "Katka"},
+            "SOŠ Smíchov": {"Cecílie", "Gustav", "Ivana", "Jana", "Marek"},
+        },
+        # rejected
+        {"Filip"},
     ),
 ]
 
 cm_expected = [
-    (example_1, {"A": {1}, "B": {2}, "C": {3}, "D": {4}}, set()),
-    (example_2, {"A": {2}, "B": {1}, "C": {3}}, set()),
+    (example_1(), {"A": {1}, "B": {2}, "C": {3}, "D": {4}}, set()),
+    (example_2(), {"A": {2}, "B": {1}, "C": {3}}, set()),
     (
-        example_cermat,
-        {1: set("BDEJ"), 2: set("AHL"), 3: set("CGIKM")},
-        {"F"},
+        example_cermat(),
+        # accepted
+        {
+            "Gymnázium Nymburk": {"Bára", "Dan", "Eda", "Jana"},
+            "Lyceum Mělník": {"Adam", "Hanka", "Lenka"},
+            "SOŠ Smíchov": {"Cecílie", "Gustav", "Ivana", "Katka", "Marek"},
+        },
+        # rejected
+        {"Filip"},
     ),
 ]
 
@@ -46,3 +58,4 @@ def test_cm_allocation(data, accepted, rejected):
     assert (
         cm_result.accepted == accepted
     ), "The allocation of accepted students differs."
+    assert cm_result.rejected == rejected, "The rejected students differ."

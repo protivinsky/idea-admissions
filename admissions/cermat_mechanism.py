@@ -49,6 +49,7 @@ class CermatMechanism(Mechanism):
                 for st in apps[: self.cutoffs[sch]]:
                     # check if we have a new match
                     if st not in accepted and self.applications[st][i] == sch:
+                        print(f"adding {st} @ {sch} to best match")
                         best_match.add((st, sch))
                         best_rank = i
             if best_match:
@@ -58,7 +59,7 @@ class CermatMechanism(Mechanism):
 
     def is_done(self) -> bool:
         self.find_best_match()
-        return bool(self.current_best_match)
+        return not bool(self.current_best_match)
 
     def step(self) -> Dict[str, Any]:
         # -> add matched students to accepted lists
@@ -72,11 +73,14 @@ class CermatMechanism(Mechanism):
                 if st in self.accepted[other_sch]:
                     self.accepted[other_sch].remove(st)
         return {
+            "Current best match": self.current_best_match,
+            "Current best rank": self.current_best_rank,
             "Applicants": self.applicants,
             "Accepted": self.accepted,
         }
 
     def allocate(self) -> Allocation:
-        all_accepted = {st for x in self.accepted.values() for st in x}
+        accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}
+        all_accepted = {st for sts in self.accepted.values() for st in sts}
         rejected = self.students - all_accepted
-        return Allocation(accepted=self.accepted, rejected=rejected)
+        return Allocation(accepted=accepted, rejected=frozenset(rejected))

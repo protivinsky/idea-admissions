@@ -96,6 +96,7 @@ def example_cermat():
         "Marek",
     ]
     student_names = {s[0]: s for s in student_list}
+
     exams = {
         1: tuple([s for s in "AIDMECJBLFHKG"]),
         2: tuple([s for s in "CGIAHMLKJEFDB"]),
@@ -116,22 +117,13 @@ def example_cermat():
         "L": (1, 3, 2),
         "M": (3, 2, 1),
     }
-
-    applications_with_names = {}
-    for student, schools in applications.items():
-        named_student = student_names[student]
-        named_schools = tuple(school_names[school] for school in schools)
-        applications_with_names[named_student] = named_schools
-
-    exams_with_names = {}
-    for school, students in exams.items():
-        named_school = school_names[school]
-        named_students = tuple(student_names[student] for student in students)
-        exams_with_names[named_school] = named_students
-
-    example_cermat = AdmissionData(
-        applications=applications_with_names,
-        exams=exams_with_names,
-        seats={school_names[sch]: n for sch, n in {1: 4, 2: 3, 3: 5}.items()},
+    example_with_ids = AdmissionData(
+        applications=applications,
+        exams=exams,
+        seats={1: 4, 2: 3, 3: 5},
     )
-    return example_cermat
+
+    example = example_with_ids.rename(
+        student_names=student_names, school_names=school_names
+    )
+    return example

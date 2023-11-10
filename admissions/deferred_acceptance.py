@@ -63,6 +63,7 @@ class DeferredAcceptance(Mechanism):
         }
 
     def allocate(self) -> Allocation:
-        all_accepted = {st for x in self.accepted.values() for st in x}
+        accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}
+        all_accepted = {st for sts in self.accepted.values() for st in sts}
         rejected = self.students - all_accepted
-        return Allocation(accepted=self.accepted, rejected=rejected)
+        return Allocation(accepted=accepted, rejected=frozenset(rejected))

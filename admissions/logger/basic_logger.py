@@ -35,6 +35,7 @@ class BasicLogger(Logger):
 
     def log_end(self, allocation: Allocation):
         print("===  RESULTS  ===")
+        print(f"Num steps: {self._num_steps}")
         print(f"Accepted: {self.pretty_dict(allocation.accepted)}")
         print(f"Rejected: {allocation.rejected}")
         print()

@@ -11,7 +11,7 @@ print()
 print("===============================================")
 print()
 
-cm1 = CermatMechanism(example_1, logger=BasicLogger())
+cm1 = CermatMechanism(example_1(), logger=BasicLogger())
 cm1.evaluate()
 
 print()
