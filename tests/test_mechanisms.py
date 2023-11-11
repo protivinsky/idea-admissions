@@ -82,6 +82,7 @@ def test_naive_allocation(data, accepted, rejected):
 
 @pytest.mark.parametrize("data,accepted,rejected", cm_expected)
 def test_school_optimal_sm_allocation(data, accepted, rejected):
+    # the school optimal stable mechanism is fully equivalent to cermat implementation
     school_optimal_mechanism = SchoolOptimalSM(data)
     school_optimal_result = school_optimal_mechanism.evaluate()
     assert (

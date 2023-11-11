@@ -1,5 +1,6 @@
 from .domain import AdmissionData, Allocation
 from .mechanism import Mechanism
+from .logger import Logger
 
 
 class NaiveMechanism(Mechanism):
@@ -26,12 +27,12 @@ class NaiveMechanism(Mechanism):
        se vše opakuje od kroku 1.
     """
 
-    def __init__(self, data: AdmissionData):
-        super().__init__(data)
-        self.accepted = {s: set() for s in self.schools}
-        self.remaining_seats = {s: x for s, x in self.seats.items()}
+    def __init__(self, data: AdmissionData, logger: Logger = Logger()):
+        super().__init__(data, logger=logger)
+        self.accepted = {sch: set() for sch in self.schools}
+        self.remaining_seats = {sch: n for sch, n in self.seats.items()}
         self.remaining_applicants = {
-            sch: [x for x in students] for sch, students in self.exams.items()
+            sch: [st for st in students] for sch, students in self.exams.items()
         }
 
     def is_done(self) -> bool:
