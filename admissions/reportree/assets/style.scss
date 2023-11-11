@@ -35,7 +35,14 @@ code {
 }
 
 .bi {
-  font-size: 140%;
+  padding-right: 6px;
+}
+.bi {
+  padding: 0 6px 0 6px;
+}
+
+.admission-allocation {
+  font-size: 125%;
 }
 
 .admission-table
@@ -48,6 +55,10 @@ code {
 
   table, th, td {
       border: 1px solid #e0e0e0; /* Thin light gray border */
+  }
+
+  th.app-student, td.exam-student, th.exam-school {
+    font-size: 125%;
   }
 
   th, td {
@@ -63,7 +74,6 @@ code {
   tbody tr:nth-child(odd) {
       background-color: #f2f2f2; /* Zebra striping for rows */
   }
-
 
 .color_table td, .color_table th {
     padding: 8px

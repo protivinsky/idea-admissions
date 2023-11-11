@@ -36,7 +36,13 @@ code {
   white-space: pre-wrap; }
 
 .bi {
-  font-size: 120%; }
+  padding-right: 6px; }
+
+.bi {
+  padding: 0 6px 0 6px; }
+
+.admission-allocation {
+  font-size: 125%; }
 
 .admission-table
 table {
@@ -52,6 +58,9 @@ table {
 table, th, td {
   border: 1px solid #e0e0e0;
   /* Thin light gray border */ }
+
+th.app-student, td.exam-student, th.exam-school {
+  font-size: 125%; }
 
 th, td {
   text-align: center;
@@ -166,10 +175,8 @@ vzdělání nebude uchazeč přijat.</em>
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -177,30 +184,69 @@ příklad zvládnou.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>C</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 4</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  4</th>
             <td>B</td>
             <td>C</td>
             <td>D</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  D</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   4 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  D</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+        </ul>
       </div>
       <div id="page_1_2" class="content">
         <h2>Naivní mechanismus</h2>
@@ -232,10 +278,8 @@ vzdělání nebude uchazeč přijat.</em>
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -243,24 +287,58 @@ vzdělání nebude uchazeč přijat.</em>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_1_3" class="content">
         <h2>Naivní mechanismus</h2>
@@ -294,10 +372,8 @@ vzdělání nebude uchazeč přijat.</em>
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -305,24 +381,58 @@ vzdělání nebude uchazeč přijat.</em>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>C</td>
             <td>A</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>C</td>
             <td>A</td>
             <td>B</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+        </ul>
       </div>
       <div id="page_1_4" class="content">
         <h2>Naivní mechanismus</h2>
@@ -358,10 +468,8 @@ avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). T
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -369,24 +477,58 @@ ilustruje, že stabilitu a maximální efektivitu pro studenty není možné nap
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_1_5" class="content">
         <h2>Naivní mechanismus</h2>
@@ -422,10 +564,8 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -433,84 +573,182 @@ stabilního výsledku, který je efektivnější z pohledu studentů.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Adam</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Adam</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Bára</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Bára</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Cecílie</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Dan</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Dan</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Eda</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Eda</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Filip</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Filip</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Gustav</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Hanka</th>
             <td>Gymnázium Nymburk</td>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Ivana</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Jana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Jana</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Katka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Katka</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Lenka</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Marek</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Marek</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Lyceum Mělník</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+          </tr>
+          <tr>
+            <td>6.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+          </tr>
+          <tr>
+            <td>7.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+          </tr>
+          <tr>
+            <td>8.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+          </tr>
+          <tr>
+            <td>9.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+          </tr>
+          <tr>
+            <td>10.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+          </tr>
+          <tr>
+            <td>11.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+          </tr>
+          <tr>
+            <td>12.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+          </tr>
+          <tr>
+            <td>13.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  Gymnázium Nymburk</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Eda,   Marek,   Adam,   Dan )</li>
+          <li><i class="bi bi-house-fill"></i><b>  Lyceum Mělník</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Jana,   Hanka,   Lenka )</li>
+          <li><i class="bi bi-house-fill"></i><b>  SOŠ Smíchov</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Katka,   Bára,   Ivana,   Gustav,   Cecílie )</li>
+        </ul>
+        <h3>Nepřijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-person-fill"></i>Filip</li>
+        </ul>
       </div>
     </div>
     <div id="page_2" class="content">
@@ -549,10 +787,8 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -560,30 +796,69 @@ příklad zvládnou.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>C</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 4</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  4</th>
             <td>B</td>
             <td>C</td>
             <td>D</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  D</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  D</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   4 )</li>
+        </ul>
       </div>
       <div id="page_2_2" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -611,10 +886,8 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -622,24 +895,58 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_2_3" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -669,10 +976,8 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -680,24 +985,58 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>C</td>
             <td>A</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>C</td>
             <td>A</td>
             <td>B</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_2_4" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -729,10 +1068,8 @@ avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). T
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -740,24 +1077,58 @@ ilustruje, že stabilitu a maximální efektivitu pro studenty není možné nap
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_2_5" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -789,10 +1160,8 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -800,84 +1169,182 @@ stabilního výsledku, který je efektivnější z pohledu studentů.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Adam</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Adam</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Bára</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Bára</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Cecílie</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Dan</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Dan</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Eda</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Eda</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Filip</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Filip</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Gustav</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Hanka</th>
             <td>Gymnázium Nymburk</td>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Ivana</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Jana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Jana</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Katka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Katka</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Lenka</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Marek</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Marek</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Lyceum Mělník</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+          </tr>
+          <tr>
+            <td>6.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+          </tr>
+          <tr>
+            <td>7.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+          </tr>
+          <tr>
+            <td>8.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+          </tr>
+          <tr>
+            <td>9.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+          </tr>
+          <tr>
+            <td>10.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+          </tr>
+          <tr>
+            <td>11.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+          </tr>
+          <tr>
+            <td>12.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+          </tr>
+          <tr>
+            <td>13.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  Gymnázium Nymburk</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Bára,   Eda,   Lenka,   Dan )</li>
+          <li><i class="bi bi-house-fill"></i><b>  Lyceum Mělník</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Katka,   Hanka,   Adam )</li>
+          <li><i class="bi bi-house-fill"></i><b>  SOŠ Smíchov</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Jana,   Gustav,   Ivana,   Marek,   Cecílie )</li>
+        </ul>
+        <h3>Nepřijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-person-fill"></i>Filip</li>
+        </ul>
       </div>
     </div>
     <div id="page_3" class="content">
@@ -917,10 +1384,8 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -928,30 +1393,69 @@ příklad zvládnou.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>C</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 4</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  4</th>
             <td>B</td>
             <td>C</td>
             <td>D</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  D</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  D</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   4 )</li>
+        </ul>
       </div>
       <div id="page_3_2" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -980,10 +1484,8 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -991,24 +1493,58 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_3_3" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1039,10 +1575,8 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1050,24 +1584,58 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>C</td>
             <td>A</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>C</td>
             <td>A</td>
             <td>B</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+        </ul>
       </div>
       <div id="page_3_4" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1100,10 +1668,8 @@ avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). T
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1111,24 +1677,58 @@ ilustruje, že stabilitu a maximální efektivitu pro studenty není možné nap
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_3_5" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1161,10 +1761,8 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1172,84 +1770,182 @@ stabilního výsledku, který je efektivnější z pohledu studentů.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Adam</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Adam</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Bára</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Bára</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Cecílie</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Dan</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Dan</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Eda</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Eda</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Filip</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Filip</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Gustav</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Hanka</th>
             <td>Gymnázium Nymburk</td>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Ivana</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Jana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Jana</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Katka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Katka</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Lenka</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Marek</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Marek</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Lyceum Mělník</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+          </tr>
+          <tr>
+            <td>6.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+          </tr>
+          <tr>
+            <td>7.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+          </tr>
+          <tr>
+            <td>8.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+          </tr>
+          <tr>
+            <td>9.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+          </tr>
+          <tr>
+            <td>10.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+          </tr>
+          <tr>
+            <td>11.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+          </tr>
+          <tr>
+            <td>12.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+          </tr>
+          <tr>
+            <td>13.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  Gymnázium Nymburk</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Jana,   Bára,   Eda,   Dan )</li>
+          <li><i class="bi bi-house-fill"></i><b>  Lyceum Mělník</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Hanka,   Adam,   Lenka )</li>
+          <li><i class="bi bi-house-fill"></i><b>  SOŠ Smíchov</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Katka,   Gustav,   Ivana,   Marek,   Cecílie )</li>
+        </ul>
+        <h3>Nepřijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-person-fill"></i>Filip</li>
+        </ul>
       </div>
     </div>
     <div id="page_4" class="content">
@@ -1291,10 +1987,8 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1302,30 +1996,69 @@ příklad zvládnou.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>C</td>
             <td>D</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 4</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  4</th>
             <td>B</td>
             <td>C</td>
             <td>D</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  D</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  4</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  D</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   4 )</li>
+        </ul>
       </div>
       <div id="page_4_2" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -1356,10 +2089,8 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1367,24 +2098,58 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_4_3" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -1417,10 +2182,8 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1428,24 +2191,58 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>B</td>
             <td>C</td>
             <td>A</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>C</td>
             <td>A</td>
             <td>B</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+        </ul>
       </div>
       <div id="page_4_4" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -1480,10 +2277,8 @@ avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). T
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1491,24 +2286,58 @@ ilustruje, že stabilitu a maximální efektivitu pro studenty není možné nap
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 1</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  1</th>
             <td>B</td>
             <td>A</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 2</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  2</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> 3</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  3</th>
             <td>A</td>
             <td>B</td>
             <td>C</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  A</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  B</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  C</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  1</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  2</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  3</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  A</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   1 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  B</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   2 )</li>
+          <li><i class="bi bi-house-fill"></i><b>  C</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   3 )</li>
+        </ul>
       </div>
       <div id="page_4_5" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -1543,10 +2372,8 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
         <h2>Vstupní data</h2>
+        <h3>Studentské přihlášky</h3>
         <table class="admission-table">
-          <tr>
-            <th colspan="4">Studentské přihlášky</th>
-          </tr>
           <tr>
             <th></th>
             <th>1. škola</th>
@@ -1554,84 +2381,182 @@ stabilního výsledku, který je efektivnější z pohledu studentů.</p>
             <th>3. škola</th>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Adam</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Adam</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Bára</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Bára</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Cecílie</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Dan</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Dan</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Eda</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Eda</th>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Filip</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Filip</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Gustav</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Hanka</th>
             <td>Gymnázium Nymburk</td>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Ivana</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Jana</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Jana</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Katka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Katka</th>
             <td>Lyceum Mělník</td>
             <td>SOŠ Smíchov</td>
             <td>Gymnázium Nymburk</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Lenka</th>
             <td>Gymnázium Nymburk</td>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
           </tr>
           <tr>
-            <th><i class="bi bi-person-fill" /> Marek</th>
+            <th class="app-student"><i class="bi bi-person-fill"></i>  Marek</th>
             <td>SOŠ Smíchov</td>
             <td>Lyceum Mělník</td>
             <td>Gymnázium Nymburk</td>
           </tr>
         </table>
+        <h3>Výsledky školních zkoušek</h3>
+        <table class="admission-table">
+          <tr>
+            <th></th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  Lyceum Mělník</th>
+            <th class="exam-school"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Ivana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+          </tr>
+          <tr>
+            <td>6.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Cecílie</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Adam</td>
+          </tr>
+          <tr>
+            <td>7.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+          </tr>
+          <tr>
+            <td>8.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Marek</td>
+          </tr>
+          <tr>
+            <td>9.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+          </tr>
+          <tr>
+            <td>10.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Eda</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+          </tr>
+          <tr>
+            <td>11.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Hanka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Lenka</td>
+          </tr>
+          <tr>
+            <td>12.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Katka</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Dan</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Jana</td>
+          </tr>
+          <tr>
+            <td>13.</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Gustav</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Bára</td>
+            <td class="exam-student"><i class="bi bi-person-fill"></i>  Filip</td>
+          </tr>
+        </table>
+        <h2>Výsledek přijímaček</h2>
+        <h3>Přijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-house-fill"></i><b>  Gymnázium Nymburk</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Jana,   Bára,   Eda,   Dan )</li>
+          <li><i class="bi bi-house-fill"></i><b>  Lyceum Mělník</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Hanka,   Adam,   Lenka )</li>
+          <li><i class="bi bi-house-fill"></i><b>  SOŠ Smíchov</b><i class="bi bi-arrow-left"></i><i class="bi bi-person-fill"></i>(   Katka,   Gustav,   Ivana,   Marek,   Cecílie )</li>
+        </ul>
+        <h3>Nepřijatí žáci</h3>
+        <ul class="admission-allocation">
+          <li><i class="bi bi-person-fill"></i>Filip</li>
+        </ul>
       </div>
     </div>
     <script>
