@@ -19,8 +19,16 @@ class GraphicLogger(Logger):
         super().__init__()
         self._num_steps = 0
         self.doc = rt.Doc(*args, **kwargs)
+        self._step_data = []
 
     def log_start(self, admission_data: AdmissionData):
+        self._admission_data = admission_data
+
+    def log_step(self, data: Mapping):
+        self._num_steps += 1
+        self._step_data.append(data)
+
+    def at_end_log_start(self, admission_data: AdmissionData):
         doc = self.doc
 
         doc.line(self._header, "Vstupní data")
@@ -58,7 +66,8 @@ class GraphicLogger(Logger):
                             doc.line("i", "", klass="bi bi-person-fill")
                             doc.text(f"  {st}")
 
-    def log_step(self, data: Mapping):
+    def at_end_log_step(self, data: Mapping):
+        self._num_steps += 1
         ...
 
     def log_end(self, allocation: Allocation):
@@ -88,3 +97,8 @@ class GraphicLogger(Logger):
                     with doc.tag("li"):
                         doc.line("i", "", klass="bi bi-person-fill")
                         doc.text(str(st))
+
+        self._num_steps = 0
+        self.at_end_log_start(self._admission_data)
+        for step_data in self._step_data:
+            self.at_end_log_step(step_data)
