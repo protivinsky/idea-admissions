@@ -9,13 +9,14 @@ import markdown
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
+from matplotlib.figure import Figure
 import seaborn as sns
 from .generic_tree import GenericTree
 from .html_parts import css_base, js_doc_tree_script
 from .io import LocalWriter, IWriter
 
 
-def _fig_to_image_data(fig: mpl.Figure, format="png"):
+def _fig_to_image_data(fig: Figure, format="png"):
     image = io.BytesIO()
     fig.savefig(image, format=format)
     return base64.encodebytes(image.getvalue()).decode("utf-8")
