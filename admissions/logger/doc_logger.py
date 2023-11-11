@@ -18,7 +18,11 @@ class DocLogger(Logger):
 
     def pretty_dict(self, data: Mapping):
         """Pomocná třída pro hezčí výpis dictionaries."""
-        return "{\n" + "\n".join([f"    {k}: {v}" for k, v in data.items()]) + "\n}\n"
+        with self.doc.tag("ul"):
+            for k, v in data.items():
+                with self.doc.tag("li"):
+                    self.doc.line("b", f"{k}:")
+                    self.doc.text(f"{v}\n")
 
     def log_start(self, admission_data: AdmissionData):
         self.doc.line("h2", f"===  {self.name}  ===")

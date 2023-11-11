@@ -1,15 +1,18 @@
 from __future__ import annotations
 import os
 import io
+import importlib
 import base64
 import json
 from typing import Optional, Callable
 import yattag as yt
+import sass
 import markdown
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
 from matplotlib.figure import Figure
+from matplotlib.axes import Axes
 import seaborn as sns
 from .generic_tree import GenericTree
 from .html_parts import css_base, js_doc_tree_script
@@ -28,6 +31,18 @@ def _idx_str(idx):
 
 class Switcher(GenericTree):
     """A tree of Docs. Provides the button and javascript to switch between the leaf pages."""
+
+    _javascript = None
+
+    @classmethod
+    def get_javascript(cls):
+        # TODO: turn into a proper package asset later
+        if cls._javascript is None:
+            with open(
+                os.path.join(os.path.dirname(__file__), "assets", "switcher.js"), "r"
+            ) as file:
+                cls._javascript = file.read()
+        return cls._javascript
 
     def collector(self, f_node, f_leaf, _idx=()):
         if self.is_leaf():
@@ -73,7 +88,7 @@ class Switcher(GenericTree):
                 with doc.tag(
                     "div", id="page" + _idx_str(idx) + "_" + str(i + 1), klass="content"
                 ):
-                    doc.line("h" + str(min(4, len(idx) + 2)), k)
+                    # doc.line("h" + str(min(4, len(idx) + 2)), k)
                     doc.asis(v.getvalue())
             return doc
 
@@ -81,6 +96,18 @@ class Switcher(GenericTree):
 
 
 class Doc(yt.Doc):
+    _base_style = None
+
+    @classmethod
+    def get_base_style(cls):
+        # TODO: turn into a proper package asset later
+        if cls._base_style is None:
+            with open(
+                os.path.join(os.path.dirname(__file__), "assets", "style.scss"), "r"
+            ) as file:
+                cls._base_style = file.read()
+        return cls._base_style
+
     def __init__(self, *args, **kwargs):
         self._wrap_kwargs = {}
         if "max_width" in kwargs:
@@ -98,13 +125,13 @@ class Doc(yt.Doc):
             head_doc: Document containing the content of the `head` tag.
         """
         kwargs = {**self._wrap_kwargs, **kwargs}
+        sass_content = f"""
+        $max_width: {kwargs.pop("max_width") if "max_width" in kwargs else 1900}px;
 
-        if "max_width" in kwargs:
-            css = css_base(max_width=kwargs.pop("max_width"))
-            body_klass = "container"
-        else:
-            css = css_base()
-            body_klass = "container full-width"
+        {Doc.get_base_style()}
+        """
+        css_style = sass.compile(string=sass_content)
+        body_klass = "container" if "max_width" in kwargs else "container full-width"
 
         title = kwargs.pop("title", "ReporTree Doc")
         doc = Doc()
@@ -114,9 +141,7 @@ class Doc(yt.Doc):
                 doc.stag("meta", charset="UTF-8")
                 doc.line("title", title)
                 with doc.tag("style"):
-                    doc.asis(css)
-                if head_doc is not None:
-                    doc.asis(head_doc.getvalue())
+                    doc.asis(css_style)
             with doc.tag("body", klass=body_klass):
                 doc.asis(self.getvalue())
         return doc
@@ -126,7 +151,7 @@ class Doc(yt.Doc):
         return self
 
     def figure_as_b64(self, fig, format="png", **kwargs):
-        fig = fig.get_figure() if isinstance(fig, mpl.pyplot.Axes) else fig
+        fig = fig.get_figure() if isinstance(fig, Axes) else fig
         self.stag(
             "image",
             src=f"data:image/{format};base64,{_fig_to_image_data(fig, format=format)}",
@@ -156,14 +181,16 @@ class Doc(yt.Doc):
             self.asis("\n")
             self.asis("var buttonHierarchy = " + hierarchy + ";")
             self.asis("\n")
-            self.asis(js_doc_tree_script)
+            self.asis(Switcher.get_javascript())
             self.asis("\n")
 
         return self
 
     def toggle_width(self):
         with self.tag("div"):
-            self.line("button", "Toggle width", id="toggleButton")
+            self.line(
+                "button", "Toggle width", id="toggleButton", klass="switcher-button"
+            )
             with self.tag("script"):
                 self.asis(
                     """

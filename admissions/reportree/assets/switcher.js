@@ -1,47 +1,5 @@
-# TODO: turn all of these into proepr assets
+// This code handle the switching with tabs for Switcher class
 
-
-def css_base(max_width=None):
-    return f"""
-body {{
-  font-family: "Libre Franklin", sans-serif;
-  color: #444;
-  font-size: 90%;
-  font-weight: 300;
-}}
-
-.container {{
-  max-width: {max_width or 1900}px; /* Default max-width */
-  margin: 0;
-  padding: 20px;
-}}
-
-.container.full-width {{
-  max-width: none; /* Remove max-width for full-width display */
-}}
-
-b, strong {{
-  font-weight: 600;
-}}
-
-code {{
-  font-size: 120%;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  padding: 12px;
-  margin-bottom: 6px;
-  display: block;
-  width: auto;
-  white-space: pre-wrap;
-}}
-
-.color_table td, .color_table th {{
-    padding: 8px
-}}
-"""
-
-
-js_doc_tree_script = """
 function hideSiblings(contentId) {
   var contentElement = document.getElementById(contentId);
   var parentElement = contentElement.parentElement;
@@ -50,6 +8,7 @@ function hideSiblings(contentId) {
   for (var i = 0; i < siblingElements.length; i++) {
     if (siblingElements[i] !== contentElement && siblingElements[i].className === 'content') {
       siblingElements[i].style.display = "none";
+      classForContentIdButton(siblingElements[i].id, "switcher-button");
     }
   }
 }
@@ -58,6 +17,7 @@ function showContentAndParents(contentId) {
   // Display the content
   var content = document.getElementById(contentId);
   content.style.display = "block";
+  classForContentIdButton(contentId, "switcher-button switcher-button-active");
 
   // Hide sibling contents
   hideSiblings(contentId);
@@ -84,6 +44,11 @@ function getFirstChildId(contentId) {
   return null;
 }
 
+function classForContentIdButton(contentId, klass) {
+  var button = document.getElementById(contentId.replace("page_", "btn_"));
+  button.className = klass;
+}
+
 
 function showContentAndFirstChild(contentId) {
   // Display the content and its parents
@@ -95,6 +60,7 @@ function showContentAndFirstChild(contentId) {
     showContentAndFirstChild(firstChildId);
   }
 }
+
 
 function attachHandler(button, contentId) {
   button.addEventListener("click", function() {
@@ -116,4 +82,4 @@ function attachHandlers(buttons) {
 
 attachHandlers(buttonHierarchy);
 showContentAndFirstChild('page_1');  // Display "page_1" and its first child when the page loads
-"""
+

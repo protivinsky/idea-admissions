@@ -49,7 +49,6 @@ class CermatMechanism(Mechanism):
                 for st in apps[: self.cutoffs[sch]]:
                     # check if we have a new match
                     if st not in accepted and self.applications[st][i] == sch:
-                        print(f"adding {st} @ {sch} to best match")
                         best_match.add((st, sch))
                         best_rank = i
             if best_match:
