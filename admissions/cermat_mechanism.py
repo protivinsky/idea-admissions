@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Dict, Any
 from .domain import AdmissionData, Allocation
 from .mechanism import Mechanism
@@ -75,12 +76,15 @@ class CermatMechanism(Mechanism):
                     self.applicants[other_sch].remove(st)
                 if st in self.accepted[other_sch]:
                     self.accepted[other_sch].remove(st)
-        return {
-            "Current best match": self.current_best_match,
-            "Current best rank": self.current_best_rank,
-            "Applicants": self.applicants,
-            "Accepted": self.accepted,
-        }
+        return deepcopy(
+            {
+                "__name__": self.__class__.__name__,
+                "Current best match": self.current_best_match,
+                "Current best rank": self.current_best_rank,
+                "Applicants": self.applicants,
+                "Accepted": self.accepted,
+            }
+        )
 
     def allocate(self) -> Allocation:
         accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}

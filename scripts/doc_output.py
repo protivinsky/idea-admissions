@@ -37,4 +37,4 @@ for mechanism in mechanisms:
         sw[mechanism.__name__][example.__name__] = logger.doc
 
 doc.switcher(sw)
-doc.save(path=".")
+doc.save(path=".", entry="index-doc.html")

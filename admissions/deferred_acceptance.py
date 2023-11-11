@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Any, Dict
 from .domain import AdmissionData, Allocation
 from .mechanism import Mechanism
@@ -55,7 +56,6 @@ class DeferredAcceptance(Mechanism):
             if curr_position < len(app):  # any school left on application
                 to_compare[app[curr_position]].add(st)
         last_positions = {k: v for k, v in self.curr_positions.items()}
-        last_to_compare = {}
         # and now...
         for sch, res in self.exams.items():
             num_seats = self.seats[sch]
@@ -65,11 +65,14 @@ class DeferredAcceptance(Mechanism):
             for st in curr_result[num_seats:]:
                 # move the curr_position for not-acepted students
                 self.curr_positions[st] += 1
-        return {
-            "Position on applications": last_positions,
-            "Students to compare": last_to_compare,
-            "Accepted": self.accepted,
-        }
+        return deepcopy(
+            {
+                "__name__": self.__class__.__name__,
+                "Position on applications": last_positions,
+                "Students to compare": to_compare,
+                "Accepted": self.accepted,
+            }
+        )
 
     def allocate(self) -> Allocation:
         accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}

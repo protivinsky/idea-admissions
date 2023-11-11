@@ -1,3 +1,4 @@
+from copy import deepcopy
 from .domain import AdmissionData, Allocation
 from .mechanism import Mechanism
 from .logger import Logger
@@ -66,12 +67,15 @@ class NaiveMechanism(Mechanism):
             sch: self.seats[sch] - len(self.accepted[sch]) for sch in self.schools
         }
         # return logs
-        return {
-            "Current offers": offers,
-            "Accepted": self.accepted,
-            "Remaining applicants": self.remaining_applicants,
-            "Remaining seats": self.remaining_seats,
-        }
+        return deepcopy(
+            {
+                "__name__": self.__class__.__name__,
+                "Current offers": offers,
+                "Accepted": self.accepted,
+                "Remaining applicants": self.remaining_applicants,
+                "Remaining seats": self.remaining_seats,
+            }
+        )
 
     def allocate(self) -> Allocation:
         accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}

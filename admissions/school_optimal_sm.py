@@ -86,12 +86,15 @@ class SchoolOptimalSM(Mechanism):
         for sch in self.schools:
             self.remaining_seats[sch] = self.seats[sch] - len(self.accepted[sch])
         # return logs
-        return {
-            "Offers": offers,
-            "Accepted": self.accepted,
-            "Remaining applicants": self.remaining_applicants,
-            "Remaining seats": self.remaining_seats,
-        }
+        return deepcopy(
+            {
+                "__name__": self.__class__.__name__,
+                "Offers": offers,
+                "Accepted": self.accepted,
+                "Remaining applicants": self.remaining_applicants,
+                "Remaining seats": self.remaining_seats,
+            }
+        )
 
     def allocate(self) -> Allocation:
         accepted = {sch: frozenset(sts) for sch, sts in self.accepted.items()}

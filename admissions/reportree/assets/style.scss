@@ -37,43 +37,89 @@ code {
 .bi {
   padding-right: 6px;
 }
-.bi {
-  padding: 0 6px 0 6px;
+
+table.admission-table {
+  border-collapse: collapse; /* Collapse borders */
+  border-spacing: 0;
+  // width: 100%; /* Full width */
+  margin: 12px 0; /* Margin above and below the table */
+  font-size: 110%; /* Font size */
 }
 
-.admission-allocation {
-  font-size: 125%;
-}
-
-.admission-table
-  table {
-    border-collapse: collapse; /* Collapse borders */
-    width: 100%; /* Full width */
-    margin: 20px 0; /* Margin above and below the table */
-    font-size: 16px; /* Font size */
-  }
-
-  table, th, td {
+table.admission-table
+  th, td {
       border: 1px solid #e0e0e0; /* Thin light gray border */
   }
 
-  th.app-student, td.exam-student, th.exam-school {
-    font-size: 125%;
+  th.app-student, td.exam-student, th.exam-school, td.allocation {
+    font-size: 110%;
   }
 
   th, td {
       text-align: center; /* Center align text */
-      padding: 10px; /* Padding inside cells */
+      padding: 8px 20px; /* Padding inside cells */
   }
 
-  th {
-      background-color: #f8f8f8; /* Light background for header */
-      font-weight: bold; /* Make header text bold */
+  // th {
+  //     background-color: #f8f8f8; /* Light background for header */
+  //     font-weight: bold; /* Make header text bold */
+  // }
+
+  // tbody tr:nth-child(odd) {
+  //     background-color: #f2f2f2; /* Zebra striping for rows */
+  // }
+
+// table.naive-mechanism-table tbody tr:nth-child(odd) {
+//     background-color: #ffffff; /* Zebra striping for rows */
+// }
+//
+// table.school-optimal-step-table tbody tr:nth-child(odd) {
+//     background-color: #ffffff; /* Zebra striping for rows */
+// }
+
+table.admission-table
+  thead {
+    background-color: #f8f8f8;
   }
 
-  tbody tr:nth-child(odd) {
-      background-color: #f2f2f2; /* Zebra striping for rows */
+  td.offered, td.yellow-yellow {
+    color: #808000;
+    background-color: #ffff99;
   }
+
+  td.accepted, td.green-green {
+    color: #009900;
+    background-color: #ccffcc;
+  }
+
+  td.removed, td.red-red {
+    color: #ffbbbb;
+    background-color: #ffdddd;
+  }
+
+  td.last-offered {
+    border-bottom: 3px solid #000000;
+  }
+
+  td.right-border {
+    border-right: 3px solid #000000;
+  }
+
+  td.not-evaluated, td.gray-gray {
+    color: #cccccc;
+    background-color: #eeeeee;
+  }
+  
+  td.green-black {
+    color: #000000;
+    background-color: #ccffcc;
+  }
+
+  td.red-black {
+    color: #000000;
+    background-color: #ffdddd;
+  }
+
 
 .color_table td, .color_table th {
     padding: 8px
