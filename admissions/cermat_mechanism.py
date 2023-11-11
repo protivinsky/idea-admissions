@@ -6,23 +6,27 @@ from .logger import Logger
 
 class CermatMechanism(Mechanism):
     """
-    Algoritmus:
-        1. Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
-           kteří žáci mají nárok na přijetí.
-        2. Mezi žáky s nárokem na přijetí se vyberou ti, kteří tuto školu
-           uvedli na prvním místě. Pokud se žádní
-           takoví žáci nevyskytují, vyberou se žáci přijatí na školu na
-           druhém místě (pokud by se ani takoví nevyskytovali, lze analogicky
-           pokračovat k dalším v pořadí).
-        3. Tito žáci jsou přijatí na danou školu a jsou vyškrnuti ze seznamů
-           všech škol, které uvedli na horší pozici v přihláškách. Mohou tak
-           být vyškrnuti i ze školy, na kterou byli dříve přijati.
-        4. Tím se na školách uvolní nová místa a přijímací hranici se posunou
-           níže.
-        5. Opakuje se od bodu 2, dokud zbývají nepřijatí žáci a je možné
-           pokračovat.
+    Původní mechanismus navržený Cermatem
+    -------------------------------------
 
-    Tento mechanismus je ekvivalentní ke school-optimal stable mechanism.
+    **Algoritmus**
+
+    1. Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
+        kteří žáci mají nárok na přijetí.
+    2. Mezi žáky s nárokem na přijetí se vyberou ti, kteří tuto školu
+        uvedli na prvním místě. Pokud se žádní
+        takoví žáci nevyskytují, vyberou se žáci přijatí na školu na
+        druhém místě (pokud by se ani takoví nevyskytovali, lze analogicky
+        pokračovat k dalším v pořadí).
+    3. Tito žáci jsou přijatí na danou školu a jsou vyškrnuti ze seznamů
+        všech škol, které uvedli na horší pozici v přihláškách. Mohou tak
+        být vyškrnuti i ze školy, na kterou byli dříve přijati.
+    4. Tím se na školách uvolní nová místa a přijímací hranici se posunou
+        níže.
+    5. Opakuje se od bodu 2, dokud zbývají nepřijatí žáci a je možné
+        pokračovat.
+
+    Tento mechanismus je ekvivalentní ke **school-optimal stable mechanism**.
     Vede tedy také ke stabilnímu párování, které je však optimální z pohledu
     škol, nikoli studentů.
     """

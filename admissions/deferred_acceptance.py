@@ -6,19 +6,28 @@ from .logger import Logger
 
 class DeferredAcceptance(Mechanism):
     """
-    Algoritmus:
-        1. Každá škola posoudí všechny žaky, kteří si ji vybrali jako první, a těm
-           s nejvyšší prioritou dle své kapacity nabídne podmíněné přijetí.
-        2. U žáků, kteří nejsou podmíněně přijati, se pokračuje podle pořadí škol
-           na přihláškách k další uvedené škole. Zde jsou tito žáci posouzeni společně
-           se všemi dříve přijatými žáky a škola z nich opět vybere ty,
-           které podmíněně přijme. Dle své kapacity může odmítnout i některé
-           z již podmíněně přijatých žáků.
-        3. Opakuje se bod 2, dokud nejsou všichni žáci podmíněně přijati nebo
-           dokud nejsou zcela posouzené přihlášky všech nepřijatých žáků.
-        4. Všichni podmíněně přijatí žáci jsou na tyto školy zapsáni.
+    Mechanismus odloženého přijetí
+    ------------------------------
 
-    DA je nazývaný také student-optimal stable mechanism.
+    Také nazývaný **stabilní mechanismus optimální pro žáky**.
+
+    *Deferred Acceptance mechanism (DA) / Student-optimal stable mechanism (SOSM)*
+
+    **Algoritmus**
+
+    1. Každá škola posoudí všechny žaky, kteří si ji vybrali jako první, a těm
+        s nejvyšší prioritou dle své kapacity nabídne podmíněné přijetí.
+    2. U žáků, kteří nejsou podmíněně přijati, se pokračuje podle pořadí škol
+        na přihláškách k další uvedené škole. Zde jsou tito žáci posouzeni společně
+        se všemi dříve přijatými žáky a škola z nich opět vybere ty,
+        které podmíněně přijme. Dle své kapacity může odmítnout i některé
+        z již podmíněně přijatých žáků.
+    3. Opakuje se bod 2, dokud nejsou všichni žáci podmíněně přijati nebo
+        dokud nejsou zcela posouzené přihlášky všech nepřijatých žáků.
+    4. Všichni podmíněně přijatí žáci jsou na tyto školy zapsáni.
+
+    DA je nazývaný také **student-optimal stable mechanism**, protože je nejlepším mechanismem
+    pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závisti).
     """
 
     def __init__(self, data: AdmissionData, logger: Logger = Logger()):

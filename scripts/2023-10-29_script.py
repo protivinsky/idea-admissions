@@ -3,7 +3,7 @@ import sys
 # figure out better way later
 sys.path.append("/home/thomas/code/idea/admissions")
 
-from admissions import DeferredAcceptance, CermatMechanism
+from admissions import DeferredAcceptance, CermatMechanism, NaiveMechanism
 from admissions.data import example_1, example_2, example_cermat
 from admissions.logger import BasicLogger
 
@@ -57,3 +57,14 @@ da3.evaluate()
 print()
 print("===============================================")
 print()
+
+
+BasicLogger.__doc__
+
+import textwrap
+import markdown
+
+foo = textwrap.dedent(NaiveMechanism.__doc__)
+markdown.markdown(foo)
+
+markdown.markdown("1. ahoj\n2. here")

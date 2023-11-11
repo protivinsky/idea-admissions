@@ -34,6 +34,18 @@ dev = [
     "pytest >= 7.0.0",
 ]
 
+[tool.pytest.ini_options]
+testpaths = [
+  "tests",
+]
+pythonpath = "."
+
+[tool.pyright]
+include = [ "admissions" ]
+exclude = [ 
+  "**/__pycache__",
+]
+
 # [project.urls]
 # Homepage = "https://github.com/protivinsky/omoment"
 # Documentation = "https://protivinsky.github.io/omoment"

@@ -11,21 +11,22 @@ class SchoolOptimalSM(Mechanism):
     School-optimal stable mechanism
     -------------------------------
 
-    Cermat-proposed mechanism is equivalent to school-optimal stable mechanism.
-    That is the stable mechanism that would be strictly preferred by schools.
-    Students can achieve better outcome under student-optimal stable mechanism
-    which is the deferred acceptance mechanism.
+    Mechanismus navržený Cermatem je ekvivalentní ke stabilnímu mechanismu optimálnímu
+    pro školy. Školy by tedy preferovaly tuto verzi algoritmu, avšak pro studenty
+    tento algoritmus není optimální a mohou dosáhnout lepšího stabilního výsledku
+    při použití mechanismu odloženého přijetí.
 
-    Algoritmus:
-        1. Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
-           kteří žáci mají nárok na přijetí.
-        2. Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
-           pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.
-        3. Tím se na školách uvolní nová místa a přijímací hranici se posunou
-           níže.
-        4. Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
-           pokračovat. Pokud v dalších kolech je žákům nabídnuta více preferovaná
-           škola, mohou své rozhodnutí změnit.
+    **Algoritmus**
+
+    1. Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
+        kteří žáci mají nárok na přijetí.
+    2. Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
+        pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.
+    3. Tím se na školách uvolní nová místa a přijímací hranici se posunou
+        níže.
+    4. Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
+        pokračovat. Pokud v dalších kolech je žákům nabídnuta více preferovaná
+        škola, mohou své rozhodnutí změnit.
 
     Tento algoritmus je analogický k deferred acceptance, pouze role škol a žáků
     je obrácená. DA prochází pořadí dle preferencí žáků a školy je podmíněně přijímají

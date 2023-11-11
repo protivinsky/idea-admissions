@@ -3,6 +3,7 @@ import sys
 # figure out better way later
 sys.path.append("/home/thomas/code/idea/admissions")
 
+import textwrap
 from admissions import (
     NaiveMechanism,
     DeferredAcceptance,
@@ -28,10 +29,9 @@ sw = rt.Switcher()
 
 for mechanism in mechanisms:
     for example in examples:
-        logger = DocLogger(title=f"{mechanism.__name__} [{example.__name__}]")
-        logger.doc.line("h1", f"{mechanism.__name__} [{example.__name__}]")
-        logger.doc.md(mechanism.__doc__)
-        logger.doc.md(example.__doc__)
+        logger = DocLogger()
+        logger.doc.md(textwrap.dedent(mechanism.__doc__))
+        logger.doc.md(textwrap.dedent(example.__doc__))
         mech = mechanism(example(), logger=logger)
         mech.evaluate()
         sw[mechanism.__name__][example.__name__] = logger.doc

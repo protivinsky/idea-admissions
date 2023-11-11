@@ -125,15 +125,15 @@ class Doc(yt.Doc):
             head_doc: Document containing the content of the `head` tag.
         """
         kwargs = {**self._wrap_kwargs, **kwargs}
+        body_klass = "container" if "max_width" in kwargs else "container full-width"
         sass_content = f"""
         $max_width: {kwargs.pop("max_width") if "max_width" in kwargs else 1900}px;
 
         {Doc.get_base_style()}
         """
         css_style = sass.compile(string=sass_content)
-        body_klass = "container" if "max_width" in kwargs else "container full-width"
-
         title = kwargs.pop("title", "ReporTree Doc")
+
         doc = Doc()
         doc.asis("<!DOCTYPE html>")
         with doc.tag("html"):
