@@ -35,6 +35,40 @@ code {
   width: auto;
   white-space: pre-wrap; }
 
+.bi {
+  font-size: 120%; }
+
+.admission-table
+table {
+  border-collapse: collapse;
+  /* Collapse borders */
+  width: 100%;
+  /* Full width */
+  margin: 20px 0;
+  /* Margin above and below the table */
+  font-size: 16px;
+  /* Font size */ }
+
+table, th, td {
+  border: 1px solid #e0e0e0;
+  /* Thin light gray border */ }
+
+th, td {
+  text-align: center;
+  /* Center align text */
+  padding: 10px;
+  /* Padding inside cells */ }
+
+th {
+  background-color: #f8f8f8;
+  /* Light background for header */
+  font-weight: bold;
+  /* Make header text bold */ }
+
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+  /* Zebra striping for rows */ }
+
 .color_table td, .color_table th {
   padding: 8px; }
 
@@ -82,6 +116,7 @@ code {
   border-color: #b08080;
   /* Border color with pink tint */ }
 </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
   </head>
   <body class="container">
     <h1>Admission Mechanism Comparison</h1>
@@ -130,79 +165,42 @@ vzdělání nebude uchazeč přijat.</em>
         <p>Hlavní příklad ze studie, který jasně ukazuje nestabilitu (opodstatněnou závist)
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'D')
-</li>
-          <li><b>3: </b>('A', 'C', 'D')
-</li>
-          <li><b>4: </b>('B', 'C', 'D')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-          <li><b>D: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 2, 3)
-</li>
-          <li><b>B: </b>(1, 2, 4)
-</li>
-          <li><b>C: </b>(1, 3, 4)
-</li>
-          <li><b>D: </b>(2, 3, 4)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current offers: </b>{1: ['A', 'B', 'C'], 2: ['D']}
-</li>
-          <li><b>Accepted: </b>{'D': {2}, 'C': set(), 'A': {1}, 'B': set()}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3], 'B': [4], 'C': [3, 4], 'D': [3, 4]}
-</li>
-          <li><b>Remaining seats: </b>{'D': 0, 'C': 1, 'A': 0, 'B': 1}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current offers: </b>{4: ['B'], 3: ['C']}
-</li>
-          <li><b>Accepted: </b>{'D': {2}, 'C': {3}, 'A': {1}, 'B': {4}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [], 'B': [], 'C': [], 'D': []}
-</li>
-          <li><b>Remaining seats: </b>{'D': 0, 'C': 0, 'A': 0, 'B': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 2</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>D: </b>frozenset({2})
-</li>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({4})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 4</th>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+        </table>
       </div>
       <div id="page_1_2" class="content">
         <h2>Naivní mechanismus</h2>
@@ -233,71 +231,36 @@ vzdělání nebude uchazeč přijat.</em>
         </ol>
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'A', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 1, 3)
-</li>
-          <li><b>B: </b>(1, 2, 3)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current offers: </b>{2: ['A'], 1: ['B', 'C']}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {2}, 'B': {1}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3], 'B': [3], 'C': [3]}
-</li>
-          <li><b>Remaining seats: </b>{'C': 1, 'A': 0, 'B': 0}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current offers: </b>{3: ['C']}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {2}, 'B': {1}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [], 'B': [], 'C': []}
-</li>
-          <li><b>Remaining seats: </b>{'C': 0, 'A': 0, 'B': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 2</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({2})
-</li>
-          <li><b>B: </b>frozenset({1})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_1_3" class="content">
         <h2>Naivní mechanismus</h2>
@@ -330,60 +293,36 @@ vzdělání nebude uchazeč přijat.</em>
         <p>Highlights the distinctions b/w DA and CM
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'C', 'A')
-</li>
-          <li><b>3: </b>('C', 'A', 'B')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 3, 1)
-</li>
-          <li><b>B: </b>(3, 1, 2)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current offers: </b>{2: ['A'], 3: ['B'], 1: ['C']}
-</li>
-          <li><b>Accepted: </b>{'C': {1}, 'A': {2}, 'B': {3}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [], 'B': [], 'C': []}
-</li>
-          <li><b>Remaining seats: </b>{'C': 0, 'A': 0, 'B': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 1</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({1})
-</li>
-          <li><b>A: </b>frozenset({2})
-</li>
-          <li><b>B: </b>frozenset({3})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>C</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>C</td>
+            <td>A</td>
+            <td>B</td>
+          </tr>
+        </table>
       </div>
       <div id="page_1_4" class="content">
         <h2>Naivní mechanismus</h2>
@@ -418,71 +357,36 @@ Mechanismus efektivních transferů (zde neimplementovaný) by Pareto efektivity
 avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). Tento příklad zároveň
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('B', 'A', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 3, 2)
-</li>
-          <li><b>B: </b>(2, 1, 3)
-</li>
-          <li><b>C: </b>(2, 1, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current offers: </b>{1: ['A'], 2: ['B', 'C']}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3], 'B': [3], 'C': [3]}
-</li>
-          <li><b>Remaining seats: </b>{'C': 1, 'A': 0, 'B': 0}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current offers: </b>{3: ['C']}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [], 'B': [], 'C': []}
-</li>
-          <li><b>Remaining seats: </b>{'C': 0, 'A': 0, 'B': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 2</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_1_5" class="content">
         <h2>Naivní mechanismus</h2>
@@ -517,91 +421,96 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
         <p>Cermat mechanism (který je school-optimal stable mechanism) zde nemůže dosáhnout efektivního
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>Adam: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Bára: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Cecílie: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Dan: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Eda: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Filip: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Gustav: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Hanka: </b>('Gymnázium Nymburk', 'Lyceum Mělník', 'SOŠ Smíchov')
-</li>
-          <li><b>Ivana: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Jana: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Katka: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Lenka: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Marek: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>4
-</li>
-          <li><b>Lyceum Mělník: </b>3
-</li>
-          <li><b>SOŠ Smíchov: </b>5
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>('Adam', 'Ivana', 'Dan', 'Marek', 'Eda', 'Cecílie', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav')
-</li>
-          <li><b>Lyceum Mělník: </b>('Cecílie', 'Gustav', 'Ivana', 'Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára')
-</li>
-          <li><b>SOŠ Smíchov: </b>('Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip')
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current offers: </b>{'Adam': ['Gymnázium Nymburk'], 'Ivana': ['Gymnázium Nymburk', 'Lyceum Mělník', 'SOŠ Smíchov'], 'Dan': ['Gymnázium Nymburk'], 'Marek': ['Gymnázium Nymburk'], 'Cecílie': ['Lyceum Mělník', 'SOŠ Smíchov'], 'Gustav': ['Lyceum Mělník', 'SOŠ Smíchov'], 'Bára': ['SOŠ Smíchov'], 'Katka': ['SOŠ Smíchov']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': set(), 'Gymnázium Nymburk': {'Adam', 'Marek', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Bára', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Eda', 'Jana', 'Lenka', 'Filip', 'Hanka'], 'Lyceum Mělník': ['Hanka', 'Lenka', 'Jana', 'Eda', 'Filip'], 'SOŠ Smíchov': ['Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Lyceum Mělník': 3, 'Gymnázium Nymburk': 1, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current offers: </b>{'Eda': ['Gymnázium Nymburk'], 'Hanka': ['Lyceum Mělník'], 'Lenka': ['Lyceum Mělník'], 'Jana': ['Lyceum Mělník']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Jana', 'Hanka', 'Lenka'}, 'Gymnázium Nymburk': {'Adam', 'Marek', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Bára', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Filip'], 'Lyceum Mělník': ['Filip'], 'SOŠ Smíchov': ['Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Lyceum Mělník': 0, 'Gymnázium Nymburk': 0, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 2</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>Lyceum Mělník: </b>frozenset({'Jana', 'Hanka', 'Lenka'})
-</li>
-          <li><b>Gymnázium Nymburk: </b>frozenset({'Adam', 'Marek', 'Eda', 'Dan'})
-</li>
-          <li><b>SOŠ Smíchov: </b>frozenset({'Cecílie', 'Bára', 'Katka', 'Ivana', 'Gustav'})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset({'Filip'})</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Adam</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Bára</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Dan</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Eda</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Filip</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Jana</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Katka</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Marek</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+        </table>
       </div>
     </div>
     <div id="page_2" class="content">
@@ -639,93 +548,42 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
         <p>Hlavní příklad ze studie, který jasně ukazuje nestabilitu (opodstatněnou závist)
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'D')
-</li>
-          <li><b>3: </b>('A', 'C', 'D')
-</li>
-          <li><b>4: </b>('B', 'C', 'D')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-          <li><b>D: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 2, 3)
-</li>
-          <li><b>B: </b>(1, 2, 4)
-</li>
-          <li><b>C: </b>(1, 3, 4)
-</li>
-          <li><b>D: </b>(2, 3, 4)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 0, 3: 0, 4: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': set(), 'A': {1}, 'B': {4}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 1, 3: 1, 4: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 1, 3: 1, 4: 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 4</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 1, 3: 1, 4: 2}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'D': {4}, 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 4</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>D: </b>frozenset({4})
-</li>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 4</th>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+        </table>
       </div>
       <div id="page_2_2" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -752,76 +610,36 @@ příklad zvládnou.</p>
 pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závisti).</p>
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'A', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 1, 3)
-</li>
-          <li><b>B: </b>(1, 2, 3)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 0, 3: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 0, 3: 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 0, 3: 2}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 3</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_2_3" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -850,58 +668,36 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
         <p>Highlights the distinctions b/w DA and CM
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'C', 'A')
-</li>
-          <li><b>3: </b>('C', 'A', 'B')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 3, 1)
-</li>
-          <li><b>B: </b>(3, 1, 2)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 0, 3: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 1</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>C</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>C</td>
+            <td>A</td>
+            <td>B</td>
+          </tr>
+        </table>
       </div>
       <div id="page_2_4" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -932,94 +728,36 @@ Mechanismus efektivních transferů (zde neimplementovaný) by Pareto efektivity
 avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). Tento příklad zároveň
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('B', 'A', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 3, 2)
-</li>
-          <li><b>B: </b>(2, 1, 3)
-</li>
-          <li><b>C: </b>(2, 1, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 0, 3: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {3}, 'B': {1}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 0, 2: 1, 3: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {3}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 1, 2: 1, 3: 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 4</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 1, 2: 1, 3: 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 5</h3>
-        <ul>
-          <li><b>Position on applications: </b>{1: 1, 2: 1, 3: 2}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 5</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_2_5" class="content">
         <h2>Mechanismus odloženého přijetí</h2>
@@ -1050,114 +788,96 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
         <p>Cermat mechanism (který je school-optimal stable mechanism) zde nemůže dosáhnout efektivního
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>Adam: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Bára: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Cecílie: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Dan: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Eda: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Filip: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Gustav: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Hanka: </b>('Gymnázium Nymburk', 'Lyceum Mělník', 'SOŠ Smíchov')
-</li>
-          <li><b>Ivana: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Jana: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Katka: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Lenka: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Marek: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>4
-</li>
-          <li><b>Lyceum Mělník: </b>3
-</li>
-          <li><b>SOŠ Smíchov: </b>5
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>('Adam', 'Ivana', 'Dan', 'Marek', 'Eda', 'Cecílie', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav')
-</li>
-          <li><b>Lyceum Mělník: </b>('Cecílie', 'Gustav', 'Ivana', 'Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára')
-</li>
-          <li><b>SOŠ Smíchov: </b>('Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip')
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Position on applications: </b>{'Adam': 0, 'Eda': 0, 'Filip': 0, 'Lenka': 0, 'Gustav': 0, 'Ivana': 0, 'Katka': 0, 'Bára': 0, 'Hanka': 0, 'Marek': 0, 'Cecílie': 0, 'Jana': 0, 'Dan': 0}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Jana', 'Katka'}, 'Gymnázium Nymburk': {'Hanka', 'Filip', 'Lenka', 'Gustav'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Marek'}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Position on applications: </b>{'Adam': 0, 'Eda': 1, 'Filip': 0, 'Lenka': 0, 'Gustav': 0, 'Ivana': 0, 'Katka': 0, 'Bára': 1, 'Hanka': 0, 'Marek': 0, 'Cecílie': 0, 'Jana': 0, 'Dan': 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Jana', 'Katka'}, 'Gymnázium Nymburk': {'Bára', 'Eda', 'Dan', 'Lenka'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Marek'}}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Position on applications: </b>{'Adam': 0, 'Eda': 1, 'Filip': 1, 'Lenka': 0, 'Gustav': 1, 'Ivana': 0, 'Katka': 0, 'Bára': 1, 'Hanka': 1, 'Marek': 0, 'Cecílie': 0, 'Jana': 0, 'Dan': 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka', 'Katka'}, 'Gymnázium Nymburk': {'Bára', 'Eda', 'Dan', 'Lenka'}, 'SOŠ Smíchov': {'Filip', 'Gustav', 'Ivana', 'Marek', 'Cecílie'}}
-</li>
-        </ul>
-        <h3>STEP 4</h3>
-        <ul>
-          <li><b>Position on applications: </b>{'Adam': 0, 'Eda': 1, 'Filip': 1, 'Lenka': 0, 'Gustav': 1, 'Ivana': 0, 'Katka': 0, 'Bára': 1, 'Hanka': 1, 'Marek': 0, 'Cecílie': 0, 'Jana': 1, 'Dan': 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka', 'Katka'}, 'Gymnázium Nymburk': {'Bára', 'Eda', 'Dan', 'Lenka'}, 'SOŠ Smíchov': {'Gustav', 'Ivana', 'Marek', 'Cecílie', 'Jana'}}
-</li>
-        </ul>
-        <h3>STEP 5</h3>
-        <ul>
-          <li><b>Position on applications: </b>{'Adam': 0, 'Eda': 1, 'Filip': 2, 'Lenka': 0, 'Gustav': 1, 'Ivana': 0, 'Katka': 0, 'Bára': 1, 'Hanka': 1, 'Marek': 0, 'Cecílie': 0, 'Jana': 1, 'Dan': 1}
-</li>
-          <li><b>Students to compare: </b>{}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka', 'Katka'}, 'Gymnázium Nymburk': {'Bára', 'Eda', 'Dan', 'Lenka'}, 'SOŠ Smíchov': {'Gustav', 'Ivana', 'Marek', 'Cecílie', 'Jana'}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 5</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>Lyceum Mělník: </b>frozenset({'Adam', 'Hanka', 'Katka'})
-</li>
-          <li><b>Gymnázium Nymburk: </b>frozenset({'Bára', 'Eda', 'Dan', 'Lenka'})
-</li>
-          <li><b>SOŠ Smíchov: </b>frozenset({'Cecílie', 'Marek', 'Gustav', 'Ivana', 'Jana'})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset({'Filip'})</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Adam</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Bára</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Dan</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Eda</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Filip</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Jana</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Katka</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Marek</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+        </table>
       </div>
     </div>
     <div id="page_3" class="content">
@@ -1196,90 +916,42 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
         <p>Hlavní příklad ze studie, který jasně ukazuje nestabilitu (opodstatněnou závist)
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'D')
-</li>
-          <li><b>3: </b>('A', 'C', 'D')
-</li>
-          <li><b>4: </b>('B', 'C', 'D')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-          <li><b>D: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 2, 3)
-</li>
-          <li><b>B: </b>(1, 2, 4)
-</li>
-          <li><b>C: </b>(1, 3, 4)
-</li>
-          <li><b>D: </b>(2, 3, 4)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current best match: </b>{(1, 'A')}
-</li>
-          <li><b>Current best rank: </b>0
-</li>
-          <li><b>Applicants: </b>{'A': [1, 2, 3], 'B': [2, 4], 'C': [3, 4], 'D': [2, 3, 4]}
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': set(), 'A': {1}, 'B': set()}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current best match: </b>{(3, 'C'), (2, 'B')}
-</li>
-          <li><b>Current best rank: </b>1
-</li>
-          <li><b>Applicants: </b>{'A': [1, 2, 3], 'B': [2, 4], 'C': [3, 4], 'D': [4]}
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Current best match: </b>{(4, 'D')}
-</li>
-          <li><b>Current best rank: </b>2
-</li>
-          <li><b>Applicants: </b>{'A': [1, 2, 3], 'B': [2, 4], 'C': [3, 4], 'D': [4]}
-</li>
-          <li><b>Accepted: </b>{'D': {4}, 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 3</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>D: </b>frozenset({4})
-</li>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 4</th>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+        </table>
       </div>
       <div id="page_3_2" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1307,71 +979,36 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
 škol, nikoli studentů.</p>
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'A', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 1, 3)
-</li>
-          <li><b>B: </b>(1, 2, 3)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current best match: </b>{(2, 'A'), (1, 'B')}
-</li>
-          <li><b>Current best rank: </b>1
-</li>
-          <li><b>Applicants: </b>{'A': [2, 1, 3], 'B': [1, 2, 3], 'C': [3]}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {2}, 'B': {1}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current best match: </b>{(3, 'C')}
-</li>
-          <li><b>Current best rank: </b>2
-</li>
-          <li><b>Applicants: </b>{'A': [2, 1, 3], 'B': [1, 2, 3], 'C': [3]}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {2}, 'B': {1}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 2</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({2})
-</li>
-          <li><b>B: </b>frozenset({1})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_3_3" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1401,60 +1038,36 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
         <p>Highlights the distinctions b/w DA and CM
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'C', 'A')
-</li>
-          <li><b>3: </b>('C', 'A', 'B')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 3, 1)
-</li>
-          <li><b>B: </b>(3, 1, 2)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current best match: </b>{(2, 'A'), (3, 'B'), (1, 'C')}
-</li>
-          <li><b>Current best rank: </b>2
-</li>
-          <li><b>Applicants: </b>{'A': [2, 3, 1], 'B': [3, 1, 2], 'C': [1, 2, 3]}
-</li>
-          <li><b>Accepted: </b>{'C': {1}, 'A': {2}, 'B': {3}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 1</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({1})
-</li>
-          <li><b>A: </b>frozenset({2})
-</li>
-          <li><b>B: </b>frozenset({3})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>C</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>C</td>
+            <td>A</td>
+            <td>B</td>
+          </tr>
+        </table>
       </div>
       <div id="page_3_4" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1486,71 +1099,36 @@ Mechanismus efektivních transferů (zde neimplementovaný) by Pareto efektivity
 avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). Tento příklad zároveň
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('B', 'A', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 3, 2)
-</li>
-          <li><b>B: </b>(2, 1, 3)
-</li>
-          <li><b>C: </b>(2, 1, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current best match: </b>{(1, 'A'), (2, 'B')}
-</li>
-          <li><b>Current best rank: </b>1
-</li>
-          <li><b>Applicants: </b>{'A': [1, 3, 2], 'B': [2, 1, 3], 'C': [3]}
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current best match: </b>{(3, 'C')}
-</li>
-          <li><b>Current best rank: </b>2
-</li>
-          <li><b>Applicants: </b>{'A': [1, 3, 2], 'B': [2, 1, 3], 'C': [3]}
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 2</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_3_5" class="content">
         <h2>Původní mechanismus navržený Cermatem</h2>
@@ -1582,146 +1160,96 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
         <p>Cermat mechanism (který je school-optimal stable mechanism) zde nemůže dosáhnout efektivního
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>Adam: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Bára: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Cecílie: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Dan: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Eda: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Filip: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Gustav: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Hanka: </b>('Gymnázium Nymburk', 'Lyceum Mělník', 'SOŠ Smíchov')
-</li>
-          <li><b>Ivana: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Jana: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Katka: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Lenka: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Marek: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>4
-</li>
-          <li><b>Lyceum Mělník: </b>3
-</li>
-          <li><b>SOŠ Smíchov: </b>5
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>('Adam', 'Ivana', 'Dan', 'Marek', 'Eda', 'Cecílie', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav')
-</li>
-          <li><b>Lyceum Mělník: </b>('Cecílie', 'Gustav', 'Ivana', 'Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára')
-</li>
-          <li><b>SOŠ Smíchov: </b>('Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip')
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Ivana', 'SOŠ Smíchov'), ('Cecílie', 'SOŠ Smíchov')}
-</li>
-          <li><b>Current best rank: </b>0
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Adam', 'Dan', 'Marek', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Gustav', 'Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': set(), 'Gymnázium Nymburk': set(), 'SOŠ Smíchov': {'Ivana', 'Cecílie'}}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Adam', 'Lyceum Mělník')}
-</li>
-          <li><b>Current best rank: </b>0
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Dan', 'Marek', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Gustav', 'Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam'}, 'Gymnázium Nymburk': set(), 'SOŠ Smíchov': {'Ivana', 'Cecílie'}}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Gustav', 'SOŠ Smíchov'), ('Katka', 'SOŠ Smíchov'), ('Dan', 'Gymnázium Nymburk'), ('Eda', 'Gymnázium Nymburk'), ('Hanka', 'Lyceum Mělník')}
-</li>
-          <li><b>Current best rank: </b>1
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Dan', 'Marek', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Gustav'], 'Lyceum Mělník': ['Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Marek', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka'}, 'Gymnázium Nymburk': {'Eda', 'Dan'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Katka', 'Gustav'}}
-</li>
-        </ul>
-        <h3>STEP 4</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Marek', 'Lyceum Mělník')}
-</li>
-          <li><b>Current best rank: </b>1
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Dan', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Gustav'], 'Lyceum Mělník': ['Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Marek', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Eda', 'Dan'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Katka', 'Gustav'}}
-</li>
-        </ul>
-        <h3>STEP 5</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Bára', 'Gymnázium Nymburk')}
-</li>
-          <li><b>Current best rank: </b>1
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Dan', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Gustav'], 'Lyceum Mělník': ['Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Katka', 'Cecílie', 'Marek', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Katka', 'Gustav'}}
-</li>
-        </ul>
-        <h3>STEP 6</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Marek', 'SOŠ Smíchov')}
-</li>
-          <li><b>Current best rank: </b>0
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Dan', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Gustav'], 'Lyceum Mělník': ['Adam', 'Hanka', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Katka', 'Cecílie', 'Marek', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka'}, 'Gymnázium Nymburk': {'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Marek', 'Cecílie'}}
-</li>
-        </ul>
-        <h3>STEP 7</h3>
-        <ul>
-          <li><b>Current best match: </b>{('Jana', 'Gymnázium Nymburk'), ('Lenka', 'Lyceum Mělník')}
-</li>
-          <li><b>Current best rank: </b>2
-</li>
-          <li><b>Applicants: </b>{'Gymnázium Nymburk': ['Dan', 'Eda', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Gustav'], 'Lyceum Mělník': ['Adam', 'Hanka', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Ivana', 'Gustav', 'Katka', 'Cecílie', 'Marek', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka', 'Lenka'}, 'Gymnázium Nymburk': {'Jana', 'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Marek', 'Cecílie'}}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 7</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>Lyceum Mělník: </b>frozenset({'Adam', 'Hanka', 'Lenka'})
-</li>
-          <li><b>Gymnázium Nymburk: </b>frozenset({'Jana', 'Bára', 'Eda', 'Dan'})
-</li>
-          <li><b>SOŠ Smíchov: </b>frozenset({'Cecílie', 'Marek', 'Katka', 'Ivana', 'Gustav'})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset({'Filip'})</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Adam</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Bára</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Dan</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Eda</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Filip</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Jana</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Katka</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Marek</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+        </table>
       </div>
     </div>
     <div id="page_4" class="content">
@@ -1762,101 +1290,42 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
         <p>Hlavní příklad ze studie, který jasně ukazuje nestabilitu (opodstatněnou závist)
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
 příklad zvládnou.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'D')
-</li>
-          <li><b>3: </b>('A', 'C', 'D')
-</li>
-          <li><b>4: </b>('B', 'C', 'D')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-          <li><b>D: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 2, 3)
-</li>
-          <li><b>B: </b>(1, 2, 4)
-</li>
-          <li><b>C: </b>(1, 3, 4)
-</li>
-          <li><b>D: </b>(2, 3, 4)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {1: {'C', 'A', 'B'}, 2: {'D'}})
-</li>
-          <li><b>Accepted: </b>{'D': {2}, 'C': set(), 'A': {1}, 'B': set()}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [2, 3], 'B': [2, 4], 'C': [3, 4], 'D': [3, 4]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 1, 'C': 1, 'D': 0}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {2: {'D', 'B'}, 3: {'C'}, 1: {'A'}})
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [2, 3], 'B': [4], 'C': [4], 'D': [3, 4]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 0, 'D': 1}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {3: {'D', 'C'}, 1: {'A'}, 2: {'B'}})
-</li>
-          <li><b>Accepted: </b>{'D': set(), 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [2, 3], 'B': [4], 'C': [4], 'D': [4]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 0, 'D': 1}
-</li>
-        </ul>
-        <h3>STEP 4</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {4: {'D'}, 3: {'C'}, 1: {'A'}, 2: {'B'}})
-</li>
-          <li><b>Accepted: </b>{'D': {4}, 'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [2, 3], 'B': [4], 'C': [4], 'D': []}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 0, 'D': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 4</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>D: </b>frozenset({4})
-</li>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 4</th>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+          </tr>
+        </table>
       </div>
       <div id="page_4_2" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -1886,82 +1355,36 @@ ve školách a žáci buď nabídku přijetí podmíněně akceptují, nebo ji o
 a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo jim nabídnuto).</p>
         <h2>Example 2</h2>
         <p>Doplňující příklad ze studie (zde není podstatný).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'A', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 1, 3)
-</li>
-          <li><b>B: </b>(1, 2, 3)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {2: {'A'}, 1: {'C', 'B'}})
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {2}, 'B': {1}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [1, 3], 'B': [2, 3], 'C': [2, 3]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 1}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {2: {'C', 'A'}, 1: {'B'}})
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {2}, 'B': {1}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [1, 3], 'B': [2, 3], 'C': [3]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 1}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {3: {'C'}, 2: {'A'}, 1: {'B'}})
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {2}, 'B': {1}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [1, 3], 'B': [2, 3], 'C': []}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 3</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({2})
-</li>
-          <li><b>B: </b>frozenset({1})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_4_3" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -1993,60 +1416,36 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
         <p>Highlights the distinctions b/w DA and CM
 - DA is SOSM = student-optimal stable mechanism
 - CM is essentially school-optimal stable mechanism</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('A', 'B', 'C')
-</li>
-          <li><b>2: </b>('B', 'C', 'A')
-</li>
-          <li><b>3: </b>('C', 'A', 'B')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(2, 3, 1)
-</li>
-          <li><b>B: </b>(3, 1, 2)
-</li>
-          <li><b>C: </b>(1, 2, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {2: {'A'}, 3: {'B'}, 1: {'C'}})
-</li>
-          <li><b>Accepted: </b>{'C': {1}, 'A': {2}, 'B': {3}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3, 1], 'B': [1, 2], 'C': [2, 3]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 1</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({1})
-</li>
-          <li><b>A: </b>frozenset({2})
-</li>
-          <li><b>B: </b>frozenset({3})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>B</td>
+            <td>C</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>C</td>
+            <td>A</td>
+            <td>B</td>
+          </tr>
+        </table>
       </div>
       <div id="page_4_4" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -2080,82 +1479,36 @@ Mechanismus efektivních transferů (zde neimplementovaný) by Pareto efektivity
 avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). Tento příklad zároveň
 ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.</p>
         <p>DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>1: </b>('B', 'A', 'C')
-</li>
-          <li><b>2: </b>('A', 'B', 'C')
-</li>
-          <li><b>3: </b>('A', 'B', 'C')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>A: </b>1
-</li>
-          <li><b>B: </b>1
-</li>
-          <li><b>C: </b>1
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>A: </b>(1, 3, 2)
-</li>
-          <li><b>B: </b>(2, 1, 3)
-</li>
-          <li><b>C: </b>(2, 1, 3)
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {1: {'A'}, 2: {'C', 'B'}})
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3, 2], 'B': [1, 3], 'C': [1, 3]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 1}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {1: {'C', 'A'}, 2: {'B'}})
-</li>
-          <li><b>Accepted: </b>{'C': set(), 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3, 2], 'B': [1, 3], 'C': [3]}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 1}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {3: {'C'}, 1: {'A'}, 2: {'B'}})
-</li>
-          <li><b>Accepted: </b>{'C': {3}, 'A': {1}, 'B': {2}}
-</li>
-          <li><b>Remaining applicants: </b>{'A': [3, 2], 'B': [1, 3], 'C': []}
-</li>
-          <li><b>Remaining seats: </b>{'A': 0, 'B': 0, 'C': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 3</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>C: </b>frozenset({3})
-</li>
-          <li><b>A: </b>frozenset({1})
-</li>
-          <li><b>B: </b>frozenset({2})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset()</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 1</th>
+            <td>B</td>
+            <td>A</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 2</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> 3</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+          </tr>
+        </table>
       </div>
       <div id="page_4_5" class="content">
         <h2>School-optimal stable mechanism</h2>
@@ -2189,157 +1542,96 @@ Jedná se o více realistický příklad, který zároveň ilustruje některé z
         <p>Cermat mechanism (který je school-optimal stable mechanism) zde nemůže dosáhnout efektivního
 výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
 stabilního výsledku, který je efektivnější z pohledu studentů.</p>
-        <h3>ADMISSION DATA</h3>
-        <h4>Students' applications</h4>
-        <ul>
-          <li><b>Adam: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Bára: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Cecílie: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Dan: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Eda: </b>('Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov')
-</li>
-          <li><b>Filip: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Gustav: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Hanka: </b>('Gymnázium Nymburk', 'Lyceum Mělník', 'SOŠ Smíchov')
-</li>
-          <li><b>Ivana: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-          <li><b>Jana: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Katka: </b>('Lyceum Mělník', 'SOŠ Smíchov', 'Gymnázium Nymburk')
-</li>
-          <li><b>Lenka: </b>('Gymnázium Nymburk', 'SOŠ Smíchov', 'Lyceum Mělník')
-</li>
-          <li><b>Marek: </b>('SOŠ Smíchov', 'Lyceum Mělník', 'Gymnázium Nymburk')
-</li>
-        </ul>
-        <h4>School capacities</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>4
-</li>
-          <li><b>Lyceum Mělník: </b>3
-</li>
-          <li><b>SOŠ Smíchov: </b>5
-</li>
-        </ul>
-        <h4>School results</h4>
-        <ul>
-          <li><b>Gymnázium Nymburk: </b>('Adam', 'Ivana', 'Dan', 'Marek', 'Eda', 'Cecílie', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav')
-</li>
-          <li><b>Lyceum Mělník: </b>('Cecílie', 'Gustav', 'Ivana', 'Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára')
-</li>
-          <li><b>SOŠ Smíchov: </b>('Ivana', 'Gustav', 'Bára', 'Katka', 'Cecílie', 'Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip')
-</li>
-        </ul>
-        <h3>STEP 1</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Adam': {'Gymnázium Nymburk'}, 'Ivana': {'Lyceum Mělník', 'Gymnázium Nymburk', 'SOŠ Smíchov'}, 'Dan': {'Gymnázium Nymburk'}, 'Marek': {'Gymnázium Nymburk'}, 'Cecílie': {'Lyceum Mělník', 'SOŠ Smíchov'}, 'Gustav': {'Lyceum Mělník', 'SOŠ Smíchov'}, 'Bára': {'SOŠ Smíchov'}, 'Katka': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': set(), 'Gymnázium Nymburk': {'Adam', 'Marek', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Bára', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Eda', 'Cecílie', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Adam', 'Hanka', 'Marek', 'Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 1, 'Lyceum Mělník': 3, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>STEP 2</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Eda': {'Gymnázium Nymburk'}, 'Adam': {'Lyceum Mělník', 'Gymnázium Nymburk'}, 'Hanka': {'Lyceum Mělník'}, 'Marek': {'Lyceum Mělník', 'Gymnázium Nymburk'}, 'Dan': {'Gymnázium Nymburk'}, 'Katka': {'SOŠ Smíchov'}, 'Ivana': {'SOŠ Smíchov'}, 'Gustav': {'SOŠ Smíchov'}, 'Bára': {'SOŠ Smíchov'}, 'Cecílie': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Eda', 'Dan'}, 'SOŠ Smíchov': {'Gustav', 'Ivana', 'Katka', 'Bára', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Cecílie', 'Jana', 'Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 2, 'Lyceum Mělník': 0, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>STEP 3</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Cecílie': {'Gymnázium Nymburk', 'SOŠ Smíchov'}, 'Jana': {'Gymnázium Nymburk'}, 'Adam': {'Lyceum Mělník'}, 'Marek': {'Lyceum Mělník'}, 'Hanka': {'Lyceum Mělník'}, 'Eda': {'Gymnázium Nymburk'}, 'Dan': {'Gymnázium Nymburk'}, 'Gustav': {'SOŠ Smíchov'}, 'Ivana': {'SOŠ Smíchov'}, 'Katka': {'SOŠ Smíchov'}, 'Bára': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Jana', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Bára', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Bára', 'Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 1, 'Lyceum Mělník': 0, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>STEP 4</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Bára': {'Gymnázium Nymburk', 'SOŠ Smíchov'}, 'Adam': {'Lyceum Mělník'}, 'Marek': {'Lyceum Mělník'}, 'Hanka': {'Lyceum Mělník'}, 'Jana': {'Gymnázium Nymburk'}, 'Eda': {'Gymnázium Nymburk'}, 'Dan': {'Gymnázium Nymburk'}, 'Katka': {'SOŠ Smíchov'}, 'Ivana': {'SOŠ Smíchov'}, 'Gustav': {'SOŠ Smíchov'}, 'Cecílie': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Jana', 'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Gustav', 'Katka'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Adam', 'Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 0, 'Lyceum Mělník': 0, 'SOŠ Smíchov': 1}
-</li>
-        </ul>
-        <h3>STEP 5</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Adam': {'Lyceum Mělník', 'SOŠ Smíchov'}, 'Marek': {'Lyceum Mělník'}, 'Hanka': {'Lyceum Mělník'}, 'Jana': {'Gymnázium Nymburk'}, 'Bára': {'Gymnázium Nymburk'}, 'Eda': {'Gymnázium Nymburk'}, 'Dan': {'Gymnázium Nymburk'}, 'Ivana': {'SOŠ Smíchov'}, 'Cecílie': {'SOŠ Smíchov'}, 'Gustav': {'SOŠ Smíchov'}, 'Katka': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Jana', 'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Katka', 'Gustav'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Dan', 'Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 0, 'Lyceum Mělník': 0, 'SOŠ Smíchov': 1}
-</li>
-        </ul>
-        <h3>STEP 6</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Dan': {'Gymnázium Nymburk', 'SOŠ Smíchov'}, 'Adam': {'Lyceum Mělník'}, 'Marek': {'Lyceum Mělník'}, 'Hanka': {'Lyceum Mělník'}, 'Jana': {'Gymnázium Nymburk'}, 'Bára': {'Gymnázium Nymburk'}, 'Eda': {'Gymnázium Nymburk'}, 'Ivana': {'SOŠ Smíchov'}, 'Cecílie': {'SOŠ Smíchov'}, 'Katka': {'SOŠ Smíchov'}, 'Gustav': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Marek', 'Hanka'}, 'Gymnázium Nymburk': {'Jana', 'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Ivana', 'Cecílie', 'Gustav', 'Katka'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Marek', 'Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 0, 'Lyceum Mělník': 0, 'SOŠ Smíchov': 1}
-</li>
-        </ul>
-        <h3>STEP 7</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Marek': {'Lyceum Mělník', 'SOŠ Smíchov'}, 'Adam': {'Lyceum Mělník'}, 'Hanka': {'Lyceum Mělník'}, 'Jana': {'Gymnázium Nymburk'}, 'Bára': {'Gymnázium Nymburk'}, 'Eda': {'Gymnázium Nymburk'}, 'Dan': {'Gymnázium Nymburk'}, 'Ivana': {'SOŠ Smíchov'}, 'Cecílie': {'SOŠ Smíchov'}, 'Gustav': {'SOŠ Smíchov'}, 'Katka': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka'}, 'Gymnázium Nymburk': {'Jana', 'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Katka', 'Ivana', 'Gustav', 'Marek', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Lenka', 'Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 0, 'Lyceum Mělník': 1, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>STEP 8</h3>
-        <ul>
-          <li><b>Offers: </b>defaultdict(&lt;class 'set'&gt;, {'Lenka': {'Lyceum Mělník'}, 'Adam': {'Lyceum Mělník'}, 'Hanka': {'Lyceum Mělník'}, 'Jana': {'Gymnázium Nymburk'}, 'Bára': {'Gymnázium Nymburk'}, 'Eda': {'Gymnázium Nymburk'}, 'Dan': {'Gymnázium Nymburk'}, 'Katka': {'SOŠ Smíchov'}, 'Ivana': {'SOŠ Smíchov'}, 'Gustav': {'SOŠ Smíchov'}, 'Marek': {'SOŠ Smíchov'}, 'Cecílie': {'SOŠ Smíchov'}})
-</li>
-          <li><b>Accepted: </b>{'Lyceum Mělník': {'Adam', 'Hanka', 'Lenka'}, 'Gymnázium Nymburk': {'Jana', 'Bára', 'Eda', 'Dan'}, 'SOŠ Smíchov': {'Gustav', 'Ivana', 'Katka', 'Marek', 'Cecílie'}}
-</li>
-          <li><b>Remaining applicants: </b>{'Gymnázium Nymburk': ['Lenka', 'Filip', 'Hanka', 'Katka', 'Gustav'], 'Lyceum Mělník': ['Katka', 'Jana', 'Eda', 'Filip', 'Dan', 'Bára'], 'SOŠ Smíchov': ['Eda', 'Hanka', 'Lenka', 'Jana', 'Filip']}
-</li>
-          <li><b>Remaining seats: </b>{'Gymnázium Nymburk': 0, 'Lyceum Mělník': 0, 'SOŠ Smíchov': 0}
-</li>
-        </ul>
-        <h3>RESULTS</h3>
-        <div>Num steps: 8</div>
-        <h4>Accepted</h4>
-        <ul>
-          <li><b>Lyceum Mělník: </b>frozenset({'Adam', 'Hanka', 'Lenka'})
-</li>
-          <li><b>Gymnázium Nymburk: </b>frozenset({'Jana', 'Bára', 'Eda', 'Dan'})
-</li>
-          <li><b>SOŠ Smíchov: </b>frozenset({'Cecílie', 'Marek', 'Gustav', 'Ivana', 'Katka'})
-</li>
-        </ul>
-        <h4>Rejected</h4>
-        <ul>
-          <li>frozenset({'Filip'})</li>
-        </ul>
+        <h2>Vstupní data</h2>
+        <table class="admission-table">
+          <tr>
+            <th colspan="4">Studentské přihlášky</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>1. škola</th>
+            <th>2. škola</th>
+            <th>3. škola</th>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Adam</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Bára</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Cecílie</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Dan</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Eda</th>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Filip</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Gustav</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Hanka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Ivana</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Jana</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Katka</th>
+            <td>Lyceum Mělník</td>
+            <td>SOŠ Smíchov</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Lenka</th>
+            <td>Gymnázium Nymburk</td>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+          </tr>
+          <tr>
+            <th><i class="bi bi-person-fill" /> Marek</th>
+            <td>SOŠ Smíchov</td>
+            <td>Lyceum Mělník</td>
+            <td>Gymnázium Nymburk</td>
+          </tr>
+        </table>
       </div>
     </div>
     <script>

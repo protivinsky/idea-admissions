@@ -142,6 +142,11 @@ class Doc(yt.Doc):
                 doc.line("title", title)
                 with doc.tag("style"):
                     doc.asis(css_style)
+                doc.stag(
+                    "link",
+                    rel="stylesheet",
+                    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css",
+                )
             with doc.tag("body", klass=body_klass):
                 doc.asis(self.getvalue())
         return doc

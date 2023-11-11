@@ -34,6 +34,37 @@ code {
   white-space: pre-wrap;
 }
 
+.bi {
+  font-size: 140%;
+}
+
+.admission-table
+  table {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full width */
+    margin: 20px 0; /* Margin above and below the table */
+    font-size: 16px; /* Font size */
+  }
+
+  table, th, td {
+      border: 1px solid #e0e0e0; /* Thin light gray border */
+  }
+
+  th, td {
+      text-align: center; /* Center align text */
+      padding: 10px; /* Padding inside cells */
+  }
+
+  th {
+      background-color: #f8f8f8; /* Light background for header */
+      font-weight: bold; /* Make header text bold */
+  }
+
+  tbody tr:nth-child(odd) {
+      background-color: #f2f2f2; /* Zebra striping for rows */
+  }
+
+
 .color_table td, .color_table th {
     padding: 8px
 }
