@@ -1,3 +1,9 @@
 frozendict
 pytest
+yattag
+markdown
+numpy
+pandas
+matplotlib
+seaborn
 
