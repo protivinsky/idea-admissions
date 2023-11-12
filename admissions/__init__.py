@@ -2,6 +2,8 @@
 Srovnání párovacích mechanismů pro přijímačky
 ---------------------------------------------
 
+https://prot.to/prijimacky/
+
 Doplňující ukázky a vysvětlení ke srovnání algoritmů pro vyhodnocení
 přijímacích zkoušek ze studie [Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?](https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie) publikované [Institutem pro demokracii a ekonomickou analýzu](https://idea.cerge-ei.cz/)
 (IDEA při CERGE-EI).
@@ -72,6 +74,9 @@ odloženého přijetí pro přijímací zkoušky i Česká republika.** Použit�
 je stejně snadné jako u kteréhokoli jiného algoritmu a nepředstavuje žádnou dodatečnou zátěž.
 
 2023, Tomáš Protivínský, [tomas.protivinsky@cerge-ei.cz](mailto://tomas.protivinsky@cerge-ei.cz)
+
+<i class="bi bi-github" style="font-size: 200%"></i> Zdrojový kód s ukázkovou implementací těchto mechanismů je k dispozici na [githubu](https://github.com/protivinsky/idea-admissions).
+Kód zároveň umožňuje generovat grafické srovnání výsledných přiřazení podle jednotlivých algoritmů v podobě HTML zprávy.
 """
 
 
