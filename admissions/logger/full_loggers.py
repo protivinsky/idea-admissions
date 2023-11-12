@@ -144,6 +144,111 @@ class GraphicLogger(Logger):
         for step_data in self._step_data:
             self.at_end_log_step(step_data)
 
+    def log_step_cermat(self, data: Mapping):
+        doc = self.doc
+
+        schools = list(self._admission_data.exams.keys())
+        if not hasattr(self, "_prev_removed"):
+            self._prev_removed = {sch: set() for sch in schools}
+        if not hasattr(self, "_prev_accepted"):
+            self._prev_accepted = {sch: set() for sch in schools}
+        max_exam_len = max([len(ex) for ex in self._admission_data.exams.values()])
+
+        exams = self._admission_data.exams
+        seats = self._admission_data.seats
+        applications = self._admission_data.applications
+        applicants = data["Applicants"]
+        accepted = data["Accepted"]
+        best_match = data["Current best match"]
+        best_rank = data["Current best rank"]
+
+        doc.line(self._subheader, f"Krok {self._num_steps}")
+        doc.line(self._subsubheader, "NABÍDKY")
+
+        removed_so_far = {sch: 0 for sch in schools}
+        cutoffs = {sch: max_exam_len for sch in schools}
+        with doc.tag("table", klass="admission-table school-optimal-step-table"):
+            with doc.tag("tr"):
+                doc.line("th", "")
+                for sch in schools:
+                    with doc.tag("th", klass="exam-school"):
+                        doc.line("i", "", klass="bi bi-house-fill")
+                        doc.text(f"  {sch}")
+                        doc.stag("br")
+                        doc.line(
+                            "small",
+                            f"Míst = {seats[sch]}",
+                            style="font-weight: normal;",
+                        )
+            for i in range(max_exam_len):
+                with doc.tag("tr"):
+                    doc.line("th", f"{i + 1}.")
+                    for sch in schools:
+                        st = exams[sch][i]
+
+                        extra_klass = ""
+                        if st in self._prev_accepted[sch]:
+                            extra_klass = "green-green"
+                        elif st in self._prev_removed[sch]:
+                            removed_so_far[sch] += 1
+                            extra_klass = "red-red"
+                        elif (st, sch) in best_match:
+                            extra_klass = "yellow-yellow"
+                        elif removed_so_far[sch] > max_exam_len:
+                            extra_klass = "gray-gray"
+
+                        if i == seats[sch] + removed_so_far[sch] - 1:
+                            extra_klass += " last-offered"
+                            removed_so_far[sch] += max_exam_len + 1
+                            cutoffs[sch] = i
+
+                        with doc.tag("td", klass=f"exam-student {extra_klass}"):
+                            doc.line("i", "", klass="bi bi-person-fill")
+                            doc.text(f"  {st}")
+
+        doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
+
+        with doc.tag("table", klass="admission-table school-optimal-step-table"):
+            with doc.tag("tr"):
+                doc.line("th", "")
+                for sch in schools:
+                    with doc.tag("th", klass="exam-school"):
+                        doc.line("i", "", klass="bi bi-house-fill")
+                        doc.text(f"  {sch}")
+                        doc.stag("br")
+                        doc.line(
+                            "small",
+                            f"Míst = {self._admission_data.seats[sch]}",
+                            style="font-weight: normal;",
+                        )
+            for i in range(max_exam_len):
+                with doc.tag("tr"):
+                    doc.line("th", f"{i + 1}.")
+                    for sch in schools:
+                        st = self._admission_data.exams[sch][i]
+
+                        extra_klass = ""
+                        if st in accepted[sch]:
+                            extra_klass = "green-green"
+                            for other_sch in applications[st][::-1]:
+                                if other_sch == sch:
+                                    break
+                                self._prev_removed[other_sch].add(st)
+
+                        if st in self._prev_removed[sch]:
+                            extra_klass = "red-red"
+
+                        if i == cutoffs[sch]:
+                            extra_klass += " last-offered"
+                        elif i > cutoffs[sch]:
+                            extra_klass = "gray-gray"
+
+                        with doc.tag("td", klass=f"exam-student {extra_klass}"):
+                            doc.line("i", "", klass="bi bi-person-fill")
+                            doc.text(f"  {st}")
+
+        self._prev_accepted = accepted
+
     def log_step_da(self, data: Mapping):
         doc = self.doc
 
@@ -153,6 +258,8 @@ class GraphicLogger(Logger):
         max_exam_len = max([len(ex) for ex in self._admission_data.exams.values()])
         exams = self._admission_data.exams
         applications = self._admission_data.applications
+        students = sorted(list(applications.keys()))
+        max_app_len = max([len(app) for app in applications.values()])
 
         last_positions = data["Position on applications"]
         last_to_compare = data["Students to compare"]
@@ -161,10 +268,36 @@ class GraphicLogger(Logger):
 
         doc.line(self._subheader, f"Krok {self._num_steps}")
 
-        doc.line(self._subheader, f"PODLE VÝSLEDKŮ ZKOUŠKY")
         doc.line(self._subsubheader, "NABÍDKY")
         with doc.tag("div"):
-            doc.line("b", "PODLE VÝSLEDKŮ ZKOUŠKY")
+            doc.line("b", "Podle přihlášek")
+
+        with doc.tag("table", klass="admission-table da-step-table"):
+            with doc.tag("tr"):
+                doc.line("th", "")
+                for st in students:
+                    with doc.tag("th"):
+                        doc.line("i", "", klass="bi bi-person-fill")
+                        doc.text(f"  {st}")
+            for i in range(max_app_len):
+                with doc.tag("tr"):
+                    doc.line("td", f"{i + 1}. škola")
+                    for st in students:
+                        sch = applications[st][i]
+                        if st in self._prev_rejected[sch]:
+                            extra_klass = "red-red"
+                        elif sch in last_to_compare and st in last_to_compare[sch]:
+                            extra_klass = "yellow-yellow"
+                        else:
+                            extra_klass = "gray-gray"
+                        if i == last_positions[st]:
+                            extra_klass += " last-offered"
+                        with doc.tag("td", klass=extra_klass):
+                            doc.line("i", "", klass="bi bi-house-fill")
+                            doc.text(f"  {sch}")
+
+        with doc.tag("div"):
+            doc.line("b", "Podle výsledků zkoušky")
 
         with doc.tag("table", klass="admission-table da-step-table"):
             with doc.tag("tr"):
@@ -197,13 +330,44 @@ class GraphicLogger(Logger):
                             doc.line("i", "", klass="bi bi-person-fill")
                             doc.text(f"  {st}")
 
-        with doc.tag("div"):
-            doc.line("b", "PODLE PŘIHLÁŠEK")
-
         doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
+        with doc.tag("div"):
+            doc.line("b", "Podle přihlášek")
+
+        with doc.tag("table", klass="admission-table da-step-table"):
+            with doc.tag("tr"):
+                doc.line("th", "")
+                for st in students:
+                    with doc.tag("th"):
+                        doc.line("i", "", klass="bi bi-person-fill")
+                        doc.text(f"  {st}")
+            for i in range(max_app_len):
+                with doc.tag("tr"):
+                    doc.line("td", f"{i + 1}. škola")
+                    for st in students:
+                        sch = applications[st][i]
+                        if (
+                            sch in last_to_compare
+                            and st in last_to_compare[sch]
+                            and st not in accepted[sch]
+                        ):
+                            self._prev_rejected[sch].add(st)
+                        if st in accepted[sch]:
+                            extra_klass = "green-green"
+                        elif st in self._prev_rejected[sch]:
+                            extra_klass = "red-red"
+                        elif st in all_accepted:
+                            extra_klass = "gray-gray"
+                        else:
+                            extra_klass = ""
+                        if i == last_positions[st]:
+                            extra_klass += " last-offered"
+                        with doc.tag("td", klass=extra_klass):
+                            doc.line("i", "", klass="bi bi-house-fill")
+                            doc.text(f"  {sch}")
 
         with doc.tag("div"):
-            doc.line("b", "PODLE VÝSLEDKŮ ZKOUŠKY")
+            doc.line("b", "Podle výsledků zkoušky")
 
         with doc.tag("table", klass="admission-table da-step-table"):
             with doc.tag("tr"):
@@ -224,12 +388,6 @@ class GraphicLogger(Logger):
                     for sch in schools:
                         st = self._admission_data.exams[sch][i]
                         # accepted / removed / not-evaluated / last-offered
-                        if (
-                            sch in last_to_compare
-                            and st in last_to_compare[sch]
-                            and st not in accepted[sch]
-                        ):
-                            self._prev_rejected[sch].add(st)
                         if st in accepted[sch]:
                             extra_klass = "green-green"
                         elif st in self._prev_rejected[sch]:
@@ -241,9 +399,6 @@ class GraphicLogger(Logger):
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
                             doc.text(f"  {st}")
-
-        with doc.tag("div"):
-            doc.line("b", "PODLE PŘIHLÁŠEK")
 
     def log_step_school_optimal_sm(self, data: Mapping):
         """ """
@@ -420,11 +575,3 @@ class GraphicLogger(Logger):
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
                             doc.text(f"  {st}")
-
-    def log_step_cermat(self, data: Mapping):
-        """
-        What do I want to do here?
-        - probably print up the
-        """
-        self.doc.line("p", f"krok {self._num_steps}")
-        ...

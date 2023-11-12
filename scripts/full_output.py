@@ -20,7 +20,7 @@ Pro každý mechanismus vytiskni na obrazkovku textově jeho průběh po jednotl
 
 # all are factories
 # mechanisms = [NaiveMechanism, DeferredAcceptance, CermatMechanism, SchoolOptimalSM]
-mechanisms = [DeferredAcceptance, NaiveMechanism, SchoolOptimalSM]
+mechanisms = [CermatMechanism, DeferredAcceptance, NaiveMechanism, SchoolOptimalSM]
 examples = [example_1, example_2, example_3, example_4, example_cermat]
 # examples = [example_1]
 
