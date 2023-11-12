@@ -1,15 +1,33 @@
 from .domain import AdmissionData
 
 
+_RENAME = True
+
+# names of schools and students for the simple examples
+_school_names = {
+    "A": "Gymnázium Nymburk",
+    "B": "Lyceum Mělník",
+    "C": "OA Kladno",
+    "D": "SOŠ Smíchov",
+}
+
+_student_names = {
+    1: "Adam",
+    2: "Bára",
+    3: "Cecílie",
+    4: "Dan",
+}
+
+
 def example_1():
     """
-    Example 1
-    ---------
+    Příklad ze studie IDEA
+    ----------------------
     Hlavní příklad ze studie, který jasně ukazuje nestabilitu (opodstatněnou závist)
-    u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) tento
-    příklad zvládnou.
+    u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) toto zadání
+    vyřeší uspokojivě.
     """
-    return AdmissionData(
+    admission_data = AdmissionData(
         applications={
             1: ("A", "B", "C"),
             2: ("A", "B", "D"),
@@ -24,15 +42,21 @@ def example_1():
         },
         seats={k: 1 for k in "ABCD"},
     )
+    if _RENAME:
+        return admission_data.rename(
+            student_names=_student_names, school_names=_school_names
+        )
+    else:
+        return admission_data
 
 
 def example_2():
     """
-    Example 2
+    Příklad 2
     ---------
     Doplňující příklad ze studie (zde není podstatný).
     """
-    return AdmissionData(
+    admission_data = AdmissionData(
         applications={
             1: ("A", "B", "C"),
             2: ("B", "A", "C"),
@@ -45,17 +69,29 @@ def example_2():
         },
         seats={k: 1 for k in "ABC"},
     )
+    if _RENAME:
+        return admission_data.rename(
+            student_names=_student_names, school_names=_school_names
+        )
+    else:
+        return admission_data
 
 
 def example_3():
     """
-    Example 3
-    ---------
-    Highlights the distinctions b/w DA and CM
-    - DA is SOSM = student-optimal stable mechanism
-    - CM is essentially school-optimal stable mechanism
+    Příklad: optimalita pro studenty vs. pro školy
+    ----------------------------------------------
+    Příklad je záměrně navržený tak, aby zvýraznil rozdíly mezi:
+
+    - mechanismem odloženého přijetí (**optimální pro studenty**) a
+    - Cermatem navrženým mechanismem bez dodatečných optimalizací (**optimální pro školy**).
+
+    Oba mechanismy zde vedou ke stabilnímu výsledku bez opodstatněné závisti, i tak jsou mezi
+    výsledky zásadní rozdíly.
+    Mechanismus odloženého přijetí přiřadí všechny žáky podle jejich první volby, zatímco mechanismus
+    představený Cermatem přiřadí žáky na jejich poslední volby z přihlášek.
     """
-    return AdmissionData(
+    admission_data = AdmissionData(
         applications={
             1: ("A", "B", "C"),
             2: ("B", "C", "A"),
@@ -68,20 +104,36 @@ def example_3():
         },
         seats={k: 1 for k in "ABC"},
     )
+    if _RENAME:
+        return admission_data.rename(
+            student_names=_student_names, school_names=_school_names
+        )
+    else:
+        return admission_data
 
 
 def example_4():
     """
-    Example 4
-    ---------
-    Ilustruje situaci, kde DA nedosáhne zcela efektivního výsledku (tzn. optimálního pro studenty).
-    Mechanismus efektivních transferů (zde neimplementovaný) by Pareto efektivity pro studenty dosáhl,
-    avšak vyskytla by se v něm opodstatněná závist (tedy by nebyl stabilní). Tento příklad zároveň
-    ilustruje, že stabilitu a maximální efektivitu pro studenty není možné naplnit zároveň.
+    Příklad: nedosažitelnost stability a efektivity
+    -----------------------------------------------
+    Příklad ilustruje, že není možné zároveň dosáhnout **stability** (neexistence opodstatněné závisti)
+    a **Pareto efektivity** pro studenty.
 
-    DA je nejvíce Pareto efektivní pro studenty mezi stabilními mechanismy (tzv. optimálně stabilní).
+    Všechny zde uvedené mechanismy přiřadí Adama na Gymnázium Nymburk a Báru na Lyceum Mělník,
+    ačkoli oba žáci by preferovali si tyto školy vzájemně vyměnit. Tím by byla zvýšena Pareto efektivita
+    pro žáky (oba by si polepšili a nikdo jiný by nebyl přímo poškozený).
+
+    Stabilní mechanismy však tuto výměnu neumožňují, neboť by vznikla opodstatněná závist (a tedy byla
+    porušena stabilita): Bára nemůže být přijata na Gymnázium Nymburk, neboť Cecílie se tam také hlásila,
+    byla úspěšnější v přijímací zkoušce a měla tuto školu na první pozici na přihlášce.
+
+    **Mechanismus odloženého přijetí** je nejvíce Pareto efektivní pro studenty ze všech stabilních mechanismů
+    (tzv. **optimálně stabilní**).
+
+    Maximální efektivity pro studenty by zde dosáhl **mechanismus efektivních přesunů** (uváděný pouze
+    ve studii), který však není stabilní.
     """
-    return AdmissionData(
+    admission_data = AdmissionData(
         applications={
             1: ("B", "A", "C"),
             2: ("A", "B", "C"),
@@ -94,18 +146,33 @@ def example_4():
         },
         seats={k: 1 for k in "ABC"},
     )
+    if _RENAME:
+        return admission_data.rename(
+            student_names=_student_names, school_names=_school_names
+        )
+    else:
+        return admission_data
 
 
 def example_cermat():
     """
-    Example Cermat
-    --------------
+    Zadání dle Cermatu
+    ------------------
     Tento příklad používá Cermat ve svém videu vysvětlujícím průběh přijímacích zkoušek.
     Jedná se o více realistický příklad, který zároveň ilustruje některé zajímavé vlastnosti.
 
-    Cermat mechanism (který je school-optimal stable mechanism) zde nemůže dosáhnout efektivního
-    výsledku, neboť školy preferují jiné stabilní rozřazení než žáci. Oproti tomu DA dosáhne
-    stabilního výsledku, který je efektivnější z pohledu studentů.
+    Mechanismus představený Cermatem, který je stabilní a optimální pro školy, zde v původní
+    verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů, jako mechanismus odloženého
+    přijetí, který je stabilní a optimální pro studenty.
+
+    **Mechanismus odloženého přijetí umístí 6 žáků na jejich první volbu z přihlášek a nikoho
+    na poslední třetí volbu**, oproti tomu **neoptimalizovaný mechanismus dle Cermatu umístí
+    pouze 4 žáky na jejich první volbu a 2 žáky na jejich poslední školy** z přihlášek. Zároveň oba
+    mechanismy **plně respektují pořadí výsledků zkoušek** a nemůže se stát, že by se žák s horším výsledkem
+    dostal na pozici před žáka s lepším výsledkem ze zkoušky.
+
+    **Matematicky bylo dokázáno již v roce 1962, že mechanismus odloženého přijetí je pro žáky
+    nejlepším spravedlivým mechanismem.**
     """
     school_names = {
         1: "Gymnázium Nymburk",

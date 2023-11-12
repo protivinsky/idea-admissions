@@ -162,6 +162,39 @@ class GraphicLogger(Logger):
         best_match = data["Current best match"]
         best_rank = data["Current best rank"]
 
+        if self._num_steps == 1:
+            color_labels = [
+                (
+                    "yellow-yellow",
+                    "žáci, kteří aktuálně mohou být přijati na nejvíce preferovanou školu (mezi všemi žáky nad čarou)",
+                ),
+                (
+                    "green-green",
+                    "přijatí žáci (pokud v dalším kroku mohou být přijati i na lepší školu, mohou své rozhodnutí změnit)",
+                ),
+                (
+                    "red-red",
+                    "žáci, kteří již nestojí o přijetí na této škole a mohou po nich být uvolněna místa",
+                ),
+                (
+                    "gray-gray",
+                    "žáci pod čarou",
+                ),
+                (
+                    "",
+                    "žáci nad čarou, kteří se dosud nevyhodnocují (nejedná se o nejvíce preferovanou školu)",
+                ),
+            ]
+
+            doc.line(self._subheader, "Barevné značení")
+            with doc.tag("table", klass="admission-table"):
+                for color, label in color_labels:
+                    with doc.tag("tr"):
+                        with doc.tag("td", klass=color):
+                            doc.line("i", "", klass="bi bi-person-fill")
+                            doc.text("  žák")
+                        doc.line("td", label)
+
         doc.line(self._subheader, f"Krok {self._num_steps}")
         doc.line(self._subsubheader, "NABÍDKY")
 
@@ -265,6 +298,39 @@ class GraphicLogger(Logger):
         last_to_compare = data["Students to compare"]
         accepted = data["Accepted"]
         all_accepted = {st for sts in accepted.values() for st in sts}
+
+        if self._num_steps == 1:
+            color_labels = [
+                (
+                    "yellow-yellow",
+                    "společně posuzování žáci na jednotlivých školách (dosud přijatí a noví uchazeči)",
+                ),
+                (
+                    "green-green",
+                    "podmíněně přijatí žáci (podmíněné přijetí je finalizováno v posledním kroku)",
+                ),
+                (
+                    "red-red",
+                    "odmítnutí žáci, kteří se v dalším kroku uchází o jinou školu",
+                ),
+                (
+                    "gray-gray",
+                    "žáci s podmíněným přijetím na jiné škole (zde se ve vyhodnocování zatím nepokračuje)",
+                ),
+                (
+                    "",
+                    "další školy odmítnutých žáků, u kterých se následně pokračuje ve vyhodnocování",
+                ),
+            ]
+
+            doc.line(self._subheader, "Barevné značení")
+            with doc.tag("table", klass="admission-table"):
+                for color, label in color_labels:
+                    with doc.tag("tr"):
+                        with doc.tag("td", klass=color):
+                            doc.line("i", "", klass="bi bi-person-fill")
+                            doc.text("  žák")
+                        doc.line("td", label)
 
         doc.line(self._subheader, f"Krok {self._num_steps}")
 
@@ -414,6 +480,35 @@ class GraphicLogger(Logger):
         offers = data["Offers"]
         accepted = data["Accepted"]
 
+        if self._num_steps == 1:
+            color_labels = [
+                (
+                    "yellow-yellow",
+                    "žáci s nabídkou na přijetí na dané škole",
+                ),
+                (
+                    "green-green",
+                    "žáci, kteří přijímají nabídku na této škole (mohou později změnit, pokud dostanou lepší nabídku)",
+                ),
+                (
+                    "red-red",
+                    "žáci, kteři již odmítli místo na této škole (jsou zde vyřazeni a uvolňují se jejich místa)",
+                ),
+                (
+                    "gray-gray",
+                    "žáci, kteří jsou pod čarou a nebylo jim nabídnuto přijetí",
+                ),
+            ]
+
+            doc.line(self._subheader, "Barevné značení")
+            with doc.tag("table", klass="admission-table"):
+                for color, label in color_labels:
+                    with doc.tag("tr"):
+                        with doc.tag("td", klass=color):
+                            doc.line("i", "", klass="bi bi-person-fill")
+                            doc.text("  žák")
+                        doc.line("td", label)
+
         doc.line(self._subheader, f"Krok {self._num_steps}")
         doc.line(self._subsubheader, "NABÍDKY")
 
@@ -501,6 +596,39 @@ class GraphicLogger(Logger):
         all_accepted = {st for sts in accepted.values() for st in sts}
         max_exam_len = max([len(ex) for ex in self._admission_data.exams.values()])
         exams = self._admission_data.exams
+
+        if self._num_steps == 1:
+            color_labels = [
+                (
+                    "yellow-yellow",
+                    "žáci, kteří v tomto kroku byli přijatí na danou školu",
+                ),
+                (
+                    "green-green",
+                    "automaticky zapsaní žáci (na nejvíce preferovanou ze škol, na které byli přijati)",
+                ),
+                (
+                    "red-red",
+                    "odmítnutí žáci (v aktuálním kroku)",
+                ),
+                (
+                    "gray-gray",
+                    "žáci, kteří jsou již zapsaní jinde (uvolňují se po nich místa)",
+                ),
+                (
+                    "",
+                    "nezapsaní žáci, kteří pokračují do dalšího kroku",
+                ),
+            ]
+
+            doc.line(self._subheader, "Barevné značení")
+            with doc.tag("table", klass="admission-table"):
+                for color, label in color_labels:
+                    with doc.tag("tr"):
+                        with doc.tag("td", klass=color):
+                            doc.line("i", "", klass="bi bi-person-fill")
+                            doc.text("  žák")
+                        doc.line("td", label)
 
         doc.line(self._subheader, f"Krok {self._num_steps}")
         doc.line(self._subsubheader, "NABÍDKY")

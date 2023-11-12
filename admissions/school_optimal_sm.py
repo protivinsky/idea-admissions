@@ -8,8 +8,8 @@ from .logger import Logger
 
 class SchoolOptimalSM(Mechanism):
     """
-    School-optimal stable mechanism
-    -------------------------------
+    Stabilní mechanismus optimální pro školy
+    ----------------------------------------
 
     Mechanismus navržený Cermatem je ekvivalentní ke stabilnímu mechanismu optimálnímu
     pro školy. Školy by tedy preferovaly tuto verzi algoritmu, avšak pro studenty
