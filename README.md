@@ -41,7 +41,7 @@ Zde prezentujeme několik možných párovacích mechanismů:
   zákona, avšak nezaručuje spravedlivý výsledek.
 
 Ačkoli právě poslední naivní mechanismus doslovně vychází z [novely školského zákona](https://www.psp.cz/sqw/text/tiskt.sqw?O=9&CT=551&CT1=0)
-**§60i Způsob hodnocení výsledků přijímacího řízení** (odst. 2 a 3), za hlavní podstatu
+ **§60j Způsob hodnocení výsledků přijímacího řízení** (odst. 2 a 3), za hlavní podstatu
 lze však mnohem více považovat právě požadavek **spravedlnosti** 
 a **respektování žákovských preferencí**.
 
