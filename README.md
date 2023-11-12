@@ -1,6 +1,8 @@
 Mechanismy pro přijímačky na střední školy
 ==========================================
 
+https://prot.to/prijimacky/
+
 Doplňující ukázky a vysvětlení ke srovnání algoritmů pro vyhodnocení
 přijímacích zkoušek ze studie [Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?](https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie) publikované [Institutem pro demokracii a ekonomickou analýzu](https://idea.cerge-ei.cz/)
 (IDEA při CERGE-EI).
