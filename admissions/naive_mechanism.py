@@ -9,7 +9,7 @@ class NaiveMechanism(Mechanism):
     Naivní mechanismus
     ------------------
 
-    **§60i Způsob hodnocení výsledků přijímacího řízení**
+    **§60j Způsob hodnocení výsledků přijímacího řízení**
 
     - *(2) Pokud splní kritéria přijímacího řízení více uchazečů než kolik lze přijmout,
     rozhoduje jejich pořadí podle výsledků hodnocení kritérií přijímacího řízení.*
