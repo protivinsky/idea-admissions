@@ -25,6 +25,10 @@ class GraphicLogger(Logger):
 
     def log_start(self, admission_data: AdmissionData):
         self._admission_data = admission_data
+        self._application_school_rank = {
+            st: {sch: i + 1 for i, sch in enumerate(schs)}
+            for st, schs in admission_data.applications.items()
+        }
 
     def log_step(self, data: Mapping):
         self._num_steps += 1
@@ -58,6 +62,9 @@ class GraphicLogger(Logger):
         max_exam_len = max([len(ex) for ex in admission_data.exams.values()])
 
         doc.line(self._subheader, "Výsledky školních zkoušek")
+        doc.line(
+            "div", "Čísla v závorce označují pořadí školy na přihlášce daného žáka."
+        )
         with doc.tag("table", klass="admission-table"):
             with doc.tag("tr"):
                 doc.line("th", "")
@@ -81,7 +88,9 @@ class GraphicLogger(Logger):
                         )
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
     def at_end_log_step(self, data: Mapping):
         self._num_steps += 1
@@ -237,7 +246,9 @@ class GraphicLogger(Logger):
 
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
         doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
 
@@ -278,7 +289,9 @@ class GraphicLogger(Logger):
 
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
         self._prev_accepted = accepted
 
@@ -394,7 +407,9 @@ class GraphicLogger(Logger):
                         #     extra_klass += " right-border"
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
         doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
         with doc.tag("div"):
@@ -464,7 +479,9 @@ class GraphicLogger(Logger):
                             extra_klass = ""
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
     def log_step_school_optimal_sm(self, data: Mapping):
         """ """
@@ -546,7 +563,9 @@ class GraphicLogger(Logger):
                             extra_klass += " last-offered"
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
         doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
 
@@ -579,7 +598,9 @@ class GraphicLogger(Logger):
                             extra_klass += " last-offered"
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
     def log_step_naive(self, data: Mapping):
         doc = self.doc
@@ -666,7 +687,9 @@ class GraphicLogger(Logger):
                         # )
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
 
         doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
 
@@ -702,4 +725,6 @@ class GraphicLogger(Logger):
                             extra_klass = ""
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
-                            doc.text(f"  {st}")
+                            doc.text(
+                                f"  {st} (#{self._application_school_rank[st][sch]})"
+                            )
