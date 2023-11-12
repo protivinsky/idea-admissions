@@ -70,6 +70,8 @@ právě za výzkum v této oblasti.**
 **Proto by bylo velmi žádoucí, aby v souladu s moderními vědeckými poznatky použila mechanismus
 odloženého přijetí pro přijímací zkoušky i Česká republika.** Použití tohoto mechanismu
 je stejně snadné jako u kteréhokoli jiného algoritmu a nepředstavuje žádnou dodatečnou zátěž.
+
+2023, Tomáš Protivínský, [tomas.protivinsky@cerge-ei.cz](mailto://tomas.protivinsky@cerge-ei.cz)
 """
 
 

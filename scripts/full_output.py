@@ -51,4 +51,4 @@ for example in examples:
         sw[ex_label][mech_label] = logger.doc
 
 doc.switcher(sw)
-doc.save(path=".")
+doc.save(path="output")
