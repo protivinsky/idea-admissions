@@ -97,6 +97,18 @@ class Switcher(GenericTree):
 
 class Doc(yt.Doc):
     _base_style = None
+    _cdn = [
+        # bootstrap icons
+        "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css",
+        # milligram
+        # "https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic",
+        # "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css",
+        # "https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css",
+        # skeleton
+        # "https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css",
+        # picnic
+        # "https://cdn.jsdelivr.net/npm/picnic",
+    ]
 
     @classmethod
     def get_base_style(cls):
@@ -142,10 +154,14 @@ class Doc(yt.Doc):
                 doc.line("title", title)
                 with doc.tag("style"):
                     doc.asis(css_style)
+                for cdn in self._cdn:
+                    doc.stag("link", rel="stylesheet", href=cdn)
                 doc.stag(
                     "link",
                     rel="stylesheet",
-                    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css",
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
+                    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN",
+                    crossorigin="anonymous",
                 )
             with doc.tag("body", klass=body_klass):
                 doc.asis(self.getvalue())
