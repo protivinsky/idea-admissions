@@ -152,8 +152,6 @@ class Doc(yt.Doc):
             with doc.tag("head"):
                 doc.stag("meta", charset="UTF-8")
                 doc.line("title", title)
-                with doc.tag("style"):
-                    doc.asis(css_style)
                 for cdn in self._cdn:
                     doc.stag("link", rel="stylesheet", href=cdn)
                 doc.stag(
@@ -163,6 +161,8 @@ class Doc(yt.Doc):
                     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN",
                     crossorigin="anonymous",
                 )
+                with doc.tag("style"):
+                    doc.asis(css_style)
             with doc.tag("body", klass=body_klass):
                 doc.asis(self.getvalue())
         return doc
