@@ -39,8 +39,9 @@ Zde prezentujeme několik možných párovacích mechanismů:
   škol. Tento algoritmus by sice nejlépe odpovídal doslovnému znění předložené novely školského
   zákona, avšak nezaručuje spravedlivý výsledek.
 
-Ačkoli právě poslední naivní mechanismus doslovně vychází z [novely školského zákona](https://www.psp.cz/sqw/text/tiskt.sqw?O=9&CT=551&CT1=0) 
-**§60j Způsob hodnocení výsledků přijímacího řízení** (odst. 2 a 3), za hlavní podstatu
+Ačkoli právě poslední naivní mechanismus doslovně vychází z 
+[novely školského zákona](https://www.psp.cz/sqw/text/tiskt.sqw?O=9&CT=551&CT1=0) 
+**&nbsp;§60j Způsob hodnocení výsledků přijímacího řízení** (odst. 2 a 3), za hlavní podstatu
 lze však mnohem více považovat právě požadavek **spravedlnosti** 
 a **respektování žákovských preferencí**.
 
@@ -70,11 +71,6 @@ právě za výzkum v této oblasti.**
 **Proto by bylo velmi žádoucí, aby v souladu s moderními vědeckými poznatky použila mechanismus
 odloženého přijetí pro přijímací zkoušky i Česká republika.** Použití tohoto mechanismu
 je stejně snadné jako u kteréhokoli jiného algoritmu a nepředstavuje žádnou dodatečnou zátěž.
-
-2023, Tomáš Protivínský, [tomas.protivinsky@cerge-ei.cz](mailto://tomas.protivinsky@cerge-ei.cz)
-
-<i class="bi bi-github" style="font-size: 200%"></i> Zdrojový kód s ukázkovou implementací těchto mechanismů je k dispozici na [githubu](https://github.com/protivinsky/idea-admissions).
-Kód zároveň umožňuje generovat grafické srovnání výsledných přiřazení podle jednotlivých algoritmů v podobě HTML zprávy.
 """
 
 

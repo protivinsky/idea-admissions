@@ -8,6 +8,7 @@ function hideSiblings(contentId) {
   for (var i = 0; i < siblingElements.length; i++) {
     if (siblingElements[i] !== contentElement && siblingElements[i].className === 'content') {
       siblingElements[i].style.display = "none";
+      // classForContentIdButton(siblingElements[i].id, "btn btn-secondary");
       classForContentIdButton(siblingElements[i].id, "switcher-button");
     }
   }

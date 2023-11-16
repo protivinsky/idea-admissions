@@ -13,9 +13,12 @@ class GraphicLogger(Logger):
       with more fine-tuned output
     """
 
-    _header = "h2"
-    _subheader = "h3"
-    _subsubheader = "h4"
+    _header = "h3"
+    _subheader = "h4"
+    _subsubheader = "h5"
+    _subsubsubheader = "h6"
+
+    _table_klass = "admission"
 
     def __init__(self, *args, **kwargs):
         super().__init__()
@@ -43,7 +46,7 @@ class GraphicLogger(Logger):
         doc.line(self._header, "Vstupní data")
 
         doc.line(self._subheader, "Studentské přihlášky")
-        with doc.tag("table", klass="admission-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 for t in ["", "1. škola", "2. škola", "3. škola"]:
                     doc.line("th", t)
@@ -65,7 +68,7 @@ class GraphicLogger(Logger):
         doc.line(
             "div", "Čísla v závorce označují pořadí školy na přihlášce daného žáka."
         )
-        with doc.tag("table", klass="admission-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -118,7 +121,7 @@ class GraphicLogger(Logger):
         # accepted
         doc.line(self._subheader, "Přijatí žáci")
 
-        with doc.tag("table", klass="admission-table"):
+        with doc.tag("table", klass=self._table_klass):
             for sch in schools:
                 sts = allocation.accepted[sch]
                 with doc.tag("tr"):
@@ -136,7 +139,7 @@ class GraphicLogger(Logger):
 
         if allocation.rejected:
             doc.line(self._subheader, "Nepřijatí žáci")
-            with doc.tag("table", klass="admission-table"):
+            with doc.tag("table", klass=self._table_klass):
                 with doc.tag("tr"):
                     with doc.tag("td", klass="allocation red-black"):
                         doc.line("i", "", klass="bi bi-person-fill")
@@ -148,6 +151,7 @@ class GraphicLogger(Logger):
 
         self._num_steps = 0
         self.at_end_log_start(self._admission_data)
+        doc.stag("hr", klass="my-5")
         self.doc.line(self._header, "Průběh algoritmu")
         # self.at_end_before_steps()
         for step_data in self._step_data:
@@ -196,7 +200,7 @@ class GraphicLogger(Logger):
             ]
 
             doc.line(self._subheader, "Barevné značení")
-            with doc.tag("table", klass="admission-table"):
+            with doc.tag("table", klass=self._table_klass):
                 for color, label in color_labels:
                     with doc.tag("tr"):
                         with doc.tag("td", klass=color):
@@ -205,11 +209,11 @@ class GraphicLogger(Logger):
                         doc.line("td", label)
 
         doc.line(self._subheader, f"Krok {self._num_steps}")
-        doc.line(self._subsubheader, "NABÍDKY")
+        doc.line(self._subsubheader, "Nabídky")
 
         removed_so_far = {sch: 0 for sch in schools}
         cutoffs = {sch: max_exam_len for sch in schools}
-        with doc.tag("table", klass="admission-table school-optimal-step-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -240,7 +244,7 @@ class GraphicLogger(Logger):
                             extra_klass = "gray-gray"
 
                         if i == seats[sch] + removed_so_far[sch] - 1:
-                            extra_klass += " last-offered"
+                            extra_klass += " bottom-border"
                             removed_so_far[sch] += max_exam_len + 1
                             cutoffs[sch] = i
 
@@ -250,9 +254,9 @@ class GraphicLogger(Logger):
                                 f"  {st} (#{self._application_school_rank[st][sch]})"
                             )
 
-        doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
+        doc.line(self._subsubheader, "Přijaté a odmítnuté")
 
-        with doc.tag("table", klass="admission-table school-optimal-step-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -283,7 +287,7 @@ class GraphicLogger(Logger):
                             extra_klass = "red-red"
 
                         if i == cutoffs[sch]:
-                            extra_klass += " last-offered"
+                            extra_klass += " bottom-border"
                         elif i > cutoffs[sch]:
                             extra_klass = "gray-gray"
 
@@ -337,7 +341,7 @@ class GraphicLogger(Logger):
             ]
 
             doc.line(self._subheader, "Barevné značení")
-            with doc.tag("table", klass="admission-table"):
+            with doc.tag("table", klass=self._table_klass):
                 for color, label in color_labels:
                     with doc.tag("tr"):
                         with doc.tag("td", klass=color):
@@ -345,40 +349,76 @@ class GraphicLogger(Logger):
                             doc.text("  žák")
                         doc.line("td", label)
 
+        def print_wide_table(extra_klasses):
+            chunks = []
+            i = -1
+            for i in range((len(students) - 1) // 8):
+                chunks.append(students[i * 8 : (i + 1) * 8])
+            chunks.append(students[(i + 1) * 8 :])
+            with doc.tag("table", klass=self._table_klass):
+                for j, chunk in enumerate(chunks):
+                    is_last_chunk = j == (len(chunks) - 1)
+                    with doc.tag("tr"):
+                        doc.line("th", "")
+                        for st in chunk:
+                            with doc.tag("th"):
+                                doc.line("i", "", klass="bi bi-person-fill")
+                                doc.text(f"  {st}")
+                        if not is_last_chunk:
+                            doc.line("th", "...", klass="no-right-border")
+                    for i in range(max_app_len):
+                        with doc.tag("tr"):
+                            doc.line("td", f"{i + 1}. škola")
+                            for st in chunk:
+                                sch = applications[st][i]
+                                extra_klass = extra_klasses[st][i]
+                                with doc.tag("td", klass=extra_klass):
+                                    doc.line("i", "", klass="bi bi-house-fill")
+                                    doc.text(f"  {sch}")
+                            if not is_last_chunk:
+                                doc.line("td", "...", klass="no-right-border")
+                    if not is_last_chunk:
+                        with doc.tag("tr"):
+                            doc.line("td", "", klass="no-left-border no-right-border")
+                            for k in range(len(chunk)):
+                                if j < (len(chunks) - 2) or k < len(chunks[-1]):
+                                    doc.line(
+                                        "td",
+                                        "...",
+                                        klass="no-left-border no-right-border",
+                                    )
+                                else:
+                                    doc.line(
+                                        "td",
+                                        "",
+                                        klass="no-left-border no-right-border no-bottom-border",
+                                    )
+
+        doc.stag("hr", klass="my-5")
         doc.line(self._subheader, f"Krok {self._num_steps}")
 
-        doc.line(self._subsubheader, "NABÍDKY")
-        with doc.tag("div"):
-            doc.line("b", "Podle přihlášek")
+        doc.line(self._subsubheader, "Nabídky")
+        doc.line(self._subsubsubheader, "Podle přihlášek")
 
-        with doc.tag("table", klass="admission-table da-step-table"):
-            with doc.tag("tr"):
-                doc.line("th", "")
-                for st in students:
-                    with doc.tag("th"):
-                        doc.line("i", "", klass="bi bi-person-fill")
-                        doc.text(f"  {st}")
-            for i in range(max_app_len):
-                with doc.tag("tr"):
-                    doc.line("td", f"{i + 1}. škola")
-                    for st in students:
-                        sch = applications[st][i]
-                        if st in self._prev_rejected[sch]:
-                            extra_klass = "red-red"
-                        elif sch in last_to_compare and st in last_to_compare[sch]:
-                            extra_klass = "yellow-yellow"
-                        else:
-                            extra_klass = "gray-gray"
-                        if i == last_positions[st]:
-                            extra_klass += " last-offered"
-                        with doc.tag("td", klass=extra_klass):
-                            doc.line("i", "", klass="bi bi-house-fill")
-                            doc.text(f"  {sch}")
+        extra_klasses = {}
+        for st in students:
+            extra_klasses[st] = []
+            for i, sch in enumerate(applications[st]):
+                if st in self._prev_rejected[sch]:
+                    extra_klass = "red-red"
+                elif sch in last_to_compare and st in last_to_compare[sch]:
+                    extra_klass = "yellow-yellow"
+                else:
+                    extra_klass = "gray-gray"
+                if i == last_positions[st]:
+                    extra_klass += " bottom-border"
+                extra_klasses[st].append(extra_klass)
 
-        with doc.tag("div"):
-            doc.line("b", "Podle výsledků zkoušky")
+        print_wide_table(extra_klasses)
 
-        with doc.tag("table", klass="admission-table da-step-table"):
+        doc.line(self._subsubsubheader, "Podle výsledků zkoušky")
+
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -411,46 +451,36 @@ class GraphicLogger(Logger):
                                 f"  {st} (#{self._application_school_rank[st][sch]})"
                             )
 
-        doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
-        with doc.tag("div"):
-            doc.line("b", "Podle přihlášek")
+        doc.line(self._subsubheader, "Přijaté a odmítnuté")
+        doc.line(self._subsubsubheader, "Podle přihlášek")
 
-        with doc.tag("table", klass="admission-table da-step-table"):
-            with doc.tag("tr"):
-                doc.line("th", "")
-                for st in students:
-                    with doc.tag("th"):
-                        doc.line("i", "", klass="bi bi-person-fill")
-                        doc.text(f"  {st}")
-            for i in range(max_app_len):
-                with doc.tag("tr"):
-                    doc.line("td", f"{i + 1}. škola")
-                    for st in students:
-                        sch = applications[st][i]
-                        if (
-                            sch in last_to_compare
-                            and st in last_to_compare[sch]
-                            and st not in accepted[sch]
-                        ):
-                            self._prev_rejected[sch].add(st)
-                        if st in accepted[sch]:
-                            extra_klass = "green-green"
-                        elif st in self._prev_rejected[sch]:
-                            extra_klass = "red-red"
-                        elif st in all_accepted:
-                            extra_klass = "gray-gray"
-                        else:
-                            extra_klass = ""
-                        if i == last_positions[st]:
-                            extra_klass += " last-offered"
-                        with doc.tag("td", klass=extra_klass):
-                            doc.line("i", "", klass="bi bi-house-fill")
-                            doc.text(f"  {sch}")
+        extra_klasses = {}
+        for st in students:
+            extra_klasses[st] = []
+            for i, sch in enumerate(applications[st]):
+                if (
+                    sch in last_to_compare
+                    and st in last_to_compare[sch]
+                    and st not in accepted[sch]
+                ):
+                    self._prev_rejected[sch].add(st)
+                if st in accepted[sch]:
+                    extra_klass = "green-green"
+                elif st in self._prev_rejected[sch]:
+                    extra_klass = "red-red"
+                elif st in all_accepted:
+                    extra_klass = "gray-gray"
+                else:
+                    extra_klass = ""
+                if i == last_positions[st]:
+                    extra_klass += " bottom-border"
+                extra_klasses[st].append(extra_klass)
 
-        with doc.tag("div"):
-            doc.line("b", "Podle výsledků zkoušky")
+        print_wide_table(extra_klasses)
 
-        with doc.tag("table", klass="admission-table da-step-table"):
+        doc.line(self._subsubsubheader, "Podle výsledků zkoušky")
+
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -518,7 +548,7 @@ class GraphicLogger(Logger):
             ]
 
             doc.line(self._subheader, "Barevné značení")
-            with doc.tag("table", klass="admission-table"):
+            with doc.tag("table", klass=self._table_klass):
                 for color, label in color_labels:
                     with doc.tag("tr"):
                         with doc.tag("td", klass=color):
@@ -527,7 +557,7 @@ class GraphicLogger(Logger):
                         doc.line("td", label)
 
         doc.line(self._subheader, f"Krok {self._num_steps}")
-        doc.line(self._subsubheader, "NABÍDKY")
+        doc.line(self._subsubheader, "Nabídky")
 
         # what do I need here?
         # - how many are still below the line
@@ -536,7 +566,7 @@ class GraphicLogger(Logger):
             sch: len(exams[sch]) - len(sts) for sch, sts in remaining_applicants.items()
         }
 
-        with doc.tag("table", klass="admission-table school-optimal-step-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -556,20 +586,22 @@ class GraphicLogger(Logger):
                         st = self._admission_data.exams[sch][i]
                         # offered / not-evaluated / last-offered / removed
                         if i < above_line[sch]:
-                            extra_klass = "offered" if sch in offers[st] else "removed"
+                            extra_klass = (
+                                "yellow-yellow" if sch in offers[st] else "red-red"
+                            )
                         else:
-                            extra_klass = "not-evaluated"
+                            extra_klass = "gray-gray"
                         if i == above_line[sch] - 1:
-                            extra_klass += " last-offered"
+                            extra_klass += " bottom-border"
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
                             doc.text(
                                 f"  {st} (#{self._application_school_rank[st][sch]})"
                             )
 
-        doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
+        doc.line(self._subsubheader, "Přijaté a odmítnuté")
 
-        with doc.tag("table", klass="admission-table school-optimal-step-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -590,12 +622,12 @@ class GraphicLogger(Logger):
                         # accepted / removed / not-evaluated / last-offered
                         if i < above_line[sch]:
                             extra_klass = (
-                                "accepted" if st in accepted[sch] else "removed"
+                                "green-green" if st in accepted[sch] else "red-red"
                             )
                         else:
-                            extra_klass = "not-evaluated"
+                            extra_klass = "gray-gray"
                         if i == above_line[sch] - 1:
-                            extra_klass += " last-offered"
+                            extra_klass += " bottom-border"
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
                             doc.text(
@@ -643,7 +675,7 @@ class GraphicLogger(Logger):
             ]
 
             doc.line(self._subheader, "Barevné značení")
-            with doc.tag("table", klass="admission-table"):
+            with doc.tag("table", klass=self._table_klass):
                 for color, label in color_labels:
                     with doc.tag("tr"):
                         with doc.tag("td", klass=color):
@@ -652,9 +684,9 @@ class GraphicLogger(Logger):
                         doc.line("td", label)
 
         doc.line(self._subheader, f"Krok {self._num_steps}")
-        doc.line(self._subsubheader, "NABÍDKY")
+        doc.line(self._subsubheader, "Nabídky")
 
-        with doc.tag("table", klass="admission-table naive-mechanism-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -673,17 +705,17 @@ class GraphicLogger(Logger):
                     for sch in schools:
                         st = self._admission_data.exams[sch][i]
                         if st in self._prev_accepted[sch]:
-                            extra_klass = "accepted"
+                            extra_klass = "green-green"
                         elif st in self._prev_removed[sch]:
-                            extra_klass = "not-evaluated"
+                            extra_klass = "gray-gray"
                         elif st in offers and sch in offers[st]:
-                            extra_klass = "offered"
+                            extra_klass = "yellow-yellow"
                         else:
-                            extra_klass = "removed"
+                            extra_klass = "red-red"
                         # extra_klass = (
-                        #     "offered"
+                        #     "yellow-yellow"
                         #     if st in offers and sch in offers[st]
-                        #     else "removed"
+                        #     else "red-red"
                         # )
                         with doc.tag("td", klass=f"exam-student {extra_klass}"):
                             doc.line("i", "", klass="bi bi-person-fill")
@@ -691,9 +723,9 @@ class GraphicLogger(Logger):
                                 f"  {st} (#{self._application_school_rank[st][sch]})"
                             )
 
-        doc.line(self._subsubheader, "PŘIJATÉ A ODMÍTNUTÉ")
+        doc.line(self._subsubheader, "Přijaté a odmítnuté")
 
-        with doc.tag("table", klass="admission-table naive-mechanism-table"):
+        with doc.tag("table", klass=self._table_klass):
             with doc.tag("tr"):
                 doc.line("th", "")
                 for sch in schools:
@@ -712,14 +744,14 @@ class GraphicLogger(Logger):
                     for sch in schools:
                         st = self._admission_data.exams[sch][i]
                         if st in self._prev_accepted[sch]:
-                            extra_klass = "accepted"
+                            extra_klass = "green-green"
                         elif st in self._prev_removed[sch]:
-                            extra_klass = "not-evaluated"
+                            extra_klass = "gray-gray"
                         elif st in accepted[sch]:
-                            extra_klass = "accepted"
+                            extra_klass = "green-green"
                             self._prev_accepted[sch].add(st)
                         elif st in all_accepted or not remaining_seats[sch]:
-                            extra_klass = "not-evaluated"
+                            extra_klass = "gray-gray"
                             self._prev_removed[sch].add(st)
                         else:
                             extra_klass = ""
