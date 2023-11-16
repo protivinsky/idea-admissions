@@ -151,6 +151,7 @@ class GraphicLogger(Logger):
 
         self._num_steps = 0
         self.at_end_log_start(self._admission_data)
+        doc.stag("hr", klass="my-5")
         self.doc.line(self._header, "Průběh algoritmu")
         # self.at_end_before_steps()
         for step_data in self._step_data:
@@ -348,34 +349,72 @@ class GraphicLogger(Logger):
                             doc.text("  žák")
                         doc.line("td", label)
 
+        def print_wide_table(extra_klasses):
+            chunks = []
+            i = -1
+            for i in range((len(students) - 1) // 8):
+                chunks.append(students[i * 8 : (i + 1) * 8])
+            chunks.append(students[(i + 1) * 8 :])
+            with doc.tag("table", klass=self._table_klass):
+                for j, chunk in enumerate(chunks):
+                    is_last_chunk = j == (len(chunks) - 1)
+                    with doc.tag("tr"):
+                        doc.line("th", "")
+                        for st in chunk:
+                            with doc.tag("th"):
+                                doc.line("i", "", klass="bi bi-person-fill")
+                                doc.text(f"  {st}")
+                        if not is_last_chunk:
+                            doc.line("th", "...", klass="no-right-border")
+                    for i in range(max_app_len):
+                        with doc.tag("tr"):
+                            doc.line("td", f"{i + 1}. škola")
+                            for st in chunk:
+                                sch = applications[st][i]
+                                extra_klass = extra_klasses[st][i]
+                                with doc.tag("td", klass=extra_klass):
+                                    doc.line("i", "", klass="bi bi-house-fill")
+                                    doc.text(f"  {sch}")
+                            if not is_last_chunk:
+                                doc.line("td", "...", klass="no-right-border")
+                    if not is_last_chunk:
+                        with doc.tag("tr"):
+                            doc.line("td", "", klass="no-left-border no-right-border")
+                            for k in range(len(chunk)):
+                                if j < (len(chunks) - 2) or k < len(chunks[-1]):
+                                    doc.line(
+                                        "td",
+                                        "...",
+                                        klass="no-left-border no-right-border",
+                                    )
+                                else:
+                                    doc.line(
+                                        "td",
+                                        "",
+                                        klass="no-left-border no-right-border no-bottom-border",
+                                    )
+
+        doc.stag("hr", klass="my-5")
         doc.line(self._subheader, f"Krok {self._num_steps}")
 
         doc.line(self._subsubheader, "Nabídky")
         doc.line(self._subsubsubheader, "Podle přihlášek")
 
-        with doc.tag("table", klass=self._table_klass):
-            with doc.tag("tr"):
-                doc.line("th", "")
-                for st in students:
-                    with doc.tag("th"):
-                        doc.line("i", "", klass="bi bi-person-fill")
-                        doc.text(f"  {st}")
-            for i in range(max_app_len):
-                with doc.tag("tr"):
-                    doc.line("td", f"{i + 1}. škola")
-                    for st in students:
-                        sch = applications[st][i]
-                        if st in self._prev_rejected[sch]:
-                            extra_klass = "red-red"
-                        elif sch in last_to_compare and st in last_to_compare[sch]:
-                            extra_klass = "yellow-yellow"
-                        else:
-                            extra_klass = "gray-gray"
-                        if i == last_positions[st]:
-                            extra_klass += " bottom-border"
-                        with doc.tag("td", klass=extra_klass):
-                            doc.line("i", "", klass="bi bi-house-fill")
-                            doc.text(f"  {sch}")
+        extra_klasses = {}
+        for st in students:
+            extra_klasses[st] = []
+            for i, sch in enumerate(applications[st]):
+                if st in self._prev_rejected[sch]:
+                    extra_klass = "red-red"
+                elif sch in last_to_compare and st in last_to_compare[sch]:
+                    extra_klass = "yellow-yellow"
+                else:
+                    extra_klass = "gray-gray"
+                if i == last_positions[st]:
+                    extra_klass += " bottom-border"
+                extra_klasses[st].append(extra_klass)
+
+        print_wide_table(extra_klasses)
 
         doc.line(self._subsubsubheader, "Podle výsledků zkoušky")
 
@@ -415,37 +454,29 @@ class GraphicLogger(Logger):
         doc.line(self._subsubheader, "Přijaté a odmítnuté")
         doc.line(self._subsubsubheader, "Podle přihlášek")
 
-        with doc.tag("table", klass=self._table_klass):
-            with doc.tag("tr"):
-                doc.line("th", "")
-                for st in students:
-                    with doc.tag("th"):
-                        doc.line("i", "", klass="bi bi-person-fill")
-                        doc.text(f"  {st}")
-            for i in range(max_app_len):
-                with doc.tag("tr"):
-                    doc.line("td", f"{i + 1}. škola")
-                    for st in students:
-                        sch = applications[st][i]
-                        if (
-                            sch in last_to_compare
-                            and st in last_to_compare[sch]
-                            and st not in accepted[sch]
-                        ):
-                            self._prev_rejected[sch].add(st)
-                        if st in accepted[sch]:
-                            extra_klass = "green-green"
-                        elif st in self._prev_rejected[sch]:
-                            extra_klass = "red-red"
-                        elif st in all_accepted:
-                            extra_klass = "gray-gray"
-                        else:
-                            extra_klass = ""
-                        if i == last_positions[st]:
-                            extra_klass += " bottom-border"
-                        with doc.tag("td", klass=extra_klass):
-                            doc.line("i", "", klass="bi bi-house-fill")
-                            doc.text(f"  {sch}")
+        extra_klasses = {}
+        for st in students:
+            extra_klasses[st] = []
+            for i, sch in enumerate(applications[st]):
+                if (
+                    sch in last_to_compare
+                    and st in last_to_compare[sch]
+                    and st not in accepted[sch]
+                ):
+                    self._prev_rejected[sch].add(st)
+                if st in accepted[sch]:
+                    extra_klass = "green-green"
+                elif st in self._prev_rejected[sch]:
+                    extra_klass = "red-red"
+                elif st in all_accepted:
+                    extra_klass = "gray-gray"
+                else:
+                    extra_klass = ""
+                if i == last_positions[st]:
+                    extra_klass += " bottom-border"
+                extra_klasses[st].append(extra_klass)
+
+        print_wide_table(extra_klasses)
 
         doc.line(self._subsubsubheader, "Podle výsledků zkoušky")
 

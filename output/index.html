@@ -10,6 +10,13 @@
   margin-top: 20px;
   text-align: justify; }
 
+a {
+  color: #000000;
+  text-decoration: underline; }
+
+a:hover {
+  text-decoration: none; }
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 1rem; }
 
@@ -68,6 +75,15 @@ th, td {
 .red-black {
   color: #000000;
   background-color: #ffdddd; }
+
+.no-left-border {
+  border-left: 0; }
+
+.no-right-border {
+  border-right: 0; }
+
+.no-bottom-border {
+  border-bottom: 0; }
 
 .color_table td, .color_table th {
   padding: 8px; }
@@ -137,11 +153,11 @@ th, td {
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-7">
+        <div class="col-8">
           <h1 class="display-4">Autorský analytický doplněk</h1>
-          <h3>Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?</h3>
+          <h2 style="text-align: left;">Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?</h2>
         </div>
-        <div class="col-5 my-4 mr-4 d-flex justify-content-end">
+        <div class="col-4 my-4 mr-4 d-flex justify-content-end">
           <a href="https://idea.cerge-ei.cz" target="_blank">
             <image src="data:image/png;base64,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" width="300px" />
           </a>
@@ -164,12 +180,37 @@ th, td {
             <h2>Úvod</h2>
           </div>
           <div class="col-12">
-            <div class="alert alert-warning" role="alert">Tato stránka nabízí doplňující obsah ke studii <a href="https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie" target="_blank">Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?</a>. Jedná se o automaticky generovanou stránku nabízející detailní vhled do průběhu jednotlivých algoritmů a zde uvedený obsah se může v budoucnu měnit. Autor případně uvítá zpětnou vazbu na <a href="mailto:tomas.protivinsky@cerge-ei.cz">tomas.protivinsky@cerge-ei.cz</a>.</div>
+            <ul class="list-unstyled">
+              <li>
+                <p class="lead"><i class="bi bi-chevron-double-right"></i>Pro jaro 2024 je plánovaná reforma přijímacích zkoušek na střední školy, aby se zabránilo podobnému chaosu jako v roce 2023. Chystané změny jsou krok dobrým směrem, avšak stále panují nejasnosti ohledně algoritmu, který vyhodnotí data z přihlášek a výsledky zkoušek a přiřadí žáky na školy.</p>
+              </li>
+              <li>
+                <p class="lead"><i class="bi bi-chevron-double-right"></i>Tento algoritmu (zvaný párovací mechanismus) není nepodstatný technický detail, ale má zásadní vliv na to, kteří žáci se na své vybrané školy dostanou a kteří nikoli.</p>
+              </li>
+              <li>
+                <p class="lead"><i class="bi bi-chevron-double-right"></i>Vědci po celém světě tyto algoritmy studují již desítky let a rozlišili několik základních mechanismů. <b>Mechanismus odloženého přijetí</b> je dnes ve světě nejčastěji zaváděným systémem zkoušek a jeho kvalita je ověřena praxí i matematickými důkazy.</p>
+              </li>
+              <li>
+                <p class="lead"><i class="bi bi-chevron-double-right"></i>Důrazně doporučujeme, aby MŠMT pro následující přijímací zkoušky využilo právě tento mechanismus: nepředstavuje žádnou dodatečnou zátěž a nabízí žákům jednoznačně lepší přiřazení do škol při plném respektování výsledků zkoušek.</p>
+              </li>
+              <li>
+                <p class="lead"><i class="bi bi-chevron-double-right"></i>Tato stránka obsahuje doplňující analytický materiál ke studii <a href="https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie" target="_blank"><b>Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?</b></a> publikované think-tankem IDEA při CERGE-EI.</p>
+              </li>
+              <li>
+                <p class="lead"><i class="bi bi-chevron-double-right"></i>Jednotlivé podstránky ukazují průběh vybraných algoritmů na různých modelových situacích, aby ilustrovaly jejich silné a slabé stránky. První dva příklady, <i>"Zadáni dle Cermatu"</i> a <i>"Optimalita pro studenty vs. pro školy"</i> jasně ukazují, proč je mechanismus odloženého přijetí lepší než zvažovaná alternativa.</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <div class="alert alert-warning" role="alert">Tento obsah je automaticky generovaný a může se v budoucnu měnit. Zdrojový kód je k dispozici na <a href="https://github.com/protivinsky/idea-admissions" target="_blank">https://github.com/protivinsky/idea-admissions</a> včetně historie změn. Autor případně uvítá zpětnou vazbu na <a href="mailto:tomas.protivinsky@cerge-ei.cz">tomas.protivinsky@cerge-ei.cz</a>.</div>
           </div>
         </div>
         <div class="row mb-4">
           <div class="col-12">
             <h2>IDEA Talks</h2>
+          </div>
+          <div class="col-12">
+            <p class="lead">Rozhovor s autorem studie, ve kterém popisuje některé párovací mechanismy a uvádí další návrhy pro zlepšení organizace přijímacích zkoušek na střední školy.</p>
           </div>
           <div class="col-xl-2 col-lg-1"></div>
           <div class="col-xl-8 col-lg-10 col-12">
@@ -507,6 +548,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -531,6 +573,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td>další školy odmítnutých žáků, u kterých se následně pokračuje ve vyhodnocování</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 1</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -545,11 +588,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -561,11 +600,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -577,11 +612,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -593,6 +624,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -700,11 +770,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -716,11 +782,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -732,11 +794,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -748,6 +806,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -842,6 +939,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student gray-gray"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 2</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -856,11 +954,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -872,11 +966,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -888,11 +978,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -904,6 +990,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1011,11 +1136,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1027,11 +1148,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1043,11 +1160,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class=""><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class=""><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class=""><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1059,6 +1172,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class=""><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class=""><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class=""><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1153,6 +1305,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student "><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 3</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -1167,11 +1320,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1183,11 +1332,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1199,11 +1344,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1215,6 +1356,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1322,11 +1502,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1338,11 +1514,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1354,11 +1526,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class=""><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1370,6 +1538,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class=""><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class=""><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1464,6 +1671,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student green-green"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 4</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -1478,11 +1686,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1494,11 +1698,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1510,11 +1710,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1526,6 +1722,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1633,11 +1868,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1649,11 +1880,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1665,11 +1892,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1681,6 +1904,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class=""><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1775,6 +2037,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student red-red"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 5</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -1789,11 +2052,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1805,11 +2064,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1821,11 +2076,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1837,6 +2088,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="yellow-yellow bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -1944,11 +2234,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <th><i class="bi bi-person-fill"></i>  Filip</th>
               <th><i class="bi bi-person-fill"></i>  Gustav</th>
               <th><i class="bi bi-person-fill"></i>  Hanka</th>
-              <th><i class="bi bi-person-fill"></i>  Ivana</th>
-              <th><i class="bi bi-person-fill"></i>  Jana</th>
-              <th><i class="bi bi-person-fill"></i>  Katka</th>
-              <th><i class="bi bi-person-fill"></i>  Lenka</th>
-              <th><i class="bi bi-person-fill"></i>  Marek</th>
+              <th class="no-right-border">...</th>
             </tr>
             <tr>
               <td>1. škola</td>
@@ -1960,11 +2246,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="red-red"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>2. škola</td>
@@ -1976,11 +2258,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
               <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
-              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
-              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="no-right-border">...</td>
             </tr>
             <tr>
               <td>3. škola</td>
@@ -1992,6 +2270,45 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="red-red bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="no-right-border">...</td>
+            </tr>
+            <tr>
+              <td class="no-left-border no-right-border"></td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border">...</td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+              <td class="no-left-border no-right-border no-bottom-border"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <th><i class="bi bi-person-fill"></i>  Ivana</th>
+              <th><i class="bi bi-person-fill"></i>  Jana</th>
+              <th><i class="bi bi-person-fill"></i>  Katka</th>
+              <th><i class="bi bi-person-fill"></i>  Lenka</th>
+              <th><i class="bi bi-person-fill"></i>  Marek</th>
+            </tr>
+            <tr>
+              <td>1. škola</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="red-red"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+            </tr>
+            <tr>
+              <td>2. škola</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+              <td class="green-green bottom-border"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  SOŠ Smíchov</td>
+              <td class="gray-gray"><i class="bi bi-house-fill"></i>  Lyceum Mělník</td>
+            </tr>
+            <tr>
+              <td>3. škola</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
               <td class="gray-gray"><i class="bi bi-house-fill"></i>  Gymnázium Nymburk</td>
@@ -2337,6 +2654,7 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -3840,6 +4158,7 @@ vzdělání nebude uchazeč přijat.</em>
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -4467,6 +4786,7 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Filip (#2)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -6016,6 +6336,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Cecílie (#1)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -6040,6 +6361,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td>další školy odmítnutých žáků, u kterých se následně pokračuje ve vyhodnocování</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 1</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -6271,6 +6593,7 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Cecílie (#1)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -6473,6 +6796,7 @@ vzdělání nebude uchazeč přijat.</em>
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Cecílie (#1)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -6674,6 +6998,7 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Cecílie (#1)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -6881,6 +7206,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -6905,6 +7231,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td>další školy odmítnutých žáků, u kterých se následně pokračuje ve vyhodnocování</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 1</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -7016,6 +7343,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student gray-gray"><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 2</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -7127,6 +7455,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student gray-gray"><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 3</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -7238,6 +7567,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student "><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 4</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -7349,6 +7679,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student "><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 5</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -7583,6 +7914,7 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -7843,6 +8175,7 @@ vzdělání nebude uchazeč přijat.</em>
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -8102,6 +8435,7 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Cecílie (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -8428,6 +8762,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -8452,6 +8787,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td>další školy odmítnutých žáků, u kterých se následně pokračuje ve vyhodnocování</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 1</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -8579,6 +8915,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student gray-gray"><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 2</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -8706,6 +9043,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student "><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 3</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -8833,6 +9171,7 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
               <td class="exam-student "><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h4>Krok 4</h4>
           <h5>Nabídky</h5>
           <h6>Podle přihlášek</h6>
@@ -9092,6 +9431,7 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -9440,6 +9780,7 @@ vzdělání nebude uchazeč přijat.</em>
               <td class="exam-student red-black"><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">
@@ -9724,6 +10065,7 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
               <td class="exam-student green-black"><i class="bi bi-person-fill"></i>  Dan (#3)</td>
             </tr>
           </table>
+          <hr class="my-5" />
           <h3>Průběh algoritmu</h3>
           <h4>Barevné značení</h4>
           <table class="admission">

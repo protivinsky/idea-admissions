@@ -35,13 +35,22 @@ examples = [example_cermat, example_3, example_4, example_1]
 title = (
     "Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?"
 )
+intro_text = [
+    "Pro jaro 2024 je plánovaná reforma přijímacích zkoušek na střední školy, aby se zabránilo podobnému chaosu jako v roce 2023. Chystané změny jsou krok dobrým směrem, avšak stále panují nejasnosti ohledně algoritmu, který vyhodnotí data z přihlášek a výsledky zkoušek a přiřadí žáky na školy.",
+    "Tento algoritmu (zvaný párovací mechanismus) není nepodstatný technický detail, ale má zásadní vliv na to, kteří žáci se na své vybrané školy dostanou a kteří nikoli.",
+    "Vědci po celém světě tyto algoritmy studují již desítky let a rozlišili několik základních mechanismů. <b>Mechanismus odloženého přijetí</b> je dnes ve světě nejčastěji zaváděným systémem zkoušek a jeho kvalita je ověřena praxí i matematickými důkazy.",
+    "Důrazně doporučujeme, aby MŠMT pro následující přijímací zkoušky využilo právě tento mechanismus: nepředstavuje žádnou dodatečnou zátěž a nabízí žákům jednoznačně lepší přiřazení do škol při plném respektování výsledků zkoušek.",
+    "Tato stránka obsahuje doplňující analytický materiál ke studii <a href=\"https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie\" target=\"_blank\"><b>Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?</b></a> publikované think-tankem IDEA při CERGE-EI.",
+    "Jednotlivé podstránky ukazují průběh vybraných algoritmů na různých modelových situacích, aby ilustrovaly jejich silné a slabé stránky. První dva příklady, <i>\"Zadáni dle Cermatu\"</i> a <i>\"Optimalita pro studenty vs. pro školy\"</i> jasně ukazují, proč je mechanismus odloženého přijetí lepší než zvažovaná alternativa.",
+]
+
 doc = rt.Doc(max_width=1200, title=title)
 with doc.tag("div", klass="container"):
     with doc.tag("div", klass="row"):
-        with doc.tag("div", klass="col-7"):
+        with doc.tag("div", klass="col-8"):
             doc.line("h1", "Autorský analytický doplněk", klass="display-4")
-            doc.line("h3", title)
-        with doc.tag("div", klass="col-5 my-4 mr-4 d-flex justify-content-end"):
+            doc.line("h2", title, style="text-align: left;")
+        with doc.tag("div", klass="col-4 my-4 mr-4 d-flex justify-content-end"):
             with doc.tag("a", href="https://idea.cerge-ei.cz", target="_blank"):
                 root_dir = os.path.dirname(os.path.dirname(__file__))
                 image_file = os.path.join(
@@ -56,10 +65,17 @@ with doc.tag("div", klass="container"):
         with doc_intro.tag("div", klass="col-12"):
             doc_intro.line("h2", "Úvod")
         with doc_intro.tag("div", klass="col-12"):
+            with doc_intro.tag("ul", klass="list-unstyled"):
+                for text in intro_text:
+                    with doc_intro.tag("li"):
+                        with doc_intro.tag("p", klass="lead"):
+                            doc_intro.line("i", "", klass="bi bi-chevron-double-right")
+                            doc_intro.asis(text)
+        with doc_intro.tag("div", klass="col-12"):
             with doc_intro.tag("div", klass="alert alert-warning", role="alert"):
-                doc_intro.text("Tato stránka nabízí doplňující obsah ke studii ")
-                doc_intro.line("a", "Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?", href="https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie", target="_blank")
-                doc_intro.text(". Jedná se o automaticky generovanou stránku nabízející detailní vhled do průběhu jednotlivých algoritmů a zde uvedený obsah se může v budoucnu měnit. Autor případně uvítá zpětnou vazbu na ")
+                # doc_intro.text("Tato stránka nabízí doplňující obsah ke studii ")
+                # doc_intro.line("a", "Přijímačky na střední školy: promyšlený mechanismus nebo velká národní loterie?", href="https://idea.cerge-ei.cz/studies/prijimacky-na-stredni-skoly-promysleny-mechanismus-nebo-velka-narodni-loterie", target="_blank")
+                doc_intro.asis("Tento obsah je automaticky generovaný a může se v budoucnu měnit. Zdrojový kód je k dispozici na <a href=\"https://github.com/protivinsky/idea-admissions\" target=\"_blank\">https://github.com/protivinsky/idea-admissions</a> včetně historie změn. Autor případně uvítá zpětnou vazbu na ")
                 doc_intro.line("a", "tomas.protivinsky@cerge-ei.cz", href="mailto:tomas.protivinsky@cerge-ei.cz")
                 doc_intro.text(".")
 
@@ -67,6 +83,8 @@ with doc.tag("div", klass="container"):
     with doc_intro.tag("div", klass="row mb-4"):
         with doc_intro.tag("div", klass="col-12"):
             doc_intro.line("h2", "IDEA Talks")
+        with doc_intro.tag("div", klass="col-12"):
+            doc_intro.line("p", "Rozhovor s autorem studie, ve kterém popisuje některé párovací mechanismy a uvádí další návrhy pro zlepšení organizace přijímacích zkoušek na střední školy.", klass="lead")
         doc_intro.line("div", "", klass="col-xl-2 col-lg-1")
         with doc_intro.tag("div", klass="col-xl-8 col-lg-10 col-12"):
             with doc_intro.tag("div", klass="ratio ratio-16x9"):
