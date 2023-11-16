@@ -1,6 +1,7 @@
 frozendict
 pytest
 yattag
+Pillow
 markdown
 numpy
 pandas

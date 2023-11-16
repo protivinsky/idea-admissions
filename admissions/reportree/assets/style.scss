@@ -1,126 +1,111 @@
+// body {
+//   font-family: "Libre Franklin", sans-serif;
+//   color: #444;
+//   font-size: 90%;
+//   font-weight: 300;
+// }
+//
+// .container {
+//   max-width: $max_width; /* Default max-width */
+//   margin: 0;
+//   padding: 20px;
+// }
+//
+// .container.full-width {
+//   max-width: none; /* Remove max-width for full-width display */
+// }
+//
+// b, strong {
+//   font-weight: 600;
+// }
+//
+// ul, ol {
+//   margin: 0px;
+// }
+//
+// code {
+//   font-size: 120%;
+//   background-color: #f5f5f5;
+//   border-radius: 5px;
+//   padding: 12px;
+//   margin-bottom: 6px;
+//   display: block;
+//   width: auto;
+//   white-space: pre-wrap;
+// }
+//
+
 body {
-  font-family: "Libre Franklin", sans-serif;
-  color: #444;
-  font-size: 90%;
-  font-weight: 300;
+  margin-top: 20px;
+  text-align: justify;
 }
 
-.container {
-  max-width: $max_width; /* Default max-width */
-  margin: 0;
-  padding: 20px;
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 1rem;
 }
 
-.container.full-width {
-  max-width: none; /* Remove max-width for full-width display */
-}
-
-b, strong {
-  font-weight: 600;
-}
-
-ul, ol {
-  margin: 0px;
-}
-
-code {
-  font-size: 120%;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  padding: 12px;
-  margin-bottom: 6px;
-  display: block;
-  width: auto;
-  white-space: pre-wrap;
+.switcher {
+  margin-bottom: 1rem;
 }
 
 .bi {
   padding-right: 6px;
 }
 
-table.admission-table {
-  border-collapse: collapse; /* Collapse borders */
-  border-spacing: 0;
-  // width: 100%; /* Full width */
-  margin: 12px 0; /* Margin above and below the table */
-  font-size: 110%; /* Font size */
-}
-
-table.admission-table
-  th, td {
-      border: 1px solid #e0e0e0; /* Thin light gray border */
-  }
-
-  th.app-student, td.exam-student, th.exam-school, td.allocation {
-    font-size: 110%;
+table.admission
+  {
+    border-collapse: collapse; /* Collapse borders */
+    border-spacing: 0;
+    margin: 1rem 0 2rem 0; /* Margin above and below the table */
   }
 
   th, td {
-      text-align: center; /* Center align text */
-      padding: 8px 20px; /* Padding inside cells */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center align text */
+    padding: 8px 16px; /* Padding inside cells */
+    margin: 0;
+    font-size: 1.1rem;
   }
 
-  // th {
-  //     background-color: #f8f8f8; /* Light background for header */
-  //     font-weight: bold; /* Make header text bold */
-  // }
-
-  // tbody tr:nth-child(odd) {
-  //     background-color: #f2f2f2; /* Zebra striping for rows */
-  // }
-
-// table.naive-mechanism-table tbody tr:nth-child(odd) {
-//     background-color: #ffffff; /* Zebra striping for rows */
-// }
-//
-// table.school-optimal-step-table tbody tr:nth-child(odd) {
-//     background-color: #ffffff; /* Zebra striping for rows */
-// }
-
-table.admission-table
-  thead {
-    background-color: #f8f8f8;
-  }
-
-  td.offered, td.yellow-yellow {
+  .yellow-yellow {
     color: #808000;
     background-color: #ffff99;
   }
 
-  td.accepted, td.green-green {
+  .green-green {
     color: #009900;
     background-color: #ccffcc;
   }
 
-  td.removed, td.red-red {
+  .red-red {
     color: #ffbbbb;
     background-color: #ffdddd;
   }
 
-  td.last-offered {
+  .bottom-border {
     border-bottom: 3px solid #000000;
   }
 
-  td.right-border {
+  .right-border {
     border-right: 3px solid #000000;
   }
 
-  td.not-evaluated, td.gray-gray {
+  .gray-gray {
     color: #cccccc;
     background-color: #eeeeee;
   }
 
-  td.darkgray-darkgray {
+  .darkgray-darkgray {
     color: #333333;
     background-color: #808080;
   }
   
-  td.green-black {
+  .green-black {
     color: #000000;
     background-color: #ccffcc;
   }
 
-  td.red-black {
+  .red-black {
     color: #000000;
     background-color: #ffdddd;
   }
@@ -135,12 +120,12 @@ table.admission-table
     color: black; /* Text color */
     border: 1px solid #b0b0b0; /* Darker gray border */
     border-radius: 4px; /* Small rounded corners */
-    padding: 5px 10px; /* Padding around text */
+    padding: 4px 8px; /* Padding around text */
     text-align: center; /* Center text */
     text-decoration: none; /* No underline */
     display: inline-block; /* Inline block */
     font-size: 110%; /* Font size */
-    margin: 4px 2px; /* Margins around button */
+    margin: 0px 3px; /* Margins around button */
     cursor: pointer; /* Cursor as pointer */
     transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effect */
 }
@@ -158,5 +143,26 @@ table.admission-table
 .switcher-button-active:hover {
     background-color: #f0d0d0; /* Light gray with pink tint */
     border-color: #b08080; /* Border color with pink tint */
+}
+
+/* FOOTER */
+#footer {
+    color: #333333;
+    background: #eeeeee;
+    box-shadow: 0px 2px 15px rgba(18, 66, 101, 0.08);
+    padding: 1rem 0 1rem 0;
+  }
+
+#footer a {
+    color: #333333;
+    text-decoration: underline;
+}
+
+#footer a:hover {
+    text-decoration: none;
+}
+
+#footer .footer-github a {
+    font-size: 300%;
 }
 

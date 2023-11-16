@@ -3,6 +3,7 @@ import os
 import io
 import importlib
 import base64
+from PIL import Image
 import json
 from typing import Optional, Callable
 import yattag as yt
@@ -76,14 +77,22 @@ class Switcher(GenericTree):
 
     def to_buttons(self):
         def buttons_f_leaf(v, _):
-            return v
+            doc = Doc()
+            doc.line("div", "", klass="my-2")
+            doc.asis(v.getvalue())
+            return doc
 
         def buttons_f_node(n, idx, children):
             doc = Doc()
-            for i, k in enumerate(n.keys()):
-                doc.line("button", k, id="btn" + _idx_str(idx) + "_" + str(i + 1))
-            doc.stag("br")
-            doc.stag("br")
+            with doc.tag("div", klass="row"):
+                with doc.tag("div", klass="btn-group switcher", role="group"):
+                    for i, k in enumerate(n.keys()):
+                        doc.line(
+                            "button",
+                            k,
+                            type="button",
+                            id="btn" + _idx_str(idx) + "_" + str(i + 1),
+                        )
             for i, (k, v) in enumerate(zip(n.keys(), children)):
                 with doc.tag(
                     "div", id="page" + _idx_str(idx) + "_" + str(i + 1), klass="content"
@@ -120,6 +129,36 @@ class Doc(yt.Doc):
                 cls._base_style = file.read()
         return cls._base_style
 
+    @classmethod
+    def default_head(cls, title: str = "ReporTree Doc") -> yt.Doc:
+        # TODO: max-width has to be handled differently in bootstrap world - leave it up to container class?
+        kwargs = {}
+        sass_content = f"""
+        $max_width: {kwargs.pop("max_width") if "max_width" in kwargs else 1900}px;
+
+        {Doc.get_base_style()}
+        """
+        css_style = sass.compile(string=sass_content)
+        doc = yt.Doc()
+        with doc.tag("head"):
+            doc.stag("meta", charset="utf-8")
+            doc.stag(
+                "meta", name="viewport", content="width=device-width, initial-scale=1"
+            )
+            doc.line("title", title)
+            for cdn in cls._cdn:
+                doc.stag("link", rel="stylesheet", href=cdn)
+            doc.stag(
+                "link",
+                rel="stylesheet",
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
+                integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN",
+                crossorigin="anonymous",
+            )
+            with doc.tag("style"):
+                doc.asis(css_style)
+        return doc
+
     def __init__(self, *args, **kwargs):
         self._wrap_kwargs = {}
         if "max_width" in kwargs:
@@ -138,32 +177,13 @@ class Doc(yt.Doc):
         """
         kwargs = {**self._wrap_kwargs, **kwargs}
         body_klass = "container" if "max_width" in kwargs else "container full-width"
-        sass_content = f"""
-        $max_width: {kwargs.pop("max_width") if "max_width" in kwargs else 1900}px;
-
-        {Doc.get_base_style()}
-        """
-        css_style = sass.compile(string=sass_content)
-        title = kwargs.pop("title", "ReporTree Doc")
+        head_doc = head_doc or self.default_head()
 
         doc = Doc()
-        doc.asis("<!DOCTYPE html>")
+        doc.asis("<!doctype html>")
         with doc.tag("html"):
-            with doc.tag("head"):
-                doc.stag("meta", charset="UTF-8")
-                doc.line("title", title)
-                for cdn in self._cdn:
-                    doc.stag("link", rel="stylesheet", href=cdn)
-                doc.stag(
-                    "link",
-                    rel="stylesheet",
-                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css",
-                    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN",
-                    crossorigin="anonymous",
-                )
-                with doc.tag("style"):
-                    doc.asis(css_style)
-            with doc.tag("body", klass=body_klass):
+            doc.asis(head_doc.getvalue())
+            with doc.tag("body"):
                 doc.asis(self.getvalue())
         return doc
 
@@ -171,7 +191,7 @@ class Doc(yt.Doc):
         self.asis(markdown.markdown(md))
         return self
 
-    def figure_as_b64(self, fig, format="png", **kwargs):
+    def figure_as_b64(self, fig: Figure | Axes, format="png", **kwargs):
         fig = fig.get_figure() if isinstance(fig, Axes) else fig
         self.stag(
             "image",
@@ -187,11 +207,27 @@ class Doc(yt.Doc):
                 self.figure_as_b64(fig, **kwargs)
         return self
 
+    def image_as_b64(self, image_file: str, **kwargs):
+        format = image_file.split(".")[-1]
+        with Image.open(image_file) as img:
+            buffered = io.BytesIO()
+            img.save(buffered, format=format)
+            img_bytes = buffered.getvalue()
+        base64_encoded = base64.b64encode(img_bytes)
+        base64_string = base64_encoded.decode()
+        self.stag(
+            "image",
+            src=f"data:image/{format};base64,{base64_string}",
+            **kwargs,
+        )
+        return self
+
     def switcher(self, switch: Switcher):
         if self._has_switcher:
             raise ValueError("Only one switcher is allowed per document.")
 
         self._has_switcher = True
+        self.line("div", "", klass="my-2")
         self.asis(switch.to_buttons().getvalue())
         hierarchy = (
             json.dumps(switch.to_hierarchy(), indent=2)
@@ -206,23 +242,6 @@ class Doc(yt.Doc):
             self.asis("\n")
 
         return self
-
-    def toggle_width(self):
-        with self.tag("div"):
-            self.line(
-                "button", "Toggle width", id="toggleButton", klass="switcher-button"
-            )
-            with self.tag("script"):
-                self.asis(
-                    """
-                    const toggleButton = document.getElementById('toggleButton');
-                    const container = document.querySelector('.container');
-
-                    toggleButton.addEventListener('click', () => {
-                      container.classList.toggle('full-width');
-                    });
-                """
-                )
 
     def color_table(
         self,
