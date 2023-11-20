@@ -176,8 +176,12 @@ class Doc(yt.Doc):
             head_doc: Document containing the content of the `head` tag.
         """
         kwargs = {**self._wrap_kwargs, **kwargs}
-        body_klass = "container" if "max_width" in kwargs else "container full-width"
-        head_doc = head_doc or self.default_head()
+        # body_klass = "container" if "max_width" in kwargs else "container full-width"
+        if head_doc is None:
+            if "title" in kwargs:
+                head_doc = self.default_head(title=kwargs["title"])
+            else:
+                head_doc = self.default_head()
 
         doc = Doc()
         doc.asis("<!doctype html>")
