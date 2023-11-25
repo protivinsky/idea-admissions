@@ -250,7 +250,9 @@ o nedosažitelnosti stability a efektivity</strong>).</p>
         <p>Zde prezentujeme několik možných párovacích mechanismů:</p>
         <ul>
           <li><strong>Původní mechanismus navržený Cermatem</strong>: vede ke spravedlivému výsledku, ale nezaručuje plné
-  respektování žákovských preferencí (výsledek by bylo možné dále zlepšit vzájemnou výměnou žáků).</li>
+  respektování žákovských preferencí (výsledek by bylo možné dále zlepšit vzájemnou výměnou žáků).
+  Jednalo se o první verzi algoritmu sdílenou pouze na vyžádáni, MŠMT momentálně preferuje
+  právě tuto verzi.</li>
           <li><strong>Mechanismus odloženého přijetí</strong>: nazývaný také <strong>stabilní mechanismus optimální pro studenty</strong>,
   neboť nejvíce zachovává preference žáků mezi všemi spravedlivými mechanismy.</li>
           <li><strong>Naivní mechanismus</strong>: představuje prosté překlopení stávajícího průběhu zkoušek do verze s pořadím
@@ -304,10 +306,10 @@ je stejně snadné jako u kteréhokoli jiného algoritmu a nepředstavuje žádn
         <div id="page_2_1" class="content">
           <div class="my-2"></div>
           <h2>Zadání dle Cermatu</h2>
-          <p>Tento příklad používá Cermat ve svém videu vysvětlujícím průběh přijímacích zkoušek.
+          <p>Tento příklad použil Cermat při vysvětlování jimi navrhnutého algoritmu.
 Jedná se o více realistický příklad, který zároveň ilustruje některé zajímavé vlastnosti.</p>
           <p>Mechanismus představený Cermatem, který je stabilní a optimální pro školy, zde v původní
-verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů, jako mechanismus odloženého
+verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů jako mechanismus odloženého
 přijetí, který je stabilní a optimální pro studenty.</p>
           <p><strong>Mechanismus odloženého přijetí umístí 6 žáků na jejich první volbu z přihlášek a nikoho
 na poslední třetí volbu</strong>, oproti tomu <strong>neoptimalizovaný mechanismus dle Cermatu umístí
@@ -375,6 +377,10 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -2409,10 +2415,10 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
         <div id="page_2_2" class="content">
           <div class="my-2"></div>
           <h2>Zadání dle Cermatu</h2>
-          <p>Tento příklad používá Cermat ve svém videu vysvětlujícím průběh přijímacích zkoušek.
+          <p>Tento příklad použil Cermat při vysvětlování jimi navrhnutého algoritmu.
 Jedná se o více realistický příklad, který zároveň ilustruje některé zajímavé vlastnosti.</p>
           <p>Mechanismus představený Cermatem, který je stabilní a optimální pro školy, zde v původní
-verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů, jako mechanismus odloženého
+verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů jako mechanismus odloženého
 přijetí, který je stabilní a optimální pro studenty.</p>
           <p><strong>Mechanismus odloženého přijetí umístí 6 žáků na jejich první volbu z přihlášek a nikoho
 na poslední třetí volbu</strong>, oproti tomu <strong>neoptimalizovaný mechanismus dle Cermatu umístí
@@ -2424,6 +2430,9 @@ dostal na pozici před žáka s lepším výsledkem ze zkoušky.</p>
 nejlepším spravedlivým mechanismem.</strong>
           </p>
           <h2>Původní mechanismus navržený Cermatem</h2>
+          <p>Jedná se o původní verzi algoritmu, jak nám ji po publikaci studie
+představil Cermat (a byl vstřícný diskuzi o možných
+vylepšeních). MŠMT se však momentálně přiklání k této verzi.</p>
           <p>
             <strong>Algoritmus</strong>
           </p>
@@ -2481,6 +2490,10 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -3910,10 +3923,10 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
         <div id="page_2_3" class="content">
           <div class="my-2"></div>
           <h2>Zadání dle Cermatu</h2>
-          <p>Tento příklad používá Cermat ve svém videu vysvětlujícím průběh přijímacích zkoušek.
+          <p>Tento příklad použil Cermat při vysvětlování jimi navrhnutého algoritmu.
 Jedná se o více realistický příklad, který zároveň ilustruje některé zajímavé vlastnosti.</p>
           <p>Mechanismus představený Cermatem, který je stabilní a optimální pro školy, zde v původní
-verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů, jako mechanismus odloženého
+verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů jako mechanismus odloženého
 přijetí, který je stabilní a optimální pro studenty.</p>
           <p><strong>Mechanismus odloženého přijetí umístí 6 žáků na jejich první volbu z přihlášek a nikoho
 na poslední třetí volbu</strong>, oproti tomu <strong>neoptimalizovaný mechanismus dle Cermatu umístí
@@ -3985,6 +3998,10 @@ vzdělání nebude uchazeč přijat.</em>
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -4539,10 +4556,10 @@ vzdělání nebude uchazeč přijat.</em>
         <div id="page_2_4" class="content">
           <div class="my-2"></div>
           <h2>Zadání dle Cermatu</h2>
-          <p>Tento příklad používá Cermat ve svém videu vysvětlujícím průběh přijímacích zkoušek.
+          <p>Tento příklad použil Cermat při vysvětlování jimi navrhnutého algoritmu.
 Jedná se o více realistický příklad, který zároveň ilustruje některé zajímavé vlastnosti.</p>
           <p>Mechanismus představený Cermatem, který je stabilní a optimální pro školy, zde v původní
-verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů, jako mechanismus odloženého
+verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů jako mechanismus odloženého
 přijetí, který je stabilní a optimální pro studenty.</p>
           <p><strong>Mechanismus odloženého přijetí umístí 6 žáků na jejich první volbu z přihlášek a nikoho
 na poslední třetí volbu</strong>, oproti tomu <strong>neoptimalizovaný mechanismus dle Cermatu umístí
@@ -4564,8 +4581,9 @@ při použití mechanismu odloženého přijetí.</p>
           <ol>
             <li>Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
     kteří žáci mají nárok na přijetí.</li>
-            <li>Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
-    pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.</li>
+            <li>Žáci s nárokem na přijetí jsou podmíněně přijati na nejlepší z těchto škol
+    (podmíněnost zde znamená, že se mohou následně rozhodnou pro lepší školu, pokud jim
+    bude později nabídnuto přijetí) a z ostatních škol <strong>nad čarou</strong> jsou vyškrtnuti.</li>
             <li>Tím se na školách uvolní nová místa a přijímací hranici se posunou
     níže.</li>
             <li>Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
@@ -4613,6 +4631,10 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -6283,6 +6305,10 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -6489,6 +6515,9 @@ výsledky zásadní rozdíly.
 Mechanismus odloženého přijetí přiřadí všechny žáky podle jejich první volby, zatímco mechanismus
 představený Cermatem přiřadí žáky na jejich poslední volby z přihlášek.</p>
           <h2>Původní mechanismus navržený Cermatem</h2>
+          <p>Jedná se o původní verzi algoritmu, jak nám ji po publikaci studie
+představil Cermat (a byl vstřícný diskuzi o možných
+vylepšeních). MŠMT se však momentálně přiklání k této verzi.</p>
           <p>
             <strong>Algoritmus</strong>
           </p>
@@ -6540,6 +6569,10 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -6743,6 +6776,10 @@ vzdělání nebude uchazeč přijat.</em>
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -6902,8 +6939,9 @@ při použití mechanismu odloženého přijetí.</p>
           <ol>
             <li>Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
     kteří žáci mají nárok na přijetí.</li>
-            <li>Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
-    pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.</li>
+            <li>Žáci s nárokem na přijetí jsou podmíněně přijati na nejlepší z těchto škol
+    (podmíněnost zde znamená, že se mohou následně rozhodnou pro lepší školu, pokud jim
+    bude později nabídnuto přijetí) a z ostatních škol <strong>nad čarou</strong> jsou vyškrtnuti.</li>
             <li>Tím se na školách uvolní nová místa a přijímací hranici se posunou
     níže.</li>
             <li>Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
@@ -6945,6 +6983,10 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -7153,6 +7195,10 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -7810,6 +7856,9 @@ byla úspěšnější v přijímací zkoušce a měla tuto školu na první pozi
           <p>Maximální efektivity pro studenty by zde dosáhl <strong>mechanismus efektivních přesunů</strong> (uváděný pouze
 ve studii), který však není stabilní.</p>
           <h2>Původní mechanismus navržený Cermatem</h2>
+          <p>Jedná se o původní verzi algoritmu, jak nám ji po publikaci studie
+představil Cermat (a byl vstřícný diskuzi o možných
+vylepšeních). MŠMT se však momentálně přiklání k této verzi.</p>
           <p>
             <strong>Algoritmus</strong>
           </p>
@@ -7861,6 +7910,10 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -8122,6 +8175,10 @@ vzdělání nebude uchazeč přijat.</em>
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -8339,8 +8396,9 @@ při použití mechanismu odloženého přijetí.</p>
           <ol>
             <li>Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
     kteří žáci mají nárok na přijetí.</li>
-            <li>Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
-    pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.</li>
+            <li>Žáci s nárokem na přijetí jsou podmíněně přijati na nejlepší z těchto škol
+    (podmíněnost zde znamená, že se mohou následně rozhodnou pro lepší školu, pokud jim
+    bude později nabídnuto přijetí) a z ostatních škol <strong>nad čarou</strong> jsou vyškrtnuti.</li>
             <li>Tím se na školách uvolní nová místa a přijímací hranici se posunou
     níže.</li>
             <li>Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
@@ -8382,6 +8440,10 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -8699,6 +8761,10 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -9309,6 +9375,9 @@ pro studenty mezi všemi stabilními mechanismy (tedy bez opodstatněné závist
 u naivního mechanismu. Stabilní mechanismy (DA, Cermat, School-optimal SM) toto zadání
 vyřeší uspokojivě.</p>
           <h2>Původní mechanismus navržený Cermatem</h2>
+          <p>Jedná se o původní verzi algoritmu, jak nám ji po publikaci studie
+představil Cermat (a byl vstřícný diskuzi o možných
+vylepšeních). MŠMT se však momentálně přiklání k této verzi.</p>
           <p>
             <strong>Algoritmus</strong>
           </p>
@@ -9368,6 +9437,10 @@ Vede tedy také ke stabilnímu párování, které je však optimální z pohled
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -9717,6 +9790,10 @@ vzdělání nebude uchazeč přijat.</em>
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>
@@ -9951,8 +10028,9 @@ při použití mechanismu odloženého přijetí.</p>
           <ol>
             <li>Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
     kteří žáci mají nárok na přijetí.</li>
-            <li>Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
-    pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.</li>
+            <li>Žáci s nárokem na přijetí jsou podmíněně přijati na nejlepší z těchto škol
+    (podmíněnost zde znamená, že se mohou následně rozhodnou pro lepší školu, pokud jim
+    bude později nabídnuto přijetí) a z ostatních škol <strong>nad čarou</strong> jsou vyškrtnuti.</li>
             <li>Tím se na školách uvolní nová místa a přijímací hranici se posunou
     níže.</li>
             <li>Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
@@ -10002,6 +10080,10 @@ a vyškrtnutí jsou pouze ze škol, kde oni sami odmítnuli přijetí (a bylo ji
             </tr>
           </table>
           <h3>Vstupní data</h3>
+          <p>Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení.</p>
           <h4>Studentské přihlášky</h4>
           <table class="admission">
             <tr>

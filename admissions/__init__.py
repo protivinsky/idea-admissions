@@ -33,6 +33,8 @@ Zde prezentujeme několik možných párovacích mechanismů:
 
 - **Původní mechanismus navržený Cermatem**: vede ke spravedlivému výsledku, ale nezaručuje plné
   respektování žákovských preferencí (výsledek by bylo možné dále zlepšit vzájemnou výměnou žáků).
+  Jednalo se o první verzi algoritmu sdílenou pouze na vyžádáni, MŠMT momentálně preferuje
+  právě tuto verzi.
 - **Mechanismus odloženého přijetí**: nazývaný také **stabilní mechanismus optimální pro studenty**,
   neboť nejvíce zachovává preference žáků mezi všemi spravedlivými mechanismy.
 - **Naivní mechanismus**: představuje prosté překlopení stávajícího průběhu zkoušek do verze s pořadím

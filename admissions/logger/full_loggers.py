@@ -44,6 +44,12 @@ class GraphicLogger(Logger):
         rejected = self._allocation.rejected
 
         doc.line(self._header, "Vstupní data")
+        doc.md(
+            """Vstupní data tvoří přihlášky žáků na 3 školy seřazené dle preferencí
+            a výsledky přijímacích zkoušek z jednotlivých škol. Barevné kódování označuje,
+            na které školy byli žáci nakonec přijati, a bylo doplněno pro snadnější
+            posouzení kvality výsledného přiřazení."""
+        )
 
         doc.line(self._subheader, "Studentské přihlášky")
         with doc.tag("table", klass=self._table_klass):

@@ -158,11 +158,11 @@ def example_cermat():
     """
     Zadání dle Cermatu
     ------------------
-    Tento příklad používá Cermat ve svém videu vysvětlujícím průběh přijímacích zkoušek.
+    Tento příklad použil Cermat při vysvětlování jimi navrhnutého algoritmu.
     Jedná se o více realistický příklad, který zároveň ilustruje některé zajímavé vlastnosti.
 
     Mechanismus představený Cermatem, který je stabilní a optimální pro školy, zde v původní
-    verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů, jako mechanismus odloženého
+    verzi nemůže dosáhnout tak dobrého výsledku z pohledu studentů jako mechanismus odloženého
     přijetí, který je stabilní a optimální pro studenty.
 
     **Mechanismus odloženého přijetí umístí 6 žáků na jejich první volbu z přihlášek a nikoho

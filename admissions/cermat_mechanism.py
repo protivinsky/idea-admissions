@@ -10,6 +10,10 @@ class CermatMechanism(Mechanism):
     Původní mechanismus navržený Cermatem
     -------------------------------------
 
+    Jedná se o původní verzi algoritmu, jak nám ji po publikaci studie
+    představil Cermat (a byl vstřícný diskuzi o možných
+    vylepšeních). MŠMT se však momentálně přiklání k této verzi.
+
     **Algoritmus**
 
     1. Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,

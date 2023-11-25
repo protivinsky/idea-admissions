@@ -20,8 +20,9 @@ class SchoolOptimalSM(Mechanism):
 
     1. Podle výsledků zkoušky a vlastní kapacity každá škola stanoví,
         kteří žáci mají nárok na přijetí.
-    2. Žáci s nárokem na přijetí jsou podmíněně přijati (pokud se následně nerozhodnou
-        pro preferovanější školu) a z ostatních škol nad čarou jsou vyškrtnuti.
+    2. Žáci s nárokem na přijetí jsou podmíněně přijati na nejlepší z těchto škol
+        (podmíněnost zde znamená, že se mohou následně rozhodnou pro lepší školu, pokud jim
+        bude později nabídnuto přijetí) a z ostatních škol **nad čarou** jsou vyškrtnuti.
     3. Tím se na školách uvolní nová místa a přijímací hranici se posunou
         níže.
     4. Opakuje se od bodu 1, dokud zbývají žáci bez podmíněného přijetí a je možné
